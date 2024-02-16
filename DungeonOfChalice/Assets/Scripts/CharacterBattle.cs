@@ -4,26 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 
+
 public class CharacterBattle : MonoBehaviour
 {
-    Image image;
+    SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject turnIndicator;
-
-
+    private HealthSystem healthSystem;
+    [SerializeField] private int startingHealth = 100;
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private int currentHealth = 100;
+    [SerializeField] private Transform healthBarScaler; 
 
     private void Awake()
     {
         HideTurnIndicator();
     }
+
+    private void Update()
+    {
+        float healthScaleFactor = (float)currentHealth / startingHealth * 1500;
+        healthBarScaler.localScale = new Vector3(healthScaleFactor, 100);
+    }
     private void Start()
     {
-        image = GetComponent<Image>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        healthSystem = new HealthSystem(startingHealth);
     }
     public void Attack(CharacterBattle targetCharacterBattle, Action onAttackComplete)
     {
         Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
         Debug.Log("Attacked");
-        image.color = Color.yellow;
+        spriteRenderer.color = Color.yellow;
+        targetCharacterBattle.TakeDamage(10);
         onAttackComplete();
     }
     public Vector3 GetPosition()
@@ -40,4 +52,20 @@ public class CharacterBattle : MonoBehaviour
     {
         turnIndicator.SetActive(true);
     }
+
+    public void Damage(int damageAmount)
+    {
+        healthSystem.Damage(damageAmount);
+        Debug.Log(healthSystem.GetHealth());
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;
+
+    }
+    public void Heal(int healAmount)
+    {
+        currentHealth += healAmount;
+    } 
 }
