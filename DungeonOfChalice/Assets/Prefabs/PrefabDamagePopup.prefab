@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7180574102836193973}
   - component: {fileID: 8243101617292892880}
   - component: {fileID: 1581065673343806675}
+  - component: {fileID: 7826391626520635773}
   m_Layer: 0
   m_Name: PrefabDamagePopup
   m_TagString: Untagged
@@ -171,3 +172,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8243101617292892880}
   m_maskType: 0
+--- !u!114 &7826391626520635773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175204973487741155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de0945f3b77cda4cb8d892f5f876cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfDamagePopup: {fileID: 0}
