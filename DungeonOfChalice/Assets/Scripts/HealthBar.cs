@@ -21,6 +21,5 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
         
-        Debug.Log(healthSystem.GetHealth() + " On health bar");
     }
 }

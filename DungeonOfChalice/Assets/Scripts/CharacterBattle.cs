@@ -13,7 +13,8 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int startingHealth = 100;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private int currentHealth = 100;
-    [SerializeField] private Transform healthBarScaler; 
+    [SerializeField] private Transform healthBarScaler;
+    [SerializeField] private int attackPower = 10; 
 
     private void Awake()
     {
@@ -23,6 +24,10 @@ public class CharacterBattle : MonoBehaviour
     private void Update()
     {
         float healthScaleFactor = (float)currentHealth / startingHealth * 1500;
+        if (healthScaleFactor <= 0)
+        {
+            healthScaleFactor = 0;
+        }
         healthBarScaler.localScale = new Vector3(healthScaleFactor, 100);
     }
     private void Start()
@@ -35,7 +40,7 @@ public class CharacterBattle : MonoBehaviour
         Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
-        targetCharacterBattle.TakeDamage(10);
+        targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }
     public Vector3 GetPosition()
@@ -68,4 +73,9 @@ public class CharacterBattle : MonoBehaviour
     {
         currentHealth += healAmount;
     } 
+
+    public bool IsDead()
+    {
+        return currentHealth < 0;
+    }
 }

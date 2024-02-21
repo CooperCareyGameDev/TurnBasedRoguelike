@@ -386,6 +386,7 @@ MonoBehaviour:
   healthBar: {fileID: 1151744365}
   currentHealth: 100
   healthBarScaler: {fileID: 1699143152}
+  attackPower: 40
 --- !u!212 &788690134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -782,6 +783,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   currentHealth: 100
   healthBarScaler: {fileID: 0}
+  attackPower: 10
 --- !u!1001 &1246282436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1045,6 +1047,7 @@ MonoBehaviour:
   healthBar: {fileID: 471775283}
   currentHealth: 100
   healthBarScaler: {fileID: 902525942}
+  attackPower: 20
 --- !u!212 &1640610976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1448,6 +1451,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   currentHealth: 100
   healthBarScaler: {fileID: 0}
+  attackPower: 10
 --- !u!1001 &6692889495170694653
 PrefabInstance:
   m_ObjectHideFlags: 0

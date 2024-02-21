@@ -58,21 +58,25 @@ public class BattleHandler : MonoBehaviour
 
     private IEnumerator ChooseNextActiveCharacter()
     {
-        yield return new WaitForSeconds(turnSwitchDelay);
-        if (activeCharacterBattle == playerCharacterBattle)
+        if (!TestBattleOver())
         {
-            SetActiveCharacterBattle(enemyCharacterBattle);
-            state = State.Busy;
-            StartCoroutine(EnemyAttack());
-            /*enemyCharacterBattle.Attack(playerCharacterBattle, () =>
+            yield return new WaitForSeconds(turnSwitchDelay);
+            if (activeCharacterBattle == playerCharacterBattle)
             {
-                ChooseNextActiveCharacter();
-            });*/
-        }
-        else
-        {
-            SetActiveCharacterBattle(playerCharacterBattle);
-            state = State.WaitingForPlayer;
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                StartCoroutine(EnemyAttack());
+                /*enemyCharacterBattle.Attack(playerCharacterBattle, () =>
+                {
+                    ChooseNextActiveCharacter();
+                });*/
+            }
+            else
+            {
+                SetActiveCharacterBattle(playerCharacterBattle);
+                state = State.WaitingForPlayer;
+            }
+
         }
     }
 
@@ -81,8 +85,24 @@ public class BattleHandler : MonoBehaviour
         yield return new WaitForSeconds(turnSwitchDelay);
         enemyCharacterBattle.Attack(playerCharacterBattle, () =>
         {
-            
+
             StartCoroutine(ChooseNextActiveCharacter());
         });
+    }
+    private bool TestBattleOver()
+    {
+        if (playerCharacterBattle.IsDead())
+        {
+            // enemy wins
+            Debug.Log("Enemy wins");
+            return true;
+        }
+        if (enemyCharacterBattle.IsDead())
+        {
+            // player wins
+            Debug.Log("Player wins");
+            return true;
+        }
+        return false; 
     }
 }
