@@ -40,6 +40,7 @@ public class CharacterBattle : MonoBehaviour
         Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
+        
         //targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }
@@ -67,6 +68,7 @@ public class CharacterBattle : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        DamagePopup.Create(transform.position, 15, false);
 
     }
     public void Heal(int healAmount)
