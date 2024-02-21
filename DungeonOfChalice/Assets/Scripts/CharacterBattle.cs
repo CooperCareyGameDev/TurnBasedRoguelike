@@ -40,7 +40,7 @@ public class CharacterBattle : MonoBehaviour
         Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
-        targetCharacterBattle.TakeDamage(attackPower);
+        //targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }
     public Vector3 GetPosition()

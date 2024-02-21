@@ -63,7 +63,9 @@ public class BattleHandler : MonoBehaviour
             yield return new WaitForSeconds(turnSwitchDelay);
             if (activeCharacterBattle == playerCharacterBattle)
             {
+                
                 SetActiveCharacterBattle(enemyCharacterBattle);
+                enemyCharacterBattle.TakeDamage(10);
                 state = State.Busy;
                 StartCoroutine(EnemyAttack());
                 /*enemyCharacterBattle.Attack(playerCharacterBattle, () =>
@@ -74,6 +76,7 @@ public class BattleHandler : MonoBehaviour
             else
             {
                 SetActiveCharacterBattle(playerCharacterBattle);
+                playerCharacterBattle.TakeDamage(10);
                 state = State.WaitingForPlayer;
             }
 
