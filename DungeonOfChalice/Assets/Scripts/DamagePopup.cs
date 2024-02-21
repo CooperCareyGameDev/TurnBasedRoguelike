@@ -6,7 +6,7 @@ using TMPro;
 public class DamagePopup : MonoBehaviour
 {
     private TextMeshPro textMesh;
-    [SerializeField] private Transform pfDamagePopup; 
+    //[SerializeField] private Transform pfDamagePopup; 
     public static DamagePopup Create(Vector3 position, int damageAmount)
     {
         Debug.Log("Creating Popup");
@@ -24,5 +24,11 @@ public class DamagePopup : MonoBehaviour
     public void Setup(int damageAmount)
     {
         textMesh.SetText(damageAmount.ToString());
+    }
+
+    private void Update()
+    {
+        float moveYSpeed = 20f;
+        transform.position += new Vector3(0, moveYSpeed) * Time.deltaTime; 
     }
 }
