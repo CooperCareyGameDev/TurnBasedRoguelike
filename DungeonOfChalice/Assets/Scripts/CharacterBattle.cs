@@ -14,15 +14,31 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private int currentHealth = 100;
     [SerializeField] private Transform healthBarScaler;
-    [SerializeField] private int attackPower = 10; 
+    [SerializeField] private int attackPower = 10;
+    public int critPercentChance = 15;
+    public int healingAmount = 15; 
+    private int randomNumber;
+    private bool isCrit; 
 
     private void Awake()
     {
         HideTurnIndicator();
     }
 
+    public bool isCriticalHit(int critPercentChance)
+    {
+        randomNumber = UnityEngine.Random.Range(1, 100);
+        Debug.Log(randomNumber.ToString());
+        return randomNumber <= critPercentChance; 
+
+    }
+
     private void Update()
     {
+        if (currentHealth > startingHealth)
+        {
+            currentHealth = startingHealth;
+        }
         float healthScaleFactor = (float)currentHealth / startingHealth * 1500;
         if (healthScaleFactor <= 0)
         {
@@ -44,6 +60,14 @@ public class CharacterBattle : MonoBehaviour
         //targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }
+
+    public void HealOnTurn(int healAmount, Action onHealComplete)
+    {
+        currentHealth += healAmount;
+        DamagePopup.CreateHealPopup(transform.position, healAmount);
+        //DamagePopup.CreateHealPopup(healAmount);
+        onHealComplete();
+    } 
     public Vector3 GetPosition()
     {
         return transform.position;
@@ -65,10 +89,20 @@ public class CharacterBattle : MonoBehaviour
         Debug.Log(healthSystem.GetHealth());
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount, bool isCrit)
     {
-        currentHealth -= damageAmount;
-        DamagePopup.Create(transform.position, 15, false);
+        
+        if (isCrit)
+        {
+            currentHealth -= damageAmount * 2;
+            DamagePopup.Create(transform.position, damageAmount * 2, true);
+        }
+        else
+        {
+            currentHealth -= damageAmount;
+            DamagePopup.Create(transform.position, damageAmount, false);
+
+        }
 
     }
     public void Heal(int healAmount)
@@ -78,6 +112,6 @@ public class CharacterBattle : MonoBehaviour
 
     public bool IsDead()
     {
-        return currentHealth < 0;
+        return currentHealth <= 0;
     }
 }

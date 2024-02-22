@@ -12,8 +12,8 @@ public class BattleHandler : MonoBehaviour
     private float attackTimer = 0f;
     [SerializeField] private float initialAttackTimer = 2.5f; 
     
-    [SerializeField] private float turnSwitchDelay = 4f; 
-
+    [SerializeField] private float turnSwitchDelay = 4f;
+    [SerializeField] private Canvas battleCanvas; 
     private enum State
     {
         WaitingForPlayer,
@@ -25,6 +25,47 @@ public class BattleHandler : MonoBehaviour
         SetActiveCharacterBattle(playerCharacterBattle);
         state = State.WaitingForPlayer;
     }
+
+    public void AttackButton()
+    {
+        battleCanvas.enabled = false; 
+        attackTimer = 0;
+        state = State.Busy;
+        playerCharacterBattle.Attack(enemyCharacterBattle, () =>
+        {
+            Debug.Log("Next Character");
+            //ChooseNextActiveCharacter();
+            StartCoroutine(ChooseNextActiveCharacter());
+            //state = State.WaitingForPlayer;
+        });
+    }
+
+
+    public void HealButton()
+    {
+        /*attackTimer = 0;
+        state = State.Busy;
+        playerCharacterBattle.HealOnTurn(playerCharacterBattle.healingAmount, () =>
+        {
+            SetActiveCharacterBattle(enemyCharacterBattle);
+            state = State.Busy;
+            StartCoroutine(EnemyAttack());
+        });*/
+        battleCanvas.enabled = false;
+        StartCoroutine(WaitToHeal());
+    }
+    private IEnumerator WaitToHeal()
+    {
+        yield return new WaitForSeconds(turnSwitchDelay);
+        state = State.Busy;
+        attackTimer = 0;
+        playerCharacterBattle.HealOnTurn(playerCharacterBattle.healingAmount, () =>
+        {
+            SetActiveCharacterBattle(enemyCharacterBattle);
+            state = State.Busy;
+            StartCoroutine(EnemyAttack());
+        });
+    }
     private void Update()
     {
         attackTimer += Time.deltaTime; 
@@ -32,15 +73,11 @@ public class BattleHandler : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && attackTimer >= initialAttackTimer)
             {
-                attackTimer = 0;
-                state = State.Busy;
-                playerCharacterBattle.Attack(enemyCharacterBattle, () =>
-                {
-                    Debug.Log("Next Character");
-                    //ChooseNextActiveCharacter();
-                    StartCoroutine(ChooseNextActiveCharacter());
-                    //state = State.WaitingForPlayer;
-                });
+                AttackButton();
+            }
+            else if (Input.GetKeyDown(KeyCode.H))
+            {
+                HealButton();
             }
 
         }
@@ -65,7 +102,7 @@ public class BattleHandler : MonoBehaviour
             {
                 
                 SetActiveCharacterBattle(enemyCharacterBattle);
-                enemyCharacterBattle.TakeDamage(10);
+                enemyCharacterBattle.TakeDamage(10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 state = State.Busy;
                 StartCoroutine(EnemyAttack());
                 /*enemyCharacterBattle.Attack(playerCharacterBattle, () =>
@@ -76,7 +113,8 @@ public class BattleHandler : MonoBehaviour
             else
             {
                 SetActiveCharacterBattle(playerCharacterBattle);
-                playerCharacterBattle.TakeDamage(10);
+                battleCanvas.enabled = true;
+                playerCharacterBattle.TakeDamage(10, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
                 state = State.WaitingForPlayer;
             }
 
@@ -97,13 +135,13 @@ public class BattleHandler : MonoBehaviour
         if (playerCharacterBattle.IsDead())
         {
             // enemy wins
-            Debug.Log("Enemy wins");
+            BattleOverWindow.Show_Static("Enemy Wins!");
             return true;
         }
         if (enemyCharacterBattle.IsDead())
         {
             // player wins
-            Debug.Log("Player wins");
+            BattleOverWindow.Show_Static("Player Wins!");
             return true;
         }
         return false; 
