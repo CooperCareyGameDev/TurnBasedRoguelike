@@ -20,6 +20,15 @@ public class DamagePopup : MonoBehaviour
 
         return damagePopup;
     }
+
+    public static DamagePopup CreateHealPopup(Vector3 position, int healAmount)
+    {
+        Debug.Log("Heal Popup");
+        Transform healPopupTransform = Instantiate(GameAssets.i.pfHealPopup, position, Quaternion.identity);
+        DamagePopup healPopup = healPopupTransform.GetComponent<DamagePopup>();
+        healPopup.SetupHealPopup(healAmount);
+        return healPopup;
+    }
     private static int sortingOrder; 
 
     private const float DISAPPEAR_TIMER_MAX = 1f; 
@@ -48,6 +57,16 @@ public class DamagePopup : MonoBehaviour
         textMesh.sortingOrder = sortingOrder;
         moveVector = new Vector3(1, 1) * 60f; 
 
+    }
+
+    public void SetupHealPopup(int healAmount)
+    {
+        textMesh.SetText(healAmount.ToString());
+        textColor = UtilsClass.GetColorFromString("04FF00");
+        textMesh.color = textColor;
+        sortingOrder++;
+        textMesh.sortingOrder = sortingOrder;
+        moveVector = new Vector3(1, 1) * 60f; 
     }
 
     private void Update()

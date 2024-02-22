@@ -42,6 +42,17 @@ public class BattleHandler : MonoBehaviour
                     //state = State.WaitingForPlayer;
                 });
             }
+            else if (Input.GetKeyDown(KeyCode.H))
+            {
+                attackTimer = 0;
+                state = State.Busy;
+                playerCharacterBattle.HealOnTurn(playerCharacterBattle.healingAmount, () =>
+                {
+                    SetActiveCharacterBattle(enemyCharacterBattle);
+                    state = State.Busy;
+                    StartCoroutine(EnemyAttack());
+                });
+            }
 
         }
     }
@@ -65,7 +76,7 @@ public class BattleHandler : MonoBehaviour
             {
                 
                 SetActiveCharacterBattle(enemyCharacterBattle);
-                enemyCharacterBattle.TakeDamage(10);
+                enemyCharacterBattle.TakeDamage(10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 state = State.Busy;
                 StartCoroutine(EnemyAttack());
                 /*enemyCharacterBattle.Attack(playerCharacterBattle, () =>
@@ -76,7 +87,7 @@ public class BattleHandler : MonoBehaviour
             else
             {
                 SetActiveCharacterBattle(playerCharacterBattle);
-                playerCharacterBattle.TakeDamage(10);
+                playerCharacterBattle.TakeDamage(10, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
                 state = State.WaitingForPlayer;
             }
 
@@ -97,13 +108,13 @@ public class BattleHandler : MonoBehaviour
         if (playerCharacterBattle.IsDead())
         {
             // enemy wins
-            Debug.Log("Enemy wins");
+            BattleOverWindow.Show_Static("Enemy Wins!");
             return true;
         }
         if (enemyCharacterBattle.IsDead())
         {
             // player wins
-            Debug.Log("Player wins");
+            BattleOverWindow.Show_Static("Player Wins!");
             return true;
         }
         return false; 
