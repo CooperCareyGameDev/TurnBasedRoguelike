@@ -13,6 +13,10 @@ public class Testing : MonoBehaviour
 
     }
 
+    public void DebugButton()
+    {
+        Debug.Log("Successfull Press");
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && false)
