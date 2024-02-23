@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
-
+using UnityEngine.UI;
+using TMPro;
 
 public class CharacterBattle : MonoBehaviour
 {
@@ -14,9 +14,13 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private int currentHealth = 100;
     [SerializeField] private Transform healthBarScaler;
-    [SerializeField] private int attackPower = 10;
+    public int attackPower = 10;
     public int critPercentChance = 15;
-    public int healingAmount = 15; 
+    public int healingAmount = 15;
+    public int chargeRequired = 5;
+    public int currentCharge = 0;
+    [SerializeField] private TextMeshProUGUI rageChargeText;
+    public int ragePower = 0; 
     private int randomNumber;
     private bool isCrit; 
 
@@ -35,6 +39,11 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
+        rageChargeText.text = $"Rage: {currentCharge} / {chargeRequired}"; 
+        if (currentCharge > chargeRequired)
+        {
+            currentCharge = chargeRequired;
+        }
         if (currentHealth > startingHealth)
         {
             currentHealth = startingHealth;
@@ -56,7 +65,7 @@ public class CharacterBattle : MonoBehaviour
         Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
-        
+        currentCharge++;
         //targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }
@@ -68,6 +77,15 @@ public class CharacterBattle : MonoBehaviour
         //DamagePopup.CreateHealPopup(healAmount);
         onHealComplete();
     } 
+
+    public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
+    {
+        Debug.Log("Used Rage");
+        spriteRenderer.color = Color.cyan;
+        currentCharge = 0;
+        onRageComplete();
+
+    }
     public Vector3 GetPosition()
     {
         return transform.position;

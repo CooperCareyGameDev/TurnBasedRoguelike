@@ -40,17 +40,18 @@ public class BattleHandler : MonoBehaviour
         });
     }
 
-
+    public void UseRageButton()
+    {
+        if (playerCharacterBattle.currentCharge >= playerCharacterBattle.chargeRequired)
+        {
+            playerCharacterBattle.currentCharge = 0;
+            battleCanvas.enabled = false;
+            StartCoroutine(WaitToRage());
+        }
+    }
     public void HealButton()
     {
-        /*attackTimer = 0;
-        state = State.Busy;
-        playerCharacterBattle.HealOnTurn(playerCharacterBattle.healingAmount, () =>
-        {
-            SetActiveCharacterBattle(enemyCharacterBattle);
-            state = State.Busy;
-            StartCoroutine(EnemyAttack());
-        });*/
+        
         battleCanvas.enabled = false;
         StartCoroutine(WaitToHeal());
     }
@@ -59,6 +60,7 @@ public class BattleHandler : MonoBehaviour
         yield return new WaitForSeconds(turnSwitchDelay);
         state = State.Busy;
         attackTimer = 0;
+        playerCharacterBattle.currentCharge++;
         playerCharacterBattle.HealOnTurn(playerCharacterBattle.healingAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
@@ -66,6 +68,21 @@ public class BattleHandler : MonoBehaviour
             StartCoroutine(EnemyAttack());
         });
     }
+
+    private IEnumerator WaitToRage()
+    {
+        yield return new WaitForSeconds(turnSwitchDelay);
+        state = State.Busy;
+        attackTimer = 0;
+        playerCharacterBattle.UseRageAbility(enemyCharacterBattle, () =>
+        {
+            SetActiveCharacterBattle(enemyCharacterBattle);
+            state = State.Busy;
+            enemyCharacterBattle.TakeDamage(playerCharacterBattle.ragePower, false);
+            StartCoroutine(EnemyAttack());
+        });
+    }
+
     private void Update()
     {
         attackTimer += Time.deltaTime; 
@@ -102,7 +119,7 @@ public class BattleHandler : MonoBehaviour
             {
                 
                 SetActiveCharacterBattle(enemyCharacterBattle);
-                enemyCharacterBattle.TakeDamage(10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 state = State.Busy;
                 StartCoroutine(EnemyAttack());
                 /*enemyCharacterBattle.Attack(playerCharacterBattle, () =>
@@ -114,7 +131,7 @@ public class BattleHandler : MonoBehaviour
             {
                 SetActiveCharacterBattle(playerCharacterBattle);
                 battleCanvas.enabled = true;
-                playerCharacterBattle.TakeDamage(10, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+                playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
                 state = State.WaitingForPlayer;
             }
 
