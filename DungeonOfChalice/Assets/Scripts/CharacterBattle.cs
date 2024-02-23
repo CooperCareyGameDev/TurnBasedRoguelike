@@ -20,7 +20,8 @@ public class CharacterBattle : MonoBehaviour
     public int chargeRequired = 5;
     public int currentCharge = 0;
     [SerializeField] private TextMeshProUGUI rageChargeText;
-    public int ragePower = 0; 
+    public int ragePower = 0;
+    [SerializeField] private TextMeshProUGUI healthText; 
     private int randomNumber;
     private bool isCrit; 
 
@@ -39,6 +40,7 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
+        healthText.text = $"Health: {currentHealth} / {startingHealth}";
         rageChargeText.text = $"Rage: {currentCharge} / {chargeRequired}"; 
         if (currentCharge > chargeRequired)
         {

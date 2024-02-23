@@ -6,14 +6,19 @@ using UnityEngine;
 public class BattleHandler : MonoBehaviour
 {
     [SerializeField] private CharacterBattle playerCharacterBattle;
-    [SerializeField] private CharacterBattle enemyCharacterBattle; 
-    private CharacterBattle activeCharacterBattle;
+    public CharacterBattle enemyCharacterBattle;
+    
+    [SerializeField] CharacterBattle activeCharacterBattle;
+
     private State state;
     private float attackTimer = 0f;
     [SerializeField] private float initialAttackTimer = 2.5f; 
     
     [SerializeField] private float turnSwitchDelay = 4f;
-    [SerializeField] private Canvas battleCanvas; 
+    [SerializeField] private Canvas battleCanvas;
+
+    private GameObject[] enemiesArray;
+    private List<GameObject> enemies = new List<GameObject>();
     private enum State
     {
         WaitingForPlayer,
@@ -22,6 +27,15 @@ public class BattleHandler : MonoBehaviour
 
     private void Start()
     {
+        enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemiesArray)
+        {
+            enemies.Add(enemy);
+        }
+        foreach (GameObject enemy in enemies)
+        {
+            Debug.Log(enemy);
+        }
         SetActiveCharacterBattle(playerCharacterBattle);
         state = State.WaitingForPlayer;
     }
@@ -100,7 +114,7 @@ public class BattleHandler : MonoBehaviour
         }
     }
 
-    private void SetActiveCharacterBattle(CharacterBattle characterBattle)
+    public void SetActiveCharacterBattle(CharacterBattle characterBattle)
     {
         if (activeCharacterBattle != null)
         {
@@ -163,4 +177,9 @@ public class BattleHandler : MonoBehaviour
         }
         return false; 
     }
+
+    /*public CharacterBattle SetActiveCharacterBattle(CharacterBattle characterBattle)
+    {
+        return characterBattle;
+    }*/
 }
