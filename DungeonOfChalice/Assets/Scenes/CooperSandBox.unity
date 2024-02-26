@@ -1223,11 +1223,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnIndicator: {fileID: 1983872452}
-  startingHealth: 100
+  startingHealth: 250
   healthBar: {fileID: 1151744365}
-  currentHealth: 100
+  currentHealth: 250
   healthBarScaler: {fileID: 1699143152}
-  attackPower: 10
+  attackPower: 20
   critPercentChance: 50
   healingAmount: 15
   chargeRequired: 4

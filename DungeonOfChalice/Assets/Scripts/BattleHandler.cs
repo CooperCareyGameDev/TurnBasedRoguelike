@@ -19,6 +19,7 @@ public class BattleHandler : MonoBehaviour
 
     private GameObject[] enemiesArray;
     private List<GameObject> enemies = new List<GameObject>();
+    private bool isDead = false; 
     private enum State
     {
         WaitingForPlayer,
@@ -92,13 +93,14 @@ public class BattleHandler : MonoBehaviour
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
             state = State.Busy;
-            enemyCharacterBattle.TakeDamage(playerCharacterBattle.ragePower, false);
+            enemyCharacterBattle.TakeDamage(playerCharacterBattle.ragePower, true);
             StartCoroutine(EnemyAttack());
         });
     }
 
     private void Update()
     {
+        
         attackTimer += Time.deltaTime; 
         if (state == State.WaitingForPlayer)
         {
