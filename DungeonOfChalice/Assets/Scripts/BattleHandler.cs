@@ -133,9 +133,10 @@ public class BattleHandler : MonoBehaviour
             {
                 
                 SetActiveCharacterBattle(enemyCharacterBattle);
-                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                PlayerAttackLogic();
+                /*enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 state = State.Busy;
-                StartCoroutine(EnemyAttack());
+                StartCoroutine(EnemyAttack());*/
                 /*enemyCharacterBattle.Attack(playerCharacterBattle, () =>
                 {
                     ChooseNextActiveCharacter();
@@ -144,21 +145,70 @@ public class BattleHandler : MonoBehaviour
             else
             {
                 SetActiveCharacterBattle(playerCharacterBattle);
-                battleCanvas.enabled = true;
+                EnemyAttackLogic();
+                /*battleCanvas.enabled = true;
                 playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
-                state = State.WaitingForPlayer;
+                state = State.WaitingForPlayer;*/
             }
 
         }
     }
 
+    private void PlayerAttackLogic()
+    {
+        
+        
+         enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+         state = State.Busy;
+         StartCoroutine(EnemyAttack());
+    }
+
+    private void EnemyAttackLogic()
+    {
+        battleCanvas.enabled = true;
+        playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+        state = State.WaitingForPlayer;
+    }
+
     private IEnumerator EnemyAttack()
     {
         yield return new WaitForSeconds(turnSwitchDelay);
-        enemyCharacterBattle.Attack(playerCharacterBattle, () =>
+        Debug.Log(enemies.Count);
+        /*foreach(GameObject enemy in enemies)
         {
+            enemy.GetComponent<CharacterBattle>().Attack(playerCharacterBattle, () =>
+            {
+                Debug.Log(enemy + " attacked!");
+                enemies.Remove(enemy);
+                Debug.Log(enemies.Count);
+                if (enemies.Count <= 0)
+                {
+                    SetActiveCharacterBattle(playerCharacterBattle);
 
-            StartCoroutine(ChooseNextActiveCharacter());
+                }
+            });
+        }*/
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            yield return new WaitForSeconds(0.75f); 
+            Debug.Log(enemies[i]);
+            enemies[i].GetComponent<CharacterBattle>().Attack(playerCharacterBattle, () =>
+            {
+                EnemyAttackLogic();
+            });
+            if (i >= enemies.Count - 1)
+            {
+                SetActiveCharacterBattle(playerCharacterBattle);
+            }
+                //EnemyAttackLogic();
+            //SetActiveCharacterBattle(playerCharacterBattle);
+        }
+        enemies[0].GetComponent<CharacterBattle>().Attack(playerCharacterBattle, () =>
+        {
+            //EnemyAttackLogic();
+            //SetActiveCharacterBattle(playerCharacterBattle);
+
+            
         });
     }
     private bool TestBattleOver()
