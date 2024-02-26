@@ -23,11 +23,12 @@ public class CharacterBattle : MonoBehaviour
     public int ragePower = 0;
     [SerializeField] private TextMeshProUGUI healthText; 
     private int randomNumber;
-    private bool isCrit; 
-
+    private bool isCrit;
+    private bool isDead = false; 
     private void Awake()
     {
         HideTurnIndicator();
+        ragePower /= 2;
     }
 
     public bool isCriticalHit(int critPercentChance)
@@ -40,6 +41,11 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(isDead);
+        if (currentHealth <= 0)
+        {
+            isDead = true; 
+        }
         healthText.text = $"Health: {currentHealth} / {startingHealth}";
         rageChargeText.text = $"Rage: {currentCharge} / {chargeRequired}"; 
         if (currentCharge > chargeRequired)
@@ -64,6 +70,7 @@ public class CharacterBattle : MonoBehaviour
     }
     public void Attack(CharacterBattle targetCharacterBattle, Action onAttackComplete)
     {
+        if (isDead) { return; }
         Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
