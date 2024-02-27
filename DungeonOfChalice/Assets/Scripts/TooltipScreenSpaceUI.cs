@@ -24,6 +24,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
         SetText("Placeholder the image should change to fit the text now");
 
         HideTooltip();
+        
     }
 
     private void SetText(string tooltipText)
@@ -37,7 +38,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
 
     private void Update()
     {
-        SetText(getTooltipTextFunc);
+        //SetText(getTooltipTextFunc());
 
         Vector2 anchoredPosition = Input.mousePosition / canvasRectTransform.localScale.x;
 
@@ -68,16 +69,16 @@ public class TooltipScreenSpaceUI : MonoBehaviour
         Instance.ShowTooltip(tooltipText);
     }
 
-    private void ShowTooltip(System.Func<string> getTooltipTextFunc)
+    /*private void ShowTooltip(System.Func<string> getTooltipTextFunc)
     {
         this.getTooltipTextFunc = getTooltipTextFunc;
         gameObject.SetActive(true);
-        SetText(getTooltipTextFunc);
-    }
-    public static void ShowTooltip_Static(System.Func<string> getTooltipTextFunc)
+        SetText(getTooltipTextFunc());
+    }*/
+    /*public static void ShowTooltip_Static(System.Func<string> getTooltipTextFunc)
     {
-        Instance.ShowTooltip(getTooltipTextFunc);
-    }
+        //Instance.ShowTooltip(getTooltipTextFunc);
+    }*/
     public static void HideTooltip_Static()
     {
         Instance.HideTooltip();
