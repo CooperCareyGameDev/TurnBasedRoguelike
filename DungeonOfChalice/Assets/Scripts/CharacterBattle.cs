@@ -7,6 +7,7 @@ using TMPro;
 
 public class CharacterBattle : MonoBehaviour
 {
+    
     SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject turnIndicator;
     private HealthSystem healthSystem;
@@ -140,5 +141,15 @@ public class CharacterBattle : MonoBehaviour
     public bool IsDead()
     {
         return currentHealth <= 0;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetStartingHealth()
+    {
+        return startingHealth;
     }
 }
