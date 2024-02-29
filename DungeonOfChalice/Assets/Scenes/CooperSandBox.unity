@@ -466,7 +466,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289559839}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5188159eb71909949be399bf0a1515f3, type: 3}
   m_Name: 
@@ -2860,6 +2860,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasRectTransform: {fileID: 1786259671}
+  tooltipBackground: {fileID: 593687017}
+  tooltipResetDelay: 1.5
 --- !u!1 &1318379166
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,10 @@ public class TooltipManager : MonoBehaviour
 {
     private void Start()
     {
-        TooltipScreenSpaceUI.ShowTooltip_Static("Attack");
-        StartCoroutine(HideTooltip());
-        transform.Find("Attack").GetComponent<Button_UI>().MouseOverOnceFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static("Attack");
-        transform.Find("Attack").GetComponent<Button_UI>().MouseOutOnceFunc = () => TooltipScreenSpaceUI.HideTooltip_Static();
+        TooltipScreenSpaceUI.ShowTooltipWarning_Static("Attack");
+        //StartCoroutine(HideTooltip());
+        //transform.Find("Attack").GetComponent<Button_UI>().MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static("Attack");
+        //transform.Find("Attack").GetComponent<Button_UI>().MouseOutOnceTooltipFunc = () => TooltipScreenSpaceUI.HideTooltip_Static();
     }
     private void Update()
     {
@@ -22,4 +22,6 @@ public class TooltipManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         TooltipScreenSpaceUI.HideTooltip_Static();
     }
+
+    
 }

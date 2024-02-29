@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; 
+using TMPro;
+using UnityEngine.UI;
 
 public class TooltipScreenSpaceUI : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class TooltipScreenSpaceUI : MonoBehaviour
 
 
 
-    [SerializeField] private RectTransform canvasRectTransform; 
+    [SerializeField] private RectTransform canvasRectTransform;
+    [SerializeField] private Image tooltipBackground;
+    [SerializeField] private float tooltipResetDelay = 1.5f; 
     private RectTransform backgroundRectTransform;
     private TextMeshProUGUI textMeshPro;
     private RectTransform rectTransform;
@@ -68,7 +71,27 @@ public class TooltipScreenSpaceUI : MonoBehaviour
     {
         Instance.ShowTooltip(tooltipText);
     }
+    
+    public static void ShowTooltipWarning_Static(string tooltipText)
+    {
+        Instance.ShowTooltipWarning(tooltipText);
+        
+    }
 
+    private void ShowTooltipWarning(string tooltipText)
+    {
+        Instance.ShowTooltip(tooltipText);
+        StartCoroutine(ShowWarning());
+    }
+    private IEnumerator ShowWarning()
+    {
+        Debug.Log("Coroutine Started");
+        tooltipBackground.GetComponent<Image>().color = Color.red;
+        yield return new WaitForSeconds(tooltipResetDelay);
+        Instance.HideTooltip();
+        tooltipBackground.GetComponent<Image>().color = Color.white; 
+
+    }
     /*private void ShowTooltip(System.Func<string> getTooltipTextFunc)
     {
         this.getTooltipTextFunc = getTooltipTextFunc;

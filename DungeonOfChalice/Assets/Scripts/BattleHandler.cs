@@ -63,6 +63,10 @@ public class BattleHandler : MonoBehaviour
             battleCanvas.enabled = false;
             StartCoroutine(WaitToRage());
         }
+        else
+        {
+            TooltipScreenSpaceUI.ShowTooltipWarning_Static("Not Enough Rage! Wait until rage meter fills up!");
+        }
     }
     public void HealButton()
     {
