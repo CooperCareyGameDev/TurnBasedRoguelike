@@ -7,6 +7,7 @@ using TMPro;
 
 public class CharacterBattle : MonoBehaviour
 {
+    
     SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject turnIndicator;
     private HealthSystem healthSystem;
