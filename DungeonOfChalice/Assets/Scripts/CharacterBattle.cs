@@ -142,4 +142,14 @@ public class CharacterBattle : MonoBehaviour
     {
         return currentHealth <= 0;
     }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetStartingHealth()
+    {
+        return startingHealth;
+    }
 }
