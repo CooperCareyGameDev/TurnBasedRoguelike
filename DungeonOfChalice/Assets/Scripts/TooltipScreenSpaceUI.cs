@@ -59,6 +59,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
     private void ShowTooltip(string tooltipText)
     {
         gameObject.SetActive(true);
+        tooltipBackground.GetComponent<Image>().color = Color.black;
         SetText(tooltipText);
     }
 
@@ -88,8 +89,8 @@ public class TooltipScreenSpaceUI : MonoBehaviour
         Debug.Log("Coroutine Started");
         tooltipBackground.GetComponent<Image>().color = Color.red;
         yield return new WaitForSeconds(tooltipResetDelay);
+        
         Instance.HideTooltip();
-        tooltipBackground.GetComponent<Image>().color = Color.white; 
 
     }
     /*private void ShowTooltip(System.Func<string> getTooltipTextFunc)

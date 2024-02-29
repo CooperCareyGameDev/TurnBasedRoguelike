@@ -675,6 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78d5ac8512fe294ca6a10afe7be19e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackButton: {fileID: 707815130}
 --- !u!4 &438169955
 Transform:
   m_ObjectHideFlags: 0
@@ -859,7 +860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -895,6 +896,8 @@ GameObject:
   - component: {fileID: 635467184}
   - component: {fileID: 635467183}
   - component: {fileID: 635467182}
+  - component: {fileID: 635467185}
+  - component: {fileID: 635467186}
   m_Layer: 5
   m_Name: Heal
   m_TagString: Untagged
@@ -1016,6 +1019,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635467180}
   m_CullTransparentMesh: 1
+--- !u!114 &635467185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635467180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f74cbbbd80034b96f88091a8e7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverBehaviourType: 0
+  hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Image: {fileID: 635467183}
+  hoverBehaviour_Sprite_Exit: {fileID: 0}
+  hoverBehaviour_Sprite_Enter: {fileID: 0}
+  hoverBehaviour_Move: 0
+  hoverBehaviour_Move_Amount: {x: 0, y: 0}
+  triggerMouseOutFuncOnClick: 1
+--- !u!114 &635467186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635467180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: 'Healing Crystal
+
+    Heals self 15'
 --- !u!1 &707815125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1068,7 @@ GameObject:
   - component: {fileID: 707815128}
   - component: {fileID: 707815127}
   - component: {fileID: 707815130}
+  - component: {fileID: 707815131}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -1165,12 +1205,30 @@ MonoBehaviour:
   hoverBehaviourType: 0
   hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
   hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
-  hoverBehaviour_Image: {fileID: 0}
+  hoverBehaviour_Image: {fileID: 707815128}
   hoverBehaviour_Sprite_Exit: {fileID: 0}
   hoverBehaviour_Sprite_Enter: {fileID: 0}
   hoverBehaviour_Move: 0
   hoverBehaviour_Move_Amount: {x: 0, y: 0}
-  triggerMouseOutFuncOnClick: 0
+  triggerMouseOutFuncOnClick: 1
+--- !u!114 &707815131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707815125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: 'Basic attack, targets one enemy
+
+    Damage: 10
+
+    Crit Chance:
+    50%'
 --- !u!1 &736227073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,6 +3210,8 @@ GameObject:
   - component: {fileID: 1470615626}
   - component: {fileID: 1470615625}
   - component: {fileID: 1470615624}
+  - component: {fileID: 1470615627}
+  - component: {fileID: 1470615628}
   m_Layer: 5
   m_Name: Rage
   m_TagString: Untagged
@@ -3273,6 +3333,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470615622}
   m_CullTransparentMesh: 1
+--- !u!114 &1470615627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470615622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f74cbbbd80034b96f88091a8e7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverBehaviourType: 0
+  hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Image: {fileID: 1470615625}
+  hoverBehaviour_Sprite_Exit: {fileID: 0}
+  hoverBehaviour_Sprite_Enter: {fileID: 0}
+  hoverBehaviour_Move: 0
+  hoverBehaviour_Move_Amount: {x: 0, y: 0}
+  triggerMouseOutFuncOnClick: 0
+--- !u!114 &1470615628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470615622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: 'Heroic Slam
+
+    Deals 50 damage to a single enemy'
 --- !u!1 &1535168678
 GameObject:
   m_ObjectHideFlags: 0
@@ -4036,7 +4132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4204,7 +4300,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &1786259671
 RectTransform:
