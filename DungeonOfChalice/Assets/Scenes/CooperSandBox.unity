@@ -1055,6 +1055,7 @@ MonoBehaviour:
   tooltipText: 'Healing Crystal
 
     Heals self 15'
+  isEnemy: 0
 --- !u!1 &707815125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1230,7 @@ MonoBehaviour:
 
     Crit Chance:
     50%'
+  isEnemy: 0
 --- !u!1 &736227073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,7 +2920,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasRectTransform: {fileID: 1786259671}
-  tooltipBackground: {fileID: 593687017}
   tooltipResetDelay: 1.5
 --- !u!1 &1318379166
 GameObject:
@@ -3369,6 +3370,7 @@ MonoBehaviour:
   tooltipText: 'Heroic Slam
 
     Deals 50 damage to a single enemy'
+  isEnemy: 0
 --- !u!1 &1535168678
 GameObject:
   m_ObjectHideFlags: 0
@@ -4534,6 +4536,8 @@ GameObject:
   - component: {fileID: 2014497477}
   - component: {fileID: 2014497476}
   - component: {fileID: 2014497479}
+  - component: {fileID: 2014497481}
+  - component: {fileID: 2014497480}
   m_Layer: 0
   m_Name: SelectButton
   m_TagString: Untagged
@@ -4668,6 +4672,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1640610975}
   battleHandler: {fileID: 1863304290}
+--- !u!114 &2014497480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014497474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Enemy
+  isEnemy: 1
+--- !u!114 &2014497481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014497474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f74cbbbd80034b96f88091a8e7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverBehaviourType: 0
+  hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Image: {fileID: 2014497477}
+  hoverBehaviour_Sprite_Exit: {fileID: 0}
+  hoverBehaviour_Sprite_Enter: {fileID: 0}
+  hoverBehaviour_Move: 0
+  hoverBehaviour_Move_Amount: {x: 0, y: 0}
+  triggerMouseOutFuncOnClick: 0
 --- !u!1 &2049311166
 GameObject:
   m_ObjectHideFlags: 0

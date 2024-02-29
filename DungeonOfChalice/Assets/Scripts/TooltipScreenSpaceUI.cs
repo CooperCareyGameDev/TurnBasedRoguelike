@@ -11,7 +11,6 @@ public class TooltipScreenSpaceUI : MonoBehaviour
 
 
     [SerializeField] private RectTransform canvasRectTransform;
-    [SerializeField] private Image tooltipBackground;
     [SerializeField] private float tooltipResetDelay = 1.5f; 
     private RectTransform backgroundRectTransform;
     private TextMeshProUGUI textMeshPro;
@@ -59,7 +58,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
     private void ShowTooltip(string tooltipText)
     {
         gameObject.SetActive(true);
-        tooltipBackground.GetComponent<Image>().color = Color.black;
+        backgroundRectTransform.GetComponent<Image>().color = Color.black;
         SetText(tooltipText);
     }
 
@@ -87,7 +86,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
     private IEnumerator ShowWarning()
     {
         Debug.Log("Coroutine Started");
-        tooltipBackground.GetComponent<Image>().color = Color.red;
+        backgroundRectTransform.GetComponent<Image>().color = Color.red;
         yield return new WaitForSeconds(tooltipResetDelay);
         
         Instance.HideTooltip();
