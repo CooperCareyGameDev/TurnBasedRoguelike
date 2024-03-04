@@ -24,22 +24,30 @@ public class TooltipInfo : MonoBehaviour
     {
         if (isEnemy)
         {
-            buttonUI.MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static(newText);
+            System.Func<string> getTooltipTextFunc = () =>
+            {
+                return $"Enemy \n{GetComponentInParent<CharacterBattle>().GetCurrentHealth()} / {GetComponentInParent<CharacterBattle>().GetStartingHealth()} Health";
+            }; 
+            buttonUI.MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static(getTooltipTextFunc);
             buttonUI.MouseOutOnceTooltipFunc = () => TooltipScreenSpaceUI.HideTooltip_Static();
         }
-        buttonUI.MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static(tooltipText);
-        buttonUI.MouseOutOnceTooltipFunc = () => TooltipScreenSpaceUI.HideTooltip_Static(); 
+        else
+        {
+            buttonUI.MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static(tooltipText);
+            buttonUI.MouseOutOnceTooltipFunc = () => TooltipScreenSpaceUI.HideTooltip_Static(); 
+
+        }
     }
 
     private void Update()
     {
-        if (isEnemy)
+        /*if (isEnemy)
         {
             currentHealth = GetComponentInParent<CharacterBattle>().GetCurrentHealth();
             healthText = $"\n{currentHealth} / {GetComponentInParent<CharacterBattle>().GetStartingHealth()} Health\n";
             newText = tooltipText + healthText;
             
-        }
+        }*/
     }
 
     /*private void OnMouseEnter()
