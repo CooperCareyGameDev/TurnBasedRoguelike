@@ -10,7 +10,7 @@ public class TooltipManager : MonoBehaviour
     {
         TooltipScreenSpaceUI.ShowTooltipWarning_Static("Attack");
         //StartCoroutine(HideTooltip());
-        Debug.Log(transform.Find("Attack")); 
+        //Debug.Log(transform.Find("Attack")); 
         //attackButton.GetComponent<Button_UI>().MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static("Attack");
         //attackButton.GetComponent<Button_UI>().MouseOutOnceTooltipFunc = () => TooltipScreenSpaceUI.HideTooltip_Static();
     }

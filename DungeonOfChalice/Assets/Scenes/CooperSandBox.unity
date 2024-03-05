@@ -1518,7 +1518,7 @@ GameObject:
   - component: {fileID: 788690133}
   m_Layer: 0
   m_Name: NonUIPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1539,6 +1539,7 @@ MonoBehaviour:
   startingHealth: 250
   healthBar: {fileID: 1151744365}
   currentHealth: 250
+  currentShield: 10
   healthBarScaler: {fileID: 1699143152}
   attackPower: 20
   critPercentChance: 50
@@ -2426,6 +2427,7 @@ MonoBehaviour:
   startingHealth: 100
   healthBar: {fileID: 0}
   currentHealth: 100
+  currentShield: 0
   healthBarScaler: {fileID: 0}
   attackPower: 10
   critPercentChance: 15
@@ -3794,6 +3796,7 @@ MonoBehaviour:
   startingHealth: 100
   healthBar: {fileID: 1024774126}
   currentHealth: 100
+  currentShield: 0
   healthBarScaler: {fileID: 177076819}
   attackPower: 10
   critPercentChance: 20
@@ -3907,6 +3910,7 @@ MonoBehaviour:
   startingHealth: 100
   healthBar: {fileID: 471775283}
   currentHealth: 100
+  currentShield: 0
   healthBarScaler: {fileID: 902525942}
   attackPower: 10
   critPercentChance: 20
@@ -4940,6 +4944,7 @@ MonoBehaviour:
   startingHealth: 100
   healthBar: {fileID: 0}
   currentHealth: 100
+  currentShield: 0
   healthBarScaler: {fileID: 0}
   attackPower: 10
   critPercentChance: 15

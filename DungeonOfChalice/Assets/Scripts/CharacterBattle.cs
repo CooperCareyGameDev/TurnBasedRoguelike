@@ -14,6 +14,7 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int startingHealth = 100;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private int currentHealth = 100;
+    [SerializeField] private int currentShield = 0; 
     [SerializeField] private Transform healthBarScaler;
     public int attackPower = 10;
     public int critPercentChance = 15;
@@ -151,5 +152,15 @@ public class CharacterBattle : MonoBehaviour
     public int GetStartingHealth()
     {
         return startingHealth;
+    }
+
+    public void ResetShieldToOne()
+    {
+        currentShield = 0;
+    }
+
+    public void IncreaseShield(int amount)
+    {
+        currentShield += amount;
     }
 }
