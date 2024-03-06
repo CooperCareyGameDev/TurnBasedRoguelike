@@ -24,7 +24,8 @@ public class CharacterBattle : MonoBehaviour
     public int shieldAmount = 25; 
     [SerializeField] private TextMeshProUGUI rageChargeText;
     public int ragePower = 0;
-    [SerializeField] private TextMeshProUGUI healthText; 
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI shieldText; 
     private int randomNumber;
     private bool isCrit;
     private bool isDead = false; 
@@ -45,6 +46,7 @@ public class CharacterBattle : MonoBehaviour
     private void Update()
     {
         Debug.Log(isDead);
+        shieldText.text = currentShield + " shield";
         if (currentHealth <= 0)
         {
             isDead = true; 

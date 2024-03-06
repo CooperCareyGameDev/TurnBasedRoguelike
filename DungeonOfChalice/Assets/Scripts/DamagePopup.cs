@@ -71,8 +71,10 @@ public class DamagePopup : MonoBehaviour
     public void SetupHealPopup(int healAmount)
     {
         textMesh.SetText(healAmount.ToString());
+        textMesh.fontSize = 36;
         textColor = UtilsClass.GetColorFromString("04FF00");
         textMesh.color = textColor;
+        disappearTimer = DISAPPEAR_TIMER_MAX;
         sortingOrder++;
         textMesh.sortingOrder = sortingOrder;
         moveVector = new Vector3(1, 1) * 60f; 
@@ -81,8 +83,10 @@ public class DamagePopup : MonoBehaviour
     public void SetupShieldPopup(int shieldAmount)
     {
         textMesh.SetText(shieldAmount.ToString());
+        textMesh.fontSize = 36;
         textColor = UtilsClass.GetColorFromString("331F00");
         textMesh.color = textColor;
+        disappearTimer = DISAPPEAR_TIMER_MAX;
         sortingOrder++;
         textMesh.sortingOrder = sortingOrder;
         moveVector = new Vector3(1, 1) * 60f;
