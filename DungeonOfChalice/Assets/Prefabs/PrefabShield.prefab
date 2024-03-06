@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1581065673343806675}
   - component: {fileID: 7826391626520635773}
   m_Layer: 0
-  m_Name: PrefabDamagePopup
+  m_Name: PrefabShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278198527
-  m_fontColor: {r: 1, g: 0.12588647, b: 0, a: 1}
+    rgba: 4278198067
+  m_fontColor: {r: 0.1981132, g: 0.121544786, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
