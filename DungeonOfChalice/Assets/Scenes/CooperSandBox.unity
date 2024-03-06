@@ -235,6 +235,8 @@ GameObject:
   - component: {fileID: 55242897}
   - component: {fileID: 55242896}
   - component: {fileID: 55242895}
+  - component: {fileID: 55242899}
+  - component: {fileID: 55242900}
   m_Layer: 0
   m_Name: SelectButton
   m_TagString: Untagged
@@ -369,6 +371,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55242893}
   m_CullTransparentMesh: 1
+--- !u!114 &55242899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55242893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Enemy
+  isEnemy: 1
+--- !u!114 &55242900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55242893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f74cbbbd80034b96f88091a8e7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverBehaviourType: 0
+  hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Image: {fileID: 55242897}
+  hoverBehaviour_Sprite_Exit: {fileID: 0}
+  hoverBehaviour_Sprite_Enter: {fileID: 0}
+  hoverBehaviour_Move: 0
+  hoverBehaviour_Move_Amount: {x: 0, y: 0}
+  triggerMouseOutFuncOnClick: 0
 --- !u!1 &126485857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1518,7 @@ GameObject:
   - component: {fileID: 788690133}
   m_Layer: 0
   m_Name: NonUIPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1502,6 +1539,7 @@ MonoBehaviour:
   startingHealth: 250
   healthBar: {fileID: 1151744365}
   currentHealth: 250
+  currentShield: 10
   healthBarScaler: {fileID: 1699143152}
   attackPower: 20
   critPercentChance: 50
@@ -2389,6 +2427,7 @@ MonoBehaviour:
   startingHealth: 100
   healthBar: {fileID: 0}
   currentHealth: 100
+  currentShield: 0
   healthBarScaler: {fileID: 0}
   attackPower: 10
   critPercentChance: 15
@@ -3757,6 +3796,7 @@ MonoBehaviour:
   startingHealth: 100
   healthBar: {fileID: 1024774126}
   currentHealth: 100
+  currentShield: 0
   healthBarScaler: {fileID: 177076819}
   attackPower: 10
   critPercentChance: 20
@@ -3870,6 +3910,7 @@ MonoBehaviour:
   startingHealth: 100
   healthBar: {fileID: 471775283}
   currentHealth: 100
+  currentShield: 0
   healthBarScaler: {fileID: 902525942}
   attackPower: 10
   critPercentChance: 20
@@ -4903,6 +4944,7 @@ MonoBehaviour:
   startingHealth: 100
   healthBar: {fileID: 0}
   currentHealth: 100
+  currentShield: 0
   healthBarScaler: {fileID: 0}
   attackPower: 10
   critPercentChance: 15

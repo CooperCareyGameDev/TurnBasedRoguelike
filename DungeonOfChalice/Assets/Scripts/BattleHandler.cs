@@ -8,7 +8,7 @@ public class BattleHandler : MonoBehaviour
     [SerializeField] private CharacterBattle playerCharacterBattle;
     public CharacterBattle enemyCharacterBattle;
     
-    [SerializeField] CharacterBattle activeCharacterBattle;
+    [SerializeField] private CharacterBattle activeCharacterBattle;
 
     private State state;
     private float attackTimer = 0f;
@@ -18,7 +18,9 @@ public class BattleHandler : MonoBehaviour
     [SerializeField] private Canvas battleCanvas;
 
     private GameObject[] enemiesArray;
+    private GameObject[] playersArray; 
     private List<GameObject> enemies = new List<GameObject>();
+    private List<GameObject> players = new List<GameObject>();
     private bool isDead = false; 
     private enum State
     {
@@ -29,6 +31,15 @@ public class BattleHandler : MonoBehaviour
     private void Start()
     {
         enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
+        playersArray = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in playersArray) 
+        {
+            players.Add(player); 
+        }
+        foreach (GameObject player in players)
+        {
+            Debug.Log(player);
+        }
         foreach (GameObject enemy in enemiesArray)
         {
             enemies.Add(enemy);
@@ -104,7 +115,7 @@ public class BattleHandler : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log(activeCharacterBattle);
         attackTimer += Time.deltaTime; 
         if (state == State.WaitingForPlayer)
         {
@@ -135,11 +146,16 @@ public class BattleHandler : MonoBehaviour
         if (!TestBattleOver())
         {
             yield return new WaitForSeconds(turnSwitchDelay);
+            Debug.Log(activeCharacterBattle == playerCharacterBattle);
             if (activeCharacterBattle == playerCharacterBattle)
             {
                 
                 SetActiveCharacterBattle(enemyCharacterBattle);
                 PlayerAttackLogic();
+                for (int i = 0; i < players.Count; i++)
+                {
+                    players[i].GetComponent<CharacterBattle>().ResetShieldToOne(); 
+                }
                 /*enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 state = State.Busy;
                 StartCoroutine(EnemyAttack());*/
@@ -150,8 +166,10 @@ public class BattleHandler : MonoBehaviour
             }
             else
             {
-                SetActiveCharacterBattle(playerCharacterBattle);
+
                 EnemyAttackLogic();
+                SetActiveCharacterBattle(playerCharacterBattle);
+                Debug.Log("else");
                 /*battleCanvas.enabled = true;
                 playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
                 state = State.WaitingForPlayer;*/
@@ -216,6 +234,7 @@ public class BattleHandler : MonoBehaviour
 
             
         });
+        
     }
     private bool TestBattleOver()
     {

@@ -40,7 +40,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
 
     private void Update()
     {
-        //SetText(getTooltipTextFunc());
+        SetText(getTooltipTextFunc());
 
         Vector2 anchoredPosition = Input.mousePosition / canvasRectTransform.localScale.x;
 
@@ -60,6 +60,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
         gameObject.SetActive(true);
         backgroundRectTransform.GetComponent<Image>().color = Color.black;
         SetText(tooltipText);
+        ShowTooltip(() => tooltipText);
     }
 
     private void HideTooltip()
@@ -91,6 +92,17 @@ public class TooltipScreenSpaceUI : MonoBehaviour
         
         Instance.HideTooltip();
 
+    }
+    public static void ShowTooltip_Static(System.Func<string> getTooltipTestFunc)
+    {
+        Instance.ShowTooltip(getTooltipTestFunc);
+    }
+
+    private void ShowTooltip(System.Func<string> getTooltipTextFunc)
+    {
+        this.getTooltipTextFunc = getTooltipTextFunc;
+        gameObject.SetActive(true);
+        SetText(getTooltipTextFunc());
     }
     /*private void ShowTooltip(System.Func<string> getTooltipTextFunc)
     {
