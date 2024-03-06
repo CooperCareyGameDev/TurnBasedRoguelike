@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pfDamagePopup: {fileID: 7180574102836193973, guid: 91499e12e176c9042b7bd8bd517a7fb8, type: 3}
   pfHealPopup: {fileID: 7180574102836193973, guid: aeb12bbb40cef56469e3221c988c291b, type: 3}
+  pfShieldPopup: {fileID: 7180574102836193973, guid: b7c0b650688920049a4485da628afcc3, type: 3}

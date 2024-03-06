@@ -21,9 +21,11 @@ public class CharacterBattle : MonoBehaviour
     public int healingAmount = 15;
     public int chargeRequired = 5;
     public int currentCharge = 0;
+    public int shieldAmount = 25; 
     [SerializeField] private TextMeshProUGUI rageChargeText;
     public int ragePower = 0;
-    [SerializeField] private TextMeshProUGUI healthText; 
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI shieldText; 
     private int randomNumber;
     private bool isCrit;
     private bool isDead = false; 
@@ -44,6 +46,7 @@ public class CharacterBattle : MonoBehaviour
     private void Update()
     {
         Debug.Log(isDead);
+        shieldText.text = currentShield + " shield";
         if (currentHealth <= 0)
         {
             isDead = true; 
@@ -89,6 +92,12 @@ public class CharacterBattle : MonoBehaviour
         onHealComplete();
     } 
 
+    public void ShieldOnTurn(int shieldAmount, Action onShieldComplete)
+    {
+        currentShield += shieldAmount;
+        DamagePopup.CreateShieldPopup(transform.position, shieldAmount);
+        onShieldComplete();
+    }
     public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
     {
         Debug.Log("Used Rage");
@@ -123,13 +132,36 @@ public class CharacterBattle : MonoBehaviour
         
         if (isCrit)
         {
-            currentHealth -= damageAmount * 2;
-            DamagePopup.Create(transform.position, damageAmount * 2, true);
+            if (currentShield > damageAmount * 2)
+            {
+                currentShield -= damageAmount * 2;
+                DamagePopup.Create(transform.position, 0, true);
+            }
+            else if (currentShield <= damageAmount * 2)
+            {
+                currentHealth -= (damageAmount * 2 - currentShield);
+                DamagePopup.Create(transform.position, damageAmount * 2 - currentShield, true);
+                currentShield = 0;
+
+            }
+            //currentHealth -= damageAmount * 2;
+            //DamagePopup.Create(transform.position, damageAmount * 2, true);
         }
         else
         {
-            currentHealth -= damageAmount;
-            DamagePopup.Create(transform.position, damageAmount, false);
+            if (currentShield > damageAmount)
+            {
+                currentShield -= damageAmount;
+                DamagePopup.Create(transform.position, 0, false);
+            }
+            else if (currentShield <= damageAmount)
+            {
+                currentHealth -= (damageAmount - currentShield);
+                DamagePopup.Create(transform.position, damageAmount - currentShield, false);
+                currentShield = 0;
+            }
+            //currentHealth -= damageAmount;
+            //DamagePopup.Create(transform.position, damageAmount, false);
 
         }
 
@@ -156,6 +188,7 @@ public class CharacterBattle : MonoBehaviour
 
     public void ResetShieldToOne()
     {
+        Debug.Log("Reset shield to one");
         currentShield = 0;
     }
 

@@ -85,6 +85,12 @@ public class BattleHandler : MonoBehaviour
         battleCanvas.enabled = false;
         StartCoroutine(WaitToHeal());
     }
+
+    public void ShieldButton()
+    {
+        battleCanvas.enabled = false;
+        StartCoroutine(WaitToShield());
+    }
     private IEnumerator WaitToHeal()
     {
         yield return new WaitForSeconds(turnSwitchDelay);
@@ -99,6 +105,19 @@ public class BattleHandler : MonoBehaviour
         });
     }
 
+    private IEnumerator WaitToShield()
+    {
+        yield return new WaitForSeconds(turnSwitchDelay);
+        state = State.Busy;
+        attackTimer = 0;
+        playerCharacterBattle.currentCharge++;
+        playerCharacterBattle.ShieldOnTurn(playerCharacterBattle.shieldAmount, () =>
+        {
+            SetActiveCharacterBattle(enemyCharacterBattle);
+            state = State.Busy;
+            StartCoroutine(EnemyAttack());
+        });
+    }
     private IEnumerator WaitToRage()
     {
         yield return new WaitForSeconds(turnSwitchDelay);
@@ -154,7 +173,7 @@ public class BattleHandler : MonoBehaviour
                 PlayerAttackLogic();
                 for (int i = 0; i < players.Count; i++)
                 {
-                    players[i].GetComponent<CharacterBattle>().ResetShieldToOne(); 
+                    //players[i].GetComponent<CharacterBattle>().ResetShieldToOne(); 
                 }
                 /*enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 state = State.Busy;
@@ -192,6 +211,10 @@ public class BattleHandler : MonoBehaviour
         battleCanvas.enabled = true;
         playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
         state = State.WaitingForPlayer;
+        for (int i = 0; i < players.Count; i++)
+        {
+            //players[i].GetComponent<CharacterBattle>().ResetShieldToOne(); 
+        }
     }
 
     private IEnumerator EnemyAttack()
@@ -223,6 +246,10 @@ public class BattleHandler : MonoBehaviour
             if (i >= enemies.Count - 1)
             {
                 SetActiveCharacterBattle(playerCharacterBattle);
+                for (int j = 0; j < players.Count; j++)
+                {
+                    players[j].GetComponent<CharacterBattle>().ResetShieldToOne();
+                }
             }
                 //EnemyAttackLogic();
             //SetActiveCharacterBattle(playerCharacterBattle);
