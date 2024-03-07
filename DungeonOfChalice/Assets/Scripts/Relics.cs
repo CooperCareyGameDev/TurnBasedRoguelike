@@ -51,6 +51,7 @@ public class Relics : MonoBehaviour
         secondChanceBuff = false;
         critChanceBuff = false;
         healingBuff = false;
+        hasSecondChance = false;
     }
 
     public void ActivateShieldBuff()
@@ -60,6 +61,7 @@ public class Relics : MonoBehaviour
         secondChanceBuff = false;
         critChanceBuff = false;
         healingBuff = false;
+        hasSecondChance = false;
     }
 
     public void ActivateSecondChanceBuff()
@@ -69,6 +71,7 @@ public class Relics : MonoBehaviour
         secondChanceBuff = true;
         critChanceBuff = false;
         healingBuff = false;
+        hasSecondChance = true;
     }
 
     public void ActivateCritChanceBuff()
@@ -78,6 +81,7 @@ public class Relics : MonoBehaviour
         secondChanceBuff = false;
         critChanceBuff = true;
         healingBuff = false;
+        hasSecondChance = false;
     }
 
     public void ActivateHealingBuff()
@@ -87,5 +91,6 @@ public class Relics : MonoBehaviour
         secondChanceBuff = false;
         critChanceBuff = false;
         healingBuff = true;
+        hasSecondChance = false;
     }
 }
