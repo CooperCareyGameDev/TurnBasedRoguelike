@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007c0a9125a7a1d4faed85814f7d5148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localRageBuff: 1
+  localRageBuff: 0
   localShieldBuff: 0
   localSecondChanceBuff: 0
   localCritChanceBuff: 0
