@@ -19,7 +19,8 @@ public class TooltipScreenSpaceUI : MonoBehaviour
     private System.Func<string> getTooltipTextFunc;
     private void Awake()
     {
-        Instance = this; 
+        Instance = this;
+        Debug.Log(Instance);
         backgroundRectTransform = transform.Find("Background").GetComponent<RectTransform>();
         textMeshPro = transform.Find("TooltipText").GetComponent<TextMeshProUGUI>();
         rectTransform = transform.GetComponent<RectTransform>();
@@ -40,7 +41,6 @@ public class TooltipScreenSpaceUI : MonoBehaviour
 
     private void Update()
     {
-        SetText(getTooltipTextFunc());
 
         Vector2 anchoredPosition = Input.mousePosition / canvasRectTransform.localScale.x;
 
@@ -53,6 +53,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
             anchoredPosition.y = canvasRectTransform.rect.height - backgroundRectTransform.rect.height;
         }
         rectTransform.anchoredPosition = anchoredPosition;
+        SetText(getTooltipTextFunc());
     }
 
     private void ShowTooltip(string tooltipText)
@@ -71,6 +72,8 @@ public class TooltipScreenSpaceUI : MonoBehaviour
     public static void ShowTooltip_Static(string tooltipText)
     {
         Instance.ShowTooltip(tooltipText);
+
+        
     }
     
     public static void ShowTooltipWarning_Static(string tooltipText)

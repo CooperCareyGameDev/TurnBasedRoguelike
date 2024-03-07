@@ -31,12 +31,21 @@ public class CharacterBattle : MonoBehaviour
     private bool isDead = false; 
     private void Awake()
     {
+        if (Relics.critChanceBuff)
+        {
+            critPercentChance += 10; 
+        }
+        if (Relics.rageBuff)
+        {
+            chargeRequired--;
+        }
         HideTurnIndicator();
         ragePower /= 2;
     }
 
     public bool isCriticalHit(int critPercentChance)
     {
+        Debug.Log(critPercentChance);
         randomNumber = UnityEngine.Random.Range(1, 100);
         Debug.Log(randomNumber.ToString());
         return randomNumber <= critPercentChance; 
@@ -129,7 +138,7 @@ public class CharacterBattle : MonoBehaviour
 
     public void TakeDamage(int damageAmount, bool isCrit)
     {
-        
+        Debug.Log("Taking damage");
         if (isCrit)
         {
             if (currentShield > damageAmount * 2)
@@ -189,7 +198,14 @@ public class CharacterBattle : MonoBehaviour
     public void ResetShieldToOne()
     {
         Debug.Log("Reset shield to one");
-        currentShield = 0;
+        if (Relics.shieldBuff)
+        {
+            currentShield = 5;
+        }
+        else
+        {
+            currentShield = 0;
+        }
     }
 
     public void IncreaseShield(int amount)
