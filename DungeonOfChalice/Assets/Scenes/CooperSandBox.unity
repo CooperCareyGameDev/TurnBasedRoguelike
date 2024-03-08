@@ -253,9 +253,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localRageBuff: 0
   localShieldBuff: 0
-  localSecondChanceBuff: 0
+  localSecondChanceBuff: 1
   localCritChanceBuff: 0
   localHealingBuff: 0
+  localHasSecondChance: 1
 --- !u!4 &49445541
 Transform:
   m_ObjectHideFlags: 0
@@ -1760,12 +1761,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnIndicator: {fileID: 1983872452}
-  startingHealth: 250
+  startingHealth: 50
   healthBar: {fileID: 1151744365}
-  currentHealth: 250
+  currentHealth: 50
   currentShield: 100
   healthBarScaler: {fileID: 1699143152}
-  attackPower: 20
+  attackPower: 50
   critPercentChance: 50
   healingAmount: 15
   chargeRequired: 4
@@ -1775,6 +1776,7 @@ MonoBehaviour:
   ragePower: 50
   healthText: {fileID: 1543147901}
   shieldText: {fileID: 1333158617}
+  isEnemy: 0
 --- !u!212 &788690134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2087,8 +2089,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 0}
+  m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -2800,6 +2801,7 @@ MonoBehaviour:
   ragePower: 0
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
+  isEnemy: 0
 --- !u!1 &1201516313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4270,6 +4272,7 @@ GameObject:
   - component: {fileID: 1602089095}
   - component: {fileID: 1602089094}
   - component: {fileID: 1602089093}
+  - component: {fileID: 1602089096}
   m_Layer: 0
   m_Name: NonUIEnemy (1)
   m_TagString: Enemy
@@ -4305,6 +4308,7 @@ MonoBehaviour:
   ragePower: 0
   healthText: {fileID: 1201516315}
   shieldText: {fileID: 785264479}
+  isEnemy: 1
 --- !u!212 &1602089094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4375,6 +4379,18 @@ Transform:
   - {fileID: 531673615}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1602089096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602089092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502f333392f93304ab93a9951f12a3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1640610974
 GameObject:
   m_ObjectHideFlags: 0
@@ -4386,6 +4402,7 @@ GameObject:
   - component: {fileID: 1640610977}
   - component: {fileID: 1640610976}
   - component: {fileID: 1640610975}
+  - component: {fileID: 1640610978}
   m_Layer: 0
   m_Name: NonUIEnemy
   m_TagString: Enemy
@@ -4421,6 +4438,7 @@ MonoBehaviour:
   ragePower: 0
   healthText: {fileID: 1201516315}
   shieldText: {fileID: 785264479}
+  isEnemy: 1
 --- !u!212 &1640610976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4491,6 +4509,18 @@ Transform:
   - {fileID: 44447734}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1640610978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640610974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502f333392f93304ab93a9951f12a3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1691111776
 GameObject:
   m_ObjectHideFlags: 0
@@ -5005,6 +5035,9 @@ MonoBehaviour:
   initialAttackTimer: 2.5
   turnSwitchDelay: 1
   battleCanvas: {fileID: 1062966858}
+  enemies: []
+  enemyCharacterBattles: []
+  players: []
 --- !u!4 &1863304291
 Transform:
   m_ObjectHideFlags: 0
@@ -5559,6 +5592,7 @@ MonoBehaviour:
   ragePower: 0
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
+  isEnemy: 0
 --- !u!1001 &6692889495170694653
 PrefabInstance:
   m_ObjectHideFlags: 0

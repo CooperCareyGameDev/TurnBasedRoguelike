@@ -25,12 +25,15 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rageChargeText;
     public int ragePower = 0;
     [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private TextMeshProUGUI shieldText; 
+    [SerializeField] private TextMeshProUGUI shieldText;
+    [SerializeField] bool isEnemy = false; 
     private int randomNumber;
     private bool isCrit;
     private bool isDead = false; 
+    private BattleHandler battleHandler;
     private void Awake()
     {
+        battleHandler = FindFirstObjectByType<BattleHandler>();
         if (Relics.critChanceBuff)
         {
             critPercentChance += 10; 
@@ -56,9 +59,25 @@ public class CharacterBattle : MonoBehaviour
     {
         Debug.Log(isDead);
         shieldText.text = currentShield + " shield";
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && Relics.hasSecondChance && !isEnemy)
         {
-            isDead = true; 
+            currentHealth = startingHealth;
+            Relics.hasSecondChance = false;
+            isDead = false;
+        }
+        else if (currentHealth <= 0 && !Relics.hasSecondChance)
+        {
+            isDead = true;
+        }
+        else
+        {
+            isDead = false;
+        }
+
+        if (currentHealth <= 0 && isEnemy)
+        {
+            battleHandler.enemies.Remove(gameObject);
+            Destroy(gameObject);
         }
         healthText.text = $"Health: {currentHealth} / {startingHealth}";
         rageChargeText.text = $"Rage: {currentCharge} / {chargeRequired}"; 
@@ -85,7 +104,7 @@ public class CharacterBattle : MonoBehaviour
     public void Attack(CharacterBattle targetCharacterBattle, Action onAttackComplete)
     {
         if (isDead) { return; }
-        Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
+        //Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
         currentCharge++;
@@ -127,7 +146,7 @@ public class CharacterBattle : MonoBehaviour
 
     public void ShowTurnIndicator()
     {
-        turnIndicator.SetActive(true);
+        //turnIndicator.SetActive(true);
     }
 
     public void Damage(int damageAmount)
@@ -182,7 +201,20 @@ public class CharacterBattle : MonoBehaviour
 
     public bool IsDead()
     {
-        return currentHealth <= 0;
+        if (currentHealth <= 0 && Relics.hasSecondChance)
+        {
+            currentHealth = startingHealth;
+            Relics.hasSecondChance = false; 
+            return false;
+        }
+        else if (currentHealth <= 0 && !Relics.secondChanceBuff)
+        {
+            return true; 
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public int GetCurrentHealth()
