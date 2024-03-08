@@ -21,7 +21,7 @@ public class Relics : MonoBehaviour
     [SerializeField] bool localSecondChanceBuff = false;
     [SerializeField] bool localCritChanceBuff = false;
     [SerializeField] bool localHealingBuff = false;
-
+    [SerializeField] bool localHasSecondChance = false; 
 
     public static bool hasSecondChance = false; 
     private void Awake()
@@ -32,6 +32,7 @@ public class Relics : MonoBehaviour
         secondChanceBuff = localSecondChanceBuff;
         critChanceBuff = localCritChanceBuff;
         healingBuff = localHealingBuff;
+        hasSecondChance = localHasSecondChance;
     }
 
 

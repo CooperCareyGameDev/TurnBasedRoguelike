@@ -19,8 +19,10 @@ public class BattleHandler : MonoBehaviour
 
     private GameObject[] enemiesArray;
     private GameObject[] playersArray; 
-    private List<GameObject> enemies = new List<GameObject>();
-    private List<GameObject> players = new List<GameObject>();
+    private CharacterBattle[] characterBattles;
+    public List<GameObject> enemies = new List<GameObject>();
+    public List<CharacterBattle> enemyCharacterBattles = new List<CharacterBattle>();
+    public List<GameObject> players = new List<GameObject>();
     private bool isDead = false; 
     private enum State
     {
@@ -54,15 +56,25 @@ public class BattleHandler : MonoBehaviour
 
     public void AttackButton()
     {
-        battleCanvas.enabled = false; 
-        attackTimer = 0;
-        state = State.Busy;
+        
         playerCharacterBattle.Attack(enemyCharacterBattle, () =>
         {
-            Debug.Log("Next Character");
-            //ChooseNextActiveCharacter();
-            StartCoroutine(ChooseNextActiveCharacter());
-            //state = State.WaitingForPlayer;
+
+            if (activeCharacterBattle != null)
+            {
+                battleCanvas.enabled = false;
+                attackTimer = 0;
+                state = State.Busy;
+                //ChooseNextActiveCharacter();
+                StartCoroutine(ChooseNextActiveCharacter());
+                //state = State.WaitingForPlayer;
+            }
+            else
+            {
+                TooltipScreenSpaceUI.ShowTooltipWarning_Static("Select a target first");
+                SetActiveCharacterBattle(enemies[0].GetComponent<CharacterBattle>());
+                Debug.Log(enemies[0].GetComponent<CharacterBattle>());
+            }
         });
     }
 
@@ -188,7 +200,6 @@ public class BattleHandler : MonoBehaviour
 
                 EnemyAttackLogic();
                 SetActiveCharacterBattle(playerCharacterBattle);
-                Debug.Log("else");
                 /*battleCanvas.enabled = true;
                 playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
                 state = State.WaitingForPlayer;*/

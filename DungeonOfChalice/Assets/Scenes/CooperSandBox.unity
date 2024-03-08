@@ -253,9 +253,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localRageBuff: 0
   localShieldBuff: 0
-  localSecondChanceBuff: 0
+  localSecondChanceBuff: 1
   localCritChanceBuff: 0
   localHealingBuff: 0
+  localHasSecondChance: 1
 --- !u!4 &49445541
 Transform:
   m_ObjectHideFlags: 0
@@ -1760,9 +1761,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnIndicator: {fileID: 1983872452}
-  startingHealth: 250
+  startingHealth: 50
   healthBar: {fileID: 1151744365}
-  currentHealth: 250
+  currentHealth: 50
   currentShield: 100
   healthBarScaler: {fileID: 1699143152}
   attackPower: 20
