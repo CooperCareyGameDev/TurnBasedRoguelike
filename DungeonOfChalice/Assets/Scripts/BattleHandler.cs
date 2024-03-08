@@ -276,13 +276,13 @@ public class BattleHandler : MonoBehaviour
     }
     private bool TestBattleOver()
     {
-        if (playerCharacterBattle.IsDead() && false)
+        if (playerCharacterBattle.IsDead())
         {
             // enemy wins
             BattleOverWindow.Show_Static("Enemy Wins!");
             return true;
         }
-        if (enemyCharacterBattle.IsDead() && false)
+        if (enemies.Count <= 0)
         {
             // player wins
             BattleOverWindow.Show_Static("Player Wins!");
