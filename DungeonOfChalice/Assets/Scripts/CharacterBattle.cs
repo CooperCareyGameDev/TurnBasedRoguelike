@@ -77,6 +77,7 @@ public class CharacterBattle : MonoBehaviour
         if (currentHealth <= 0 && isEnemy)
         {
             battleHandler.enemies.Remove(gameObject);
+            battleHandler.SetEnemyCharacterBattle(); 
             Destroy(gameObject);
         }
         healthText.text = $"Health: {currentHealth} / {startingHealth}";
