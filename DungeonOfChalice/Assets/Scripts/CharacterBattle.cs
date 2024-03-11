@@ -59,6 +59,7 @@ public class CharacterBattle : MonoBehaviour
     {
         Debug.Log(isDead);
         shieldText.text = currentShield + " shield";
+        
         if (currentHealth <= 0 && Relics.hasSecondChance && !isEnemy)
         {
             currentHealth = startingHealth;
@@ -147,8 +148,9 @@ public class CharacterBattle : MonoBehaviour
 
     public void ShowTurnIndicator()
     {
-        //turnIndicator.SetActive(true);
+        turnIndicator.SetActive(true);
     }
+
 
     public void Damage(int damageAmount)
     {
