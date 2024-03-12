@@ -251,11 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007c0a9125a7a1d4faed85814f7d5148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localRageBuff: 0
+  localRageBuff: 1
   localShieldBuff: 0
   localSecondChanceBuff: 0
   localCritChanceBuff: 0
-  localHealingBuff: 1
+  localHealingBuff: 0
   localHasSecondChance: 0
 --- !u!4 &49445541
 Transform:
@@ -1741,6 +1741,7 @@ GameObject:
   - component: {fileID: 788690135}
   - component: {fileID: 788690134}
   - component: {fileID: 788690133}
+  - component: {fileID: 788690136}
   m_Layer: 0
   m_Name: NonUIPlayer
   m_TagString: Player
@@ -1760,22 +1761,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentClass: Mage
   turnIndicator: {fileID: 1983872452}
   startingHealth: 250
   healthBar: {fileID: 1151744365}
   currentHealth: 250
   currentShield: 0
   healthBarScaler: {fileID: 1699143152}
-  attackPower: 50
-  critPercentChance: 50
+  attackPower: 10
+  critPercentChance: 20
   healingAmount: 15
-  chargeRequired: 10
+  chargeRequired: 4
+  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 1216322782}
   ragePower: 50
   healthText: {fileID: 1543147901}
   shieldText: {fileID: 1333158617}
   isEnemy: 0
+  damageBuffStacks: 0
+  critBuffStacks: 0
+  healBuffStacks: 0
+  shieldBuffStacks: 0
+  isBuffed: 0
 --- !u!212 &788690134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1845,6 +1853,19 @@ Transform:
   - {fileID: 1151744364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &788690136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788690132}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ad43a692a714742927258bcf90c81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
 --- !u!1 &837900826
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,6 +2805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentClass: 
   turnIndicator: {fileID: 1318379166}
   startingHealth: 100
   healthBar: {fileID: 0}
@@ -2794,12 +2816,18 @@ MonoBehaviour:
   critPercentChance: 15
   healingAmount: 15
   chargeRequired: 5
+  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 0}
   ragePower: 0
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
   isEnemy: 0
+  damageBuffStacks: 0
+  critBuffStacks: 0
+  healBuffStacks: 0
+  shieldBuffStacks: 0
+  isBuffed: 0
 --- !u!1 &1201516313
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,6 +3758,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 8988044508708161326, guid: a265157d58019244da14e674220bbfe1, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988044508708161326, guid: a265157d58019244da14e674220bbfe1, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988044508708161326, guid: a265157d58019244da14e674220bbfe1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4290,6 +4330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentClass: 
   turnIndicator: {fileID: 406468553}
   startingHealth: 100
   healthBar: {fileID: 1024774126}
@@ -4300,12 +4341,18 @@ MonoBehaviour:
   critPercentChance: 20
   healingAmount: 15
   chargeRequired: 5
+  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 785264479}
   ragePower: 0
   healthText: {fileID: 1201516315}
   shieldText: {fileID: 785264479}
   isEnemy: 1
+  damageBuffStacks: 0
+  critBuffStacks: 0
+  healBuffStacks: 0
+  shieldBuffStacks: 0
+  isBuffed: 0
 --- !u!212 &1602089094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4400,6 +4447,7 @@ GameObject:
   - component: {fileID: 1640610976}
   - component: {fileID: 1640610975}
   - component: {fileID: 1640610978}
+  - component: {fileID: 1640610979}
   m_Layer: 0
   m_Name: NonUIEnemy
   m_TagString: Enemy
@@ -4419,6 +4467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentClass: 
   turnIndicator: {fileID: 1535168678}
   startingHealth: 100
   healthBar: {fileID: 471775283}
@@ -4429,12 +4478,18 @@ MonoBehaviour:
   critPercentChance: 20
   healingAmount: 15
   chargeRequired: 5
+  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 785264479}
   ragePower: 0
   healthText: {fileID: 1201516315}
   shieldText: {fileID: 785264479}
   isEnemy: 1
+  damageBuffStacks: 0
+  critBuffStacks: 0
+  healBuffStacks: 0
+  shieldBuffStacks: 0
+  isBuffed: 0
 --- !u!212 &1640610976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4515,6 +4570,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 502f333392f93304ab93a9951f12a3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1640610979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640610974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d795bf473ddf44fb50c7a1fa7cd601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1691111776
@@ -5572,6 +5639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentClass: 
   turnIndicator: {fileID: 1002734188}
   startingHealth: 100
   healthBar: {fileID: 0}
@@ -5582,12 +5650,18 @@ MonoBehaviour:
   critPercentChance: 15
   healingAmount: 15
   chargeRequired: 5
+  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 0}
   ragePower: 0
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
   isEnemy: 0
+  damageBuffStacks: 0
+  critBuffStacks: 0
+  healBuffStacks: 0
+  shieldBuffStacks: 0
+  isBuffed: 0
 --- !u!1001 &6692889495170694653
 PrefabInstance:
   m_ObjectHideFlags: 0

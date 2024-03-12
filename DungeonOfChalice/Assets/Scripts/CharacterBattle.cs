@@ -9,6 +9,7 @@ public class CharacterBattle : MonoBehaviour
 {
     
     SpriteRenderer spriteRenderer;
+    public string currentClass = "Knight";
     [SerializeField] private GameObject turnIndicator;
     private HealthSystem healthSystem;
     [SerializeField] private int startingHealth = 100;
@@ -17,11 +18,15 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int currentShield = 0; 
     [SerializeField] private Transform healthBarScaler;
     public int attackPower = 10;
+    private int startingAttackPower = 0; 
     public int critPercentChance = 15;
+    private int startingCritChance = 0; 
     public int healingAmount = 15;
+    private int startingHealAmount = 0; 
     public int chargeRequired = 5;
     public int currentCharge = 0;
-    public int shieldAmount = 25; 
+    public int shieldAmount = 25;
+    private int startingShieldAmount = 0; 
     [SerializeField] private TextMeshProUGUI rageChargeText;
     public int ragePower = 0;
     [SerializeField] private TextMeshProUGUI healthText;
@@ -31,8 +36,18 @@ public class CharacterBattle : MonoBehaviour
     private bool isCrit;
     private bool isDead = false; 
     private BattleHandler battleHandler;
+    [Header("Buffs")]
+    [SerializeField] private int damageBuffStacks = 0;
+    [SerializeField] private int critBuffStacks = 0;
+    [SerializeField] private int healBuffStacks = 0;
+    [SerializeField] private int shieldBuffStacks = 0;
+    public bool isBuffed = false; 
     private void Awake()
     {
+        startingAttackPower = attackPower;
+        startingCritChance = critPercentChance;
+        startingHealAmount = healingAmount;
+        startingShieldAmount = shieldAmount;
         battleHandler = FindFirstObjectByType<BattleHandler>();
         if (Relics.critChanceBuff)
         {
@@ -46,6 +61,7 @@ public class CharacterBattle : MonoBehaviour
         ragePower /= 2;
     }
 
+
     public bool isCriticalHit(int critPercentChance)
     {
         Debug.Log(critPercentChance);
@@ -57,6 +73,10 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
+        attackPower = startingAttackPower + (10 * damageBuffStacks);
+        critPercentChance = startingCritChance + (10 * critBuffStacks);
+        healingAmount = startingHealAmount + (10 * healBuffStacks);
+        shieldAmount = startingShieldAmount + (10 * shieldBuffStacks);
         Debug.Log(isDead);
         shieldText.text = currentShield + " shield";
         

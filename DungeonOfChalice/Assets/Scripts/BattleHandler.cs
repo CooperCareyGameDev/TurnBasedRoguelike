@@ -139,10 +139,36 @@ public class BattleHandler : MonoBehaviour
         attackTimer = 0;
         playerCharacterBattle.UseRageAbility(enemyCharacterBattle, () =>
         {
-            SetActiveCharacterBattle(enemyCharacterBattle);
-            state = State.Busy;
-            enemyCharacterBattle.TakeDamage(playerCharacterBattle.ragePower, true);
-            StartCoroutine(EnemyAttack());
+            if (playerCharacterBattle.currentClass == "Knight")
+            {
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.ragePower, true);
+                StartCoroutine(EnemyAttack());
+
+            }
+
+            else if (playerCharacterBattle.currentClass == "Barbarian")
+            {
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<CharacterBattle>().isBuffed = true;
+                }
+                StartCoroutine(EnemyAttack());
+            }
+
+            else if (playerCharacterBattle.currentClass == "Mage")
+            {
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                foreach (GameObject enemy in enemies)
+                {
+                    enemy.GetComponent<CharacterBattle>().TakeDamage((playerCharacterBattle.ragePower / 2), true);
+                }
+                StartCoroutine(EnemyAttack());
+            }
         });
     }
 
@@ -213,8 +239,15 @@ public class BattleHandler : MonoBehaviour
     private void PlayerAttackLogic()
     {
         
-        
-         enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+        if (playerCharacterBattle.isBuffed)
+        {
+            enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+            playerCharacterBattle.isBuffed = false;
+        }
+        else
+        {
+            enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+        }
          state = State.Busy;
          StartCoroutine(EnemyAttack());
     }
