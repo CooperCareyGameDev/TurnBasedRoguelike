@@ -110,6 +110,7 @@ public class CharacterBattle : MonoBehaviour
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
         currentCharge++;
+        Debug.Log("Added Charge");
         //targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }

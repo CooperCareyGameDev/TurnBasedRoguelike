@@ -109,6 +109,7 @@ public class BattleHandler : MonoBehaviour
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
+        Debug.Log("Added Charge");
         playerCharacterBattle.HealOnTurn(playerCharacterBattle.healingAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
@@ -123,6 +124,7 @@ public class BattleHandler : MonoBehaviour
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
+        Debug.Log("Added Charge");
         playerCharacterBattle.ShieldOnTurn(playerCharacterBattle.shieldAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
