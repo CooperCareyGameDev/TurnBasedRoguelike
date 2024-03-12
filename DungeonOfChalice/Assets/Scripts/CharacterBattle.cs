@@ -59,6 +59,7 @@ public class CharacterBattle : MonoBehaviour
     {
         Debug.Log(isDead);
         shieldText.text = currentShield + " shield";
+        
         if (currentHealth <= 0 && Relics.hasSecondChance && !isEnemy)
         {
             currentHealth = startingHealth;
@@ -77,6 +78,7 @@ public class CharacterBattle : MonoBehaviour
         if (currentHealth <= 0 && isEnemy)
         {
             battleHandler.enemies.Remove(gameObject);
+            battleHandler.SetEnemyCharacterBattle(); 
             Destroy(gameObject);
         }
         healthText.text = $"Health: {currentHealth} / {startingHealth}";
@@ -108,6 +110,7 @@ public class CharacterBattle : MonoBehaviour
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
         currentCharge++;
+        Debug.Log("Added Charge");
         //targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }
@@ -146,8 +149,9 @@ public class CharacterBattle : MonoBehaviour
 
     public void ShowTurnIndicator()
     {
-        //turnIndicator.SetActive(true);
+        turnIndicator.SetActive(true);
     }
+
 
     public void Damage(int damageAmount)
     {

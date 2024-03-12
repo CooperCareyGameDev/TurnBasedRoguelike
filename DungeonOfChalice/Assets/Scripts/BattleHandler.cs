@@ -109,6 +109,7 @@ public class BattleHandler : MonoBehaviour
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
+        Debug.Log("Added Charge");
         playerCharacterBattle.HealOnTurn(playerCharacterBattle.healingAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
@@ -123,6 +124,7 @@ public class BattleHandler : MonoBehaviour
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
+        Debug.Log("Added Charge");
         playerCharacterBattle.ShieldOnTurn(playerCharacterBattle.shieldAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
@@ -265,13 +267,16 @@ public class BattleHandler : MonoBehaviour
                 //EnemyAttackLogic();
             //SetActiveCharacterBattle(playerCharacterBattle);
         }
-        enemies[0].GetComponent<CharacterBattle>().Attack(playerCharacterBattle, () =>
+        if (enemies[0] != null)
         {
-            //EnemyAttackLogic();
-            //SetActiveCharacterBattle(playerCharacterBattle);
+            enemies[0].GetComponent<CharacterBattle>().Attack(playerCharacterBattle, () =>
+            {
+                //EnemyAttackLogic();
+                //SetActiveCharacterBattle(playerCharacterBattle);
 
             
-        });
+            });
+        }
         
     }
     private bool TestBattleOver()
@@ -289,6 +294,29 @@ public class BattleHandler : MonoBehaviour
             return true;
         }
         return false; 
+    }
+
+    public void SetEnemyCharacterBattle()
+    {
+        if (enemies.Count > 0)
+        {
+            enemyCharacterBattle = enemies[0].GetComponent<CharacterBattle>(); 
+        }
+        else
+        {
+            enemyCharacterBattle = null;
+            SetActiveCharacterBattle(playerCharacterBattle);
+            if (Relics.healingBuff)
+            {
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<CharacterBattle>().HealOnTurn(30, () => {
+                        Debug.Log("Healed on turn");
+                    });
+                   //DamagePopup.CreateHealPopup(transform.position, 200);
+                }
+            }
+        }
     }
 
     /*public CharacterBattle SetActiveCharacterBattle(CharacterBattle characterBattle)

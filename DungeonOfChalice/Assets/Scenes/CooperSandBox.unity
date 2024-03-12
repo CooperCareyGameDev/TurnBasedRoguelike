@@ -253,10 +253,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localRageBuff: 0
   localShieldBuff: 0
-  localSecondChanceBuff: 1
+  localSecondChanceBuff: 0
   localCritChanceBuff: 0
-  localHealingBuff: 0
-  localHasSecondChance: 1
+  localHealingBuff: 1
+  localHasSecondChance: 0
 --- !u!4 &49445541
 Transform:
   m_ObjectHideFlags: 0
@@ -827,8 +827,8 @@ Transform:
   m_GameObject: {fileID: 406468553}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.01, y: -0.56988, z: 0}
+  m_LocalScale: {x: 1, y: 0.16876245, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1602089095}
@@ -1761,16 +1761,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnIndicator: {fileID: 1983872452}
-  startingHealth: 50
+  startingHealth: 250
   healthBar: {fileID: 1151744365}
-  currentHealth: 50
-  currentShield: 100
+  currentHealth: 250
+  currentShield: 0
   healthBarScaler: {fileID: 1699143152}
   attackPower: 50
   critPercentChance: 50
   healingAmount: 15
-  chargeRequired: 4
-  currentCharge: 0
+  chargeRequired: 10
   shieldAmount: 25
   rageChargeText: {fileID: 1216322782}
   ragePower: 50
@@ -2795,7 +2794,6 @@ MonoBehaviour:
   critPercentChance: 15
   healingAmount: 15
   chargeRequired: 5
-  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 0}
   ragePower: 0
@@ -3987,8 +3985,8 @@ Transform:
   m_GameObject: {fileID: 1535168678}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.01, y: -0.617, z: 0}
+  m_LocalScale: {x: 1, y: -0.14831, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1640610977}
@@ -4302,7 +4300,6 @@ MonoBehaviour:
   critPercentChance: 20
   healingAmount: 15
   chargeRequired: 5
-  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 785264479}
   ragePower: 0
@@ -4432,7 +4429,6 @@ MonoBehaviour:
   critPercentChance: 20
   healingAmount: 15
   chargeRequired: 5
-  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 785264479}
   ragePower: 0
@@ -4505,8 +4501,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 471775282}
-  - {fileID: 1535168680}
   - {fileID: 44447734}
+  - {fileID: 1535168680}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1640610978
@@ -5194,8 +5190,8 @@ Transform:
   m_GameObject: {fileID: 1983872452}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: -0.579, z: 0}
+  m_LocalScale: {x: 1.1768974, y: 0.16378, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 788690135}
@@ -5586,7 +5582,6 @@ MonoBehaviour:
   critPercentChance: 15
   healingAmount: 15
   chargeRequired: 5
-  currentCharge: 0
   shieldAmount: 25
   rageChargeText: {fileID: 0}
   ragePower: 0
