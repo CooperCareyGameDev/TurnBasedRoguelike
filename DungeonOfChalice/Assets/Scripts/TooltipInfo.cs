@@ -5,7 +5,8 @@ using CodeMonkey.Utils;
 
 public class TooltipInfo : MonoBehaviour
 {
-    [TextArea] [SerializeField] private string tooltipText;
+    [TextArea] [SerializeField] private string[] tooltipText;
+    [SerializeField] private int tooltipIndex = 0;
     [SerializeField] private bool isEnemy = false;
     private string healthText;
     private int currentHealth;
@@ -33,7 +34,7 @@ public class TooltipInfo : MonoBehaviour
         }
         else
         {
-            buttonUI.MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static(tooltipText);
+            buttonUI.MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static((string)tooltipText[0]);
             buttonUI.MouseOutOnceTooltipFunc = () => TooltipScreenSpaceUI.HideTooltip_Static(); 
 
         }

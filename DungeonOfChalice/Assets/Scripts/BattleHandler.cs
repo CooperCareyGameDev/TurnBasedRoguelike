@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -65,7 +66,6 @@ public class BattleHandler : MonoBehaviour
                 battleCanvas.enabled = false;
                 attackTimer = 0;
                 state = State.Busy;
-                //ChooseNextActiveCharacter();
                 StartCoroutine(ChooseNextActiveCharacter());
                 //state = State.WaitingForPlayer;
             }
@@ -322,15 +322,145 @@ public class BattleHandler : MonoBehaviour
 
     private void PlayerAttackLogic()
     {
-        
-        if (playerCharacterBattle.isBuffed)
+        if (playerCharacterBattle.currentClass == "Knight")
         {
-            enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
-            playerCharacterBattle.isBuffed = false;
+            // Basic attack
+            if (playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isBuffed = false;
+            }
+            else
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+            }
         }
-        else
+
+        else if (playerCharacterBattle.currentClass == "Barbarian")
         {
-            enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+            // Basic attack
+            if (playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isBuffed = false;
+            }
+            else
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+            }
+        }
+
+        else if (playerCharacterBattle.currentClass == "Mage")
+        {
+            // Attack does damage to one target, reduced damage to all targets
+            if (playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                foreach (GameObject enemy in enemies)
+                {
+                    enemy.GetComponent<CharacterBattle>().TakeDamage((playerCharacterBattle.attackPower / 2) + 5, false);
+                }
+                playerCharacterBattle.isBuffed = false;
+            }
+            else
+            {
+
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                foreach (GameObject enemy in enemies)
+                {
+                    enemy.GetComponent<CharacterBattle>().TakeDamage(playerCharacterBattle.attackPower / 2, false);
+                }
+            }
+        }
+
+        else if (playerCharacterBattle.currentClass == "Archer")
+        {
+            // Attack hits one target, inflicts status effect
+            if (playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 20, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isBuffed = false;
+                // Apply status effect
+            }
+            else
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                // Apply status effect
+            }
+        }
+
+        else if (playerCharacterBattle.currentClass == "Cleric")
+        {
+            // Weak attack with self heal
+            if (playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage((playerCharacterBattle.attackPower / 2) + 10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.HealOnTurn(20, () =>
+                {
+                    // Heal
+                });
+                playerCharacterBattle.isBuffed = false;
+            }
+            else
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.HealOnTurn(10, () =>
+                {
+                    // Heal
+                });
+            }
+        }
+
+        else if (playerCharacterBattle.currentClass == "King")
+        {
+            // Weak attack that gives small shield
+            if (playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage((playerCharacterBattle.attackPower / 2) + 5, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.ShieldOnTurn(15, () =>
+                {
+                    // Shield
+                });
+                playerCharacterBattle.isBuffed = false;
+            }
+            else
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.ShieldOnTurn(10, () =>
+                {
+                    // Shield
+                });
+            }
+        }
+
+        else if (playerCharacterBattle.currentClass == "Trapper")
+        {
+            // Attack applies bleed
+            if (playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 20, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isBuffed = false;
+                // apply bleed
+            }
+            else
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                // apply bleed
+            }
+        }
+
+        else if (playerCharacterBattle.currentClass == "Paladin")
+        {
+            // Basic Attack
+            if (playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isBuffed = false;
+            }
+            else
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+            }
         }
          state = State.Busy;
          StartCoroutine(EnemyAttack());

@@ -433,7 +433,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: Enemy
+  tooltipText:
+  - 
+  - 
+  - 
+  - 
+  - 
   isEnemy: 1
 --- !u!114 &55242900
 MonoBehaviour:
@@ -582,12 +587,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: 'Shield
+  tooltipText:
+  - 'Shield
 
-    Gives 25 shield
-
-    Sheild will reset to zero on the
-    start of the next turn'
+    Adds 25 Shield'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   isEnemy: 0
 --- !u!114 &231728543
 MonoBehaviour:
@@ -1314,9 +1394,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: 'Healing Crystal
+  tooltipText:
+  - 'Healing Crystal
 
-    Heals self 15'
+    Heals 15 HP'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   isEnemy: 0
 --- !u!1 &707815125
 GameObject:
@@ -1486,12 +1595,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: 'Basic attack, targets one enemy
+  tooltipText:
+  - 'Basic Attack, Targets One Enemy
 
-    Damage: 10
-
-    Crit Chance:
-    50%'
+    10 Damage, 20% Crit Chance'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   isEnemy: 0
 --- !u!1 &736227073
 GameObject:
@@ -1761,7 +1926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentClass: Knight
+  currentClass: Paladin
   turnIndicator: {fileID: 1983872452}
   startingHealth: 250
   healthBar: {fileID: 1151744365}
@@ -3943,9 +4108,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: 'Heroic Slam
+  tooltipText:
+  - 'Heroic Slam
 
-    Deals 50 damage to a single enemy'
+    Deals 50 Damage to a Single Target'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   isEnemy: 0
 --- !u!1 &1535168678
 GameObject:
@@ -5424,7 +5634,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: Enemy
+  tooltipText:
+  - 
+  - 
+  - 
+  - 
+  - 
   isEnemy: 1
 --- !u!114 &2014497481
 MonoBehaviour:

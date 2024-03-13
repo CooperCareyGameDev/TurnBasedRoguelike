@@ -44,7 +44,7 @@ public class CharacterBattle : MonoBehaviour
     public bool isBuffed = false; 
     private void Awake()
     {
-        if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paldin" && !isEnemy)
+        if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
         {
             Debug.LogError($"{currentClass} is not a valid class name");
         }
@@ -130,12 +130,9 @@ public class CharacterBattle : MonoBehaviour
     public void Attack(CharacterBattle targetCharacterBattle, Action onAttackComplete)
     {
         if (isDead) { return; }
-        //Vector3 attackDir = (targetCharacterBattle.GetPosition() - GetPosition()).normalized;
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
         currentCharge++;
-        //Debug.Log("Added Charge");
-        //targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }
 
