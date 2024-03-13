@@ -17,7 +17,7 @@ public class TooltipInfo : MonoBehaviour
         if (isEnemy )
         {
             healthText = $"\n{currentHealth} / {GetComponentInParent<CharacterBattle>().GetStartingHealth()} Health\n";
-            Debug.Log(GetComponentInParent<CharacterBattle>().GetCurrentHealth());
+            //Debug.Log(GetComponentInParent<CharacterBattle>().GetCurrentHealth());
         }
     }
     private void Start()

@@ -12,7 +12,7 @@ public class DamagePopup : MonoBehaviour
     private Vector3 moveVector;
     public static DamagePopup Create(Vector3 position, int damageAmount, bool isCriticalHit)
     {
-        Debug.Log("Creating Popup");
+        //Debug.Log("Creating Popup");
         Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity);
         DamagePopup damagePopup = damagePopupTransform.GetComponent<DamagePopup>();
         damagePopup.Setup(damageAmount, isCriticalHit);
@@ -23,7 +23,7 @@ public class DamagePopup : MonoBehaviour
 
     public static DamagePopup CreateHealPopup(Vector3 position, int healAmount)
     {
-        Debug.Log("Heal Popup");
+        //Debug.Log("Heal Popup");
         Transform healPopupTransform = Instantiate(GameAssets.i.pfHealPopup, position, Quaternion.identity);
         DamagePopup healPopup = healPopupTransform.GetComponent<DamagePopup>();
         healPopup.SetupHealPopup(healAmount);
@@ -32,7 +32,7 @@ public class DamagePopup : MonoBehaviour
 
     public static DamagePopup CreateShieldPopup(Vector3 position, int shieldAmount)
     {
-        Debug.Log("Shield Popup");
+        //Debug.Log("Shield Popup");
         Transform shieldPopupTransform = Instantiate(GameAssets.i.pfShieldPopup, position, Quaternion.identity);
         DamagePopup shieldPopup = shieldPopupTransform.GetComponent<DamagePopup>();
         shieldPopup.SetupShieldPopup(shieldAmount);

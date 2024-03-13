@@ -1761,7 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentClass: Mage
+  currentClass: Knight
   turnIndicator: {fileID: 1983872452}
   startingHealth: 250
   healthBar: {fileID: 1151744365}

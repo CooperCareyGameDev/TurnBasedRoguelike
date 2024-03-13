@@ -31,7 +31,7 @@ public class CharacterBattle : MonoBehaviour
     public int ragePower = 0;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI shieldText;
-    [SerializeField] bool isEnemy = false; 
+    [SerializeField] private bool isEnemy = false; 
     private int randomNumber;
     private bool isCrit;
     private bool isDead = false; 
@@ -44,6 +44,10 @@ public class CharacterBattle : MonoBehaviour
     public bool isBuffed = false; 
     private void Awake()
     {
+        if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paldin" && !isEnemy)
+        {
+            Debug.LogError($"{currentClass} is not a valid class name");
+        }
         startingAttackPower = attackPower;
         startingCritChance = critPercentChance;
         startingHealAmount = healingAmount;
@@ -64,9 +68,9 @@ public class CharacterBattle : MonoBehaviour
 
     public bool isCriticalHit(int critPercentChance)
     {
-        Debug.Log(critPercentChance);
+        //Debug.Log(critPercentChance);
         randomNumber = UnityEngine.Random.Range(1, 100);
-        Debug.Log(randomNumber.ToString());
+        //Debug.Log(randomNumber.ToString());
         return randomNumber <= critPercentChance; 
 
     }
@@ -77,7 +81,7 @@ public class CharacterBattle : MonoBehaviour
         critPercentChance = startingCritChance + (10 * critBuffStacks);
         healingAmount = startingHealAmount + (10 * healBuffStacks);
         shieldAmount = startingShieldAmount + (10 * shieldBuffStacks);
-        Debug.Log(isDead);
+        //Debug.Log(isDead);
         shieldText.text = currentShield + " shield";
         
         if (currentHealth <= 0 && Relics.hasSecondChance && !isEnemy)
@@ -130,7 +134,7 @@ public class CharacterBattle : MonoBehaviour
         Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
         currentCharge++;
-        Debug.Log("Added Charge");
+        //Debug.Log("Added Charge");
         //targetCharacterBattle.TakeDamage(attackPower);
         onAttackComplete();
     }
@@ -151,7 +155,7 @@ public class CharacterBattle : MonoBehaviour
     }
     public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
     {
-        Debug.Log("Used Rage");
+        //Debug.Log("Used Rage");
         spriteRenderer.color = Color.cyan;
         currentCharge = 0;
         onRageComplete();
@@ -181,7 +185,7 @@ public class CharacterBattle : MonoBehaviour
 
     public void TakeDamage(int damageAmount, bool isCrit)
     {
-        Debug.Log("Taking damage");
+        //Debug.Log("Taking damage");
         if (isCrit)
         {
             if (currentShield > damageAmount * 2)
@@ -253,7 +257,7 @@ public class CharacterBattle : MonoBehaviour
 
     public void ResetShieldToOne()
     {
-        Debug.Log("Reset shield to one");
+        //Debug.Log("Reset shield to one");
         if (Relics.shieldBuff)
         {
             currentShield = 5;

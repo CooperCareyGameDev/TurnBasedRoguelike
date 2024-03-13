@@ -20,7 +20,7 @@ public class TooltipScreenSpaceUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Debug.Log(Instance);
+        //Debug.Log(Instance);
         backgroundRectTransform = transform.Find("Background").GetComponent<RectTransform>();
         textMeshPro = transform.Find("TooltipText").GetComponent<TextMeshProUGUI>();
         rectTransform = transform.GetComponent<RectTransform>();

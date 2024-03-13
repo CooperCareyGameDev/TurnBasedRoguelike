@@ -40,7 +40,7 @@ public class BattleHandler : MonoBehaviour
         }
         foreach (GameObject player in players)
         {
-            Debug.Log(player);
+            //Debug.Log(player);
         }
         foreach (GameObject enemy in enemiesArray)
         {
@@ -48,7 +48,7 @@ public class BattleHandler : MonoBehaviour
         }
         foreach (GameObject enemy in enemies)
         {
-            Debug.Log(enemy);
+            //Debug.Log(enemy);
         }
         SetActiveCharacterBattle(playerCharacterBattle);
         state = State.WaitingForPlayer;
@@ -141,6 +141,7 @@ public class BattleHandler : MonoBehaviour
         {
             if (playerCharacterBattle.currentClass == "Knight")
             {
+                // Hits one enemy for high damage
                 SetActiveCharacterBattle(enemyCharacterBattle);
                 state = State.Busy;
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.ragePower, true);
@@ -150,17 +151,23 @@ public class BattleHandler : MonoBehaviour
 
             else if (playerCharacterBattle.currentClass == "Barbarian")
             {
+                // Gives damage buff to all party members, also does slight AOE damage
                 SetActiveCharacterBattle(enemyCharacterBattle);
                 state = State.Busy;
                 foreach (GameObject player in players)
                 {
                     player.GetComponent<CharacterBattle>().isBuffed = true;
                 }
+                foreach (GameObject enemy in enemies)
+                {
+                    enemy.GetComponent<CharacterBattle>().TakeDamage((playerCharacterBattle.ragePower / 4), true);
+                }
                 StartCoroutine(EnemyAttack());
             }
 
             else if (playerCharacterBattle.currentClass == "Mage")
             {
+                // Does damage to all enemies
                 SetActiveCharacterBattle(enemyCharacterBattle);
                 state = State.Busy;
                 foreach (GameObject enemy in enemies)
@@ -169,12 +176,89 @@ public class BattleHandler : MonoBehaviour
                 }
                 StartCoroutine(EnemyAttack());
             }
+
+            else if (playerCharacterBattle.currentClass == "Archer")
+            {
+                // Damages all enemies, applies poison
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                foreach (GameObject enemy in enemies)
+                {
+                    enemy.GetComponent<CharacterBattle>().TakeDamage((playerCharacterBattle.ragePower / 3), true);
+                    // Apply poison
+                }
+                StartCoroutine(EnemyAttack());
+            }
+
+            else if (playerCharacterBattle.currentClass == "Cleric")
+            {
+                // Heals all allies and cleanses status effects, poison, weakening etc.
+
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<CharacterBattle>().HealOnTurn(100, () =>
+                    {
+                        // Cleanse status effects
+                    });
+                }
+                StartCoroutine(EnemyAttack());
+            }
+
+            else if (playerCharacterBattle.currentClass == "King")
+            {
+                // Buffs all allies, also applies shield
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<CharacterBattle>().isBuffed = true;
+                    player.GetComponent<CharacterBattle>().ShieldOnTurn(10, () =>
+                    {
+                        //Shields
+                    });
+                }
+                StartCoroutine(EnemyAttack());
+            }
+
+            else if (playerCharacterBattle.currentClass == "Trapper")
+            {
+                // applies traps to all allies
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                foreach (GameObject player in players)
+                {
+                    // Place traps
+                    Debug.Log("Placing traps");
+                }
+                StartCoroutine(EnemyAttack());                
+            }
+
+            else if (playerCharacterBattle.currentClass == "Paladin")
+            {
+                // Heals entire party and adds shield
+                SetActiveCharacterBattle(enemyCharacterBattle);
+                state = State.Busy;
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<CharacterBattle>().HealOnTurn(75, () =>
+                    {
+                        // Heal
+                    });
+                    player.GetComponent<CharacterBattle>().ShieldOnTurn(40, () =>
+                    {
+                        // Shield
+                    }); 
+                    StartCoroutine(EnemyAttack());
+                }
+            }
         });
     }
 
     private void Update()
     {
-        Debug.Log(activeCharacterBattle);
+        //Debug.Log(activeCharacterBattle);
         attackTimer += Time.deltaTime; 
         if (state == State.WaitingForPlayer)
         {
@@ -266,7 +350,7 @@ public class BattleHandler : MonoBehaviour
     private IEnumerator EnemyAttack()
     {
         yield return new WaitForSeconds(turnSwitchDelay);
-        Debug.Log(enemies.Count);
+        //Debug.Log(enemies.Count);
         /*foreach(GameObject enemy in enemies)
         {
             enemy.GetComponent<CharacterBattle>().Attack(playerCharacterBattle, () =>
@@ -284,7 +368,7 @@ public class BattleHandler : MonoBehaviour
         for (int i = 0; i < enemies.Count; i++)
         {
             yield return new WaitForSeconds(0.75f); 
-            Debug.Log(enemies[i]);
+            //Debug.Log(enemies[i]);
             enemies[i].GetComponent<CharacterBattle>().Attack(playerCharacterBattle, () =>
             {
                 EnemyAttackLogic();
