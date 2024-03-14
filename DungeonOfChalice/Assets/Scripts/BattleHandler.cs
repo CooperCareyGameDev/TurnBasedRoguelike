@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleHandler : MonoBehaviour
@@ -91,26 +90,70 @@ public class BattleHandler : MonoBehaviour
             TooltipScreenSpaceUI.ShowTooltipWarning_Static("Not Enough Rage! Wait until rage meter fills up!");
         }
     }
-    public void HealButton()
+    public void SecondaryAction()
     {
-        
+        if (playerCharacterBattle.currentClass == "Knight")
+        {
+            // Shield ally
+            StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
+        }
+        else if (playerCharacterBattle.currentClass == "Barbarian")
+        {
+            // Buff Ally
+            StartCoroutine(WaitToBuff()); 
+        }
+        else if (playerCharacterBattle.currentClass == "Mage")
+        {
+            // Give ally retaliatory damage
+            Debug.Log("Mage Secondary");
+            StartCoroutine(WaitToHeal(0));
+        }
+        else if (playerCharacterBattle.currentClass == "Archer")
+        {
+            // Apply evasive, 50% chancee to dodge attack
+            Debug.Log("Archer Secondary");
+            StartCoroutine(WaitToHeal(0));
+            
+        }
+        else if (playerCharacterBattle.currentClass == "Cleric")
+        {
+            // Heal
+            StartCoroutine(WaitToHeal(playerCharacterBattle.healingAmount));
+        }
+        else if (playerCharacterBattle.currentClass == "King")
+        {
+            // Apply shield to ally
+            StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
+        }
+        else if (playerCharacterBattle.currentClass == "Trapper")
+        {
+            // Apply trap to ally
+            Debug.Log("Trapper Secondary");
+            StartCoroutine(WaitToHeal(0));
+        }
+        else if (playerCharacterBattle.currentClass == "Paladin")
+        {
+            // Heals and applies shield
+            StartCoroutine(WaitToHeal(playerCharacterBattle.healingAmount / 2));
+            StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount / 2));
+        }
         battleCanvas.enabled = false;
-        StartCoroutine(WaitToHeal());
+        //StartCoroutine(WaitToHeal());
     }
 
     public void ShieldButton()
     {
         battleCanvas.enabled = false;
-        StartCoroutine(WaitToShield());
+        StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
     }
-    private IEnumerator WaitToHeal()
+    private IEnumerator WaitToHeal(int healAmount)
     {
         yield return new WaitForSeconds(turnSwitchDelay);
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
         Debug.Log("Added Charge");
-        playerCharacterBattle.HealOnTurn(playerCharacterBattle.healingAmount, () =>
+        playerCharacterBattle.HealOnTurn(healAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
             state = State.Busy;
@@ -118,14 +161,28 @@ public class BattleHandler : MonoBehaviour
         });
     }
 
-    private IEnumerator WaitToShield()
+    private IEnumerator WaitToBuff()
+    {
+        yield return new WaitForSeconds(turnSwitchDelay);
+        state = State.Busy;
+        attackTimer = 0;
+        playerCharacterBattle.currentCharge++;
+        playerCharacterBattle.BuffOnTurn(() =>
+        {
+            SetActiveCharacterBattle(enemyCharacterBattle);
+            state = State.Busy;
+            StartCoroutine(EnemyAttack());
+        });
+    }
+
+    private IEnumerator WaitToShield(int shieldAmount)
     {
         yield return new WaitForSeconds(turnSwitchDelay);
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
         Debug.Log("Added Charge");
-        playerCharacterBattle.ShieldOnTurn(playerCharacterBattle.shieldAmount, () =>
+        playerCharacterBattle.ShieldOnTurn(shieldAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
             state = State.Busy;
@@ -268,9 +325,36 @@ public class BattleHandler : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.H))
             {
-                HealButton();
+                SecondaryAction();
             }
 
+        }
+        switch (playerCharacterBattle.currentClass)
+        {
+            case "Knight": 
+                TooltipInfo.tooltipIndex = 0;
+                break;
+            case "Barbarian":
+                TooltipInfo.tooltipIndex = 1;
+                break;
+            case "Mage": 
+                TooltipInfo.tooltipIndex = 2;
+                break;
+            case "Archer":
+                TooltipInfo.tooltipIndex = 3;
+                break;
+            case "Cleric": 
+                TooltipInfo.tooltipIndex = 4;
+                break;
+            case "King":
+                TooltipInfo.tooltipIndex = 5;
+                break;
+            case "Trapper":
+                TooltipInfo.tooltipIndex = 6;
+                break;
+            case "Paladin": 
+                TooltipInfo.tooltipIndex = 7;
+                break;
         }
     }
 

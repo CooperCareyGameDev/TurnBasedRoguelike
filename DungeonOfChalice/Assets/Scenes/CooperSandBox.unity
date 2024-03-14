@@ -439,6 +439,7 @@ MonoBehaviour:
   - 
   - 
   - 
+  initialTooltipIndex: 0
   isEnemy: 1
 --- !u!114 &55242900
 MonoBehaviour:
@@ -598,76 +599,7 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!114 &231728543
 MonoBehaviour:
@@ -1241,7 +1173,7 @@ GameObject:
   - component: {fileID: 635467185}
   - component: {fileID: 635467186}
   m_Layer: 5
-  m_Name: Heal
+  m_Name: SecondaryAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1313,7 +1245,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1863304290}
         m_TargetAssemblyTypeName: BattleHandler, Assembly-CSharp
-        m_MethodName: HealButton
+        m_MethodName: SecondaryAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1405,27 +1337,7 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &707815125
 GameObject:
@@ -1598,65 +1510,21 @@ MonoBehaviour:
   tooltipText:
   - 'Basic Attack, Targets One Enemy
 
-    10 Damage, 20% Crit Chance'
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+'
+  - 'Basic Attack, Targets One Enemy
+
+'
+  - 'Fireball, Does Damage to One Enemy,
+
+    Then Does Lower Damage to All Enemies'
+  - 'Arrow, Targets One Enemy,
+
+    Applies a Status Effect'
+  - Weak Attack That Also Heals the Attacker
+  - Weak Attack That Applies Shield to the Attacker
+  - "Attack That Targets One Enemy \nInflicts Bleed"
+  - Basic Attack, Targets One Enemy
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &736227073
 GameObject:
@@ -3387,7 +3255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Heal
+  m_text: Secondary
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4119,43 +3987,7 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &1535168678
 GameObject:
@@ -5640,6 +5472,7 @@ MonoBehaviour:
   - 
   - 
   - 
+  initialTooltipIndex: 0
   isEnemy: 1
 --- !u!114 &2014497481
 MonoBehaviour:

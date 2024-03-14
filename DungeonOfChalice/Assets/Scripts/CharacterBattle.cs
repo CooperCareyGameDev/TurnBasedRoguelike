@@ -150,6 +150,12 @@ public class CharacterBattle : MonoBehaviour
         DamagePopup.CreateShieldPopup(transform.position, shieldAmount);
         onShieldComplete();
     }
+
+    public void BuffOnTurn(Action onBuffComplete)
+    {
+        isBuffed = true;
+        onBuffComplete();
+    }
     public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
     {
         //Debug.Log("Used Rage");
