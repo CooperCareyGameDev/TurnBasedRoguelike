@@ -8,13 +8,15 @@ using CodeMonkey.Utils;
 public class ClassTooltips : MonoBehaviour
 {
     private TextMeshProUGUI textMeshProUGUI;
-    private Button_UI buttonUI; 
+    private Button_UI buttonUI;
+    [TextArea] [SerializeField] private string[] descriptions;
     private void Start()
     {
         textMeshProUGUI = GetComponentInParent<TextMeshProUGUI>();
         buttonUI = GetComponent<Button_UI>();
         buttonUI.MouseOverOnceTooltipFunc = () => TooltipScreenSpaceUI.ShowTooltip_Static(SwitchStatement(textMeshProUGUI.text));
         buttonUI.MouseOutOnceTooltipFunc = () => TooltipScreenSpaceUI.HideTooltip_Static();
+
 
     }
     private void Update()
@@ -46,25 +48,37 @@ public class ClassTooltips : MonoBehaviour
         switch (currentHeroText)
         {
             case "Knight":
-                //TooltipScreenSpaceUI.ShowTooltip_Static("Knight: uses basic melee attacks, and can give shield to party members");
-                return "Knight: uses basic melee attacks, and can give shield to party members";
+                TooltipScreenSpaceUI.ShowTooltip_Static(descriptions[0]);
+                return descriptions[0];
+                //return "Knight: uses basic melee attacks, and can give shield to party members";
             case "Barbarian":
-                //TooltipScreenSpaceUI.ShowTooltip_Static("Barbarian: high damage and can buff others, but no defensive abilites");
-                return "Barbarian: high damage and can buff others, but no defensive abilites";
+                TooltipScreenSpaceUI.ShowTooltip_Static(descriptions[1]);
+                return descriptions[1];
+                //return "Barbarian: high damage and can buff others, but no defensive abilites";
             case "Mage":
-                TooltipScreenSpaceUI.ShowTooltip_Static("Mage: powerful offensive spells with elemental attacks, but lo health");
-                return "Mage: powerful offensive spells with elemental attacks, but low health";
+                TooltipScreenSpaceUI.ShowTooltip_Static(descriptions[2]);
+                return descriptions[2];
+                //return "Mage: powerful offensive spells with elemental attacks, but low health";
             case "Archer":
-                TooltipScreenSpaceUI.ShowTooltip_Static("Archer: can hide under cover, and apply status effects from arrows");
-                return "Archer: can hide under cover, and apply status effects from arrows";
+                TooltipScreenSpaceUI.ShowTooltip_Static(descriptions[3]);
+                return descriptions[3];
+                //return "Archer: can hide under cover, and apply status effects from arrows";
             case "Cleric":
-                return "Cleric: Heals and cleanses status effects, but has low damage";
+                TooltipScreenSpaceUI.ShowTooltip_Static(descriptions[4]);
+                return descriptions[4];
+                //return "Cleric: Heals and cleanses status effects, but has low damage";
             case "King":
-                return "King: Gives powerful buffs to party members, but has terrible attacks";
+                TooltipScreenSpaceUI.ShowTooltip_Static(descriptions[5]);
+                return descriptions[5];
+               // return "King: Gives powerful buffs to party members, but has terrible attacks";
             case "Trapper":
-                return "Trapper: Can set traps on allies that damage enemies that attack that ally";
+                TooltipScreenSpaceUI.ShowTooltip_Static(descriptions[6]);
+                return descriptions[6];
+                //return "Trapper: Can set traps on allies that damage enemies that attack that ally";
             case "Paladin":
-                return "Can heal or shield the entire party as well as having decent damage";
+                TooltipScreenSpaceUI.ShowTooltip_Static(descriptions[7]);
+                return descriptions[7];
+                //return "Can heal or shield the entire party as well as having decent damage";
             default:
                 return "Invalid Text";
 

@@ -629,6 +629,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018996764c67ace4294d06f019fd65ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  descriptions:
+  - 'Knight:
+
+    Basic Melee Attacks, Can Apply Shield to Allies
+
+    Rage Does
+    High Damage to Single Target'
+  - "Barbarian: \nBasic Melee Attacks, Can Buff Allies\nRage Buffs All Allies and
+    Does Damage to All Enemies"
+  - 'Mage:
+
+    Does Damage to All Enemies, Can Make Enemies Take Retalitory Damage
+
+    Rage
+    Does High Damage To All Enemies'
+  - 'Archer:
+
+    Ranged Attacks Apply Status Effects, Can Give Allies a Chance To
+    Dodge Attacks
+
+    Rage Damages and Poisons All Enemies'
+  - 'Cleric:
+
+    Weak Attacks, Can Heal Allies
+
+    Rage Heals All Allies and Cleanses
+    Status Effects'
+  - 'King:
+
+    Weak Attacks, Shields Allies
+
+    Rage Buffs and Shields All Allies'
+  - "Trapper:\nAttacks Inflict Bleed, Places Traps On Allies \nRage Places a Trap
+    On All Allies"
+  - 'Paladin:
+
+    Basic Attack, Heals and Shields Allies
+
+    Rage Heals and Shields
+    All Allies'
 --- !u!114 &154101226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,7 +1128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: It takes one less turn to fill the rage meter
+  tooltipText: []
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &188445616
 GameObject:
@@ -1352,6 +1393,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018996764c67ace4294d06f019fd65ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  descriptions:
+  - 'Knight:
+
+    Basic Melee Attacks, Can Apply Shield to Allies
+
+    Rage Does
+    High Damage to Single Target'
+  - "Barbarian: \nBasic Melee Attacks, Can Buff Allies\nRage Buffs All Allies and
+    Does Damage to All Enemies"
+  - 'Mage:
+
+    Does Damage to All Enemies, Can Make Enemies Take Retalitory Damage
+
+    Rage
+    Does High Damage To All Enemies'
+  - 'Archer:
+
+    Ranged Attacks Apply Status Effects, Can Give Allies a Chance To
+    Dodge Attacks
+
+    Rage Damages and Poisons All Enemies'
+  - 'Cleric:
+
+    Weak Attacks, Can Heal Allies
+
+    Rage Heals All Allies and Cleanses
+    Status Effects'
+  - 'King:
+
+    Weak Attacks, Shields Allies
+
+    Rage Buffs and Shields All Allies'
+  - "Trapper:\nAttacks Inflict Bleed, Places Traps On Allies \nRage Places a Trap
+    On All Allies"
+  - 'Paladin:
+
+    Basic Attack, Heals and Shields Allies
+
+    Rage Heals and Shields
+    All Allies'
 --- !u!114 &219253325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3919,7 +4000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: After a successful battle, your party will be healed 20 hp
+  tooltipText: []
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &783981538
 GameObject:
@@ -4939,7 +5021,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: 
+  tooltipText: []
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!114 &1032456622
 MonoBehaviour:
@@ -5056,6 +5139,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018996764c67ace4294d06f019fd65ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  descriptions:
+  - 'Knight:
+
+    Basic Melee Attacks, Can Apply Shield to Allies
+
+    Rage Does
+    High Damage to Single Target'
+  - "Barbarian: \nBasic Melee Attacks, Can Buff Allies\nRage Buffs All Allies and
+    Does Damage to All Enemies"
+  - 'Mage:
+
+    Does Damage to All Enemies, Can Make Enemies Take Retalitory Damage
+
+    Rage
+    Does High Damage To All Enemies'
+  - 'Archer:
+
+    Ranged Attacks Apply Status Effects, Can Give Allies a Chance To
+    Dodge Attacks
+
+    Rage Damages and Poisons All Enemies'
+  - 'Cleric:
+
+    Weak Attacks, Can Heal Allies
+
+    Rage Heals All Allies and Cleanses
+    Status Effects'
+  - 'King:
+
+    Weak Attacks, Shields Allies
+
+    Rage Buffs and Shields All Allies'
+  - "Trapper:\nAttacks Inflict Bleed, Places Traps On Allies \nRage Places a Trap
+    On All Allies"
+  - 'Paladin:
+
+    Basic Attack, Heals and Shields Allies
+
+    Rage Heals and Shields
+    All Allies'
 --- !u!1 &1041307757
 GameObject:
   m_ObjectHideFlags: 0
@@ -5175,6 +5298,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007c0a9125a7a1d4faed85814f7d5148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localRageBuff: 0
+  localShieldBuff: 0
+  localSecondChanceBuff: 0
+  localCritChanceBuff: 0
+  localHealingBuff: 0
+  localHasSecondChance: 0
 --- !u!4 &1043012066
 Transform:
   m_ObjectHideFlags: 0
@@ -6038,7 +6167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: Adds an additional 10% crit chance to the party
+  tooltipText: []
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &1264517935
 GameObject:
@@ -7515,8 +7645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: Gives every member of your party five shield on the start of their
-    turn
+  tooltipText: []
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &1558322549
 GameObject:
@@ -8338,6 +8468,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018996764c67ace4294d06f019fd65ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  descriptions:
+  - 'Knight:
+
+    Basic Melee Attacks, Can Apply Shield to Allies
+
+    Rage Does
+    High Damage to Single Target'
+  - "Barbarian: \nBasic Melee Attacks, Can Buff Allies\nRage Buffs All Allies and
+    Does Damage to All Enemies"
+  - 'Mage:
+
+    Does Damage to All Enemies, Can Make Enemies Take Retalitory Damage
+
+    Rage
+    Does High Damage To All Enemies'
+  - 'Archer:
+
+    Ranged Attacks Apply Status Effects, Can Give Allies a Chance To
+    Dodge Attacks
+
+    Rage Damages and Poisons All Enemies'
+  - 'Cleric:
+
+    Weak Attacks, Can Heal Allies
+
+    Rage Heals All Allies and Cleanses
+    Status Effects'
+  - 'King:
+
+    Weak Attacks, Shields Allies
+
+    Rage Buffs and Shields All Allies'
+  - "Trapper:\nAttacks Inflict Bleed, Places Traps On Allies \nRage Places a Trap
+    On All Allies"
+  - 'Paladin:
+
+    Basic Attack, Heals and Shields Allies
+
+    Rage Heals and Shields
+    All Allies'
 --- !u!114 &1758956998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8818,8 +8988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: The first time one of your party members dies, they will be revived
-    with full HP
+  tooltipText: []
+  initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &1793049695
 GameObject:
