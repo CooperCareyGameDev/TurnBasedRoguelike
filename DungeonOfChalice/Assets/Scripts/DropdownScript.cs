@@ -11,7 +11,7 @@ public class DropdownScript : MonoBehaviour
     {
         switch (index)
         {
-            case 0: testText.text = "Knight"; break;
+            case 0: testText.text = "Knight";  break;
             case 1: testText.text = "Barbarian"; break;
             case 2: testText.text = "Mage"; break;
             case 3: testText.text = "Archer"; break;
