@@ -1327,16 +1327,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipText:
-  - 'Healing Crystal
-
-    Heals 15 HP'
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Shield, Applies Block to One Ally
+  - Anger, Buffs the Next Attack of One Ally
+  - Magic Spikes, Enemies Take Damage When Attacking an Ally
+  - Cover, Ally Gains 50% Chance to Dodge Attack
+  - Healing Prayer, Heals One Ally
+  - Shield, Applies Block to One Ally
+  - Trap, Applies Trap to Ally, Damages Attacker and Weakens Them
+  - Holy Shield, Applies Block and Heals Ally
   initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &707815125
@@ -1794,7 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentClass: Paladin
+  currentClass: Knight
   turnIndicator: {fileID: 1983872452}
   startingHealth: 250
   healthBar: {fileID: 1151744365}
@@ -3979,14 +3977,28 @@ MonoBehaviour:
   tooltipText:
   - 'Heroic Slam
 
-    Deals 50 Damage to a Single Target'
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+    Deals High Damage To Single Target'
+  - 'Rallying Roar
+
+    Buffs All Allies, Does Low Damage to All Enemies'
+  - 'Lightning Storm
+
+    Damages All Enemies'
+  - 'Arrow Rain
+
+    Damages All Enemies, Applies Poison'
+  - 'Divine Intervention
+
+    Heals All Allies and Cleanses Status Effects'
+  - 'Royal Order
+
+    Buffs All Allies, Applies Shield to All Allies'
+  - 'Booby Traps
+
+    Places Trap On All Allies'
+  - 'Holy Protection
+
+    Heals All Allies and Applies Shield to All Allies'
   initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &1535168678
