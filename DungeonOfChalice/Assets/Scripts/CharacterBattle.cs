@@ -41,7 +41,8 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int critBuffStacks = 0;
     [SerializeField] private int healBuffStacks = 0;
     [SerializeField] private int shieldBuffStacks = 0;
-    public bool isBuffed = false; 
+    public bool isBuffed = false;
+    public bool isPoisoned = false; 
     private void Awake()
     {
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
