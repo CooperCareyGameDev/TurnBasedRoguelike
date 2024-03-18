@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentClass: Knight
+  currentClass: Cleric
   turnIndicator: {fileID: 1983872452}
   startingHealth: 250
   healthBar: {fileID: 1151744365}
@@ -1805,8 +1805,8 @@ MonoBehaviour:
   chargeRequired: 4
   currentCharge: 0
   shieldAmount: 25
-  rageChargeText: {fileID: 1216322782}
   ragePower: 50
+  rageChargeText: {fileID: 1216322782}
   healthText: {fileID: 1543147901}
   shieldText: {fileID: 1333158617}
   isEnemy: 0
@@ -1815,6 +1815,13 @@ MonoBehaviour:
   healBuffStacks: 0
   shieldBuffStacks: 0
   isBuffed: 0
+  hasMagicSpike: 0
+  magicSpikeDamage: 10
+  isPoisoned: 0
+  poisonDamage: 5
+  currentBleed: 0
+  bleedRequired: 2
+  bleedDamage: 25
 --- !u!212 &788690134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2849,8 +2856,8 @@ MonoBehaviour:
   chargeRequired: 5
   currentCharge: 0
   shieldAmount: 25
-  rageChargeText: {fileID: 0}
   ragePower: 0
+  rageChargeText: {fileID: 0}
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
   isEnemy: 0
@@ -2859,6 +2866,13 @@ MonoBehaviour:
   healBuffStacks: 0
   shieldBuffStacks: 0
   isBuffed: 0
+  hasMagicSpike: 0
+  magicSpikeDamage: 10
+  isPoisoned: 0
+  poisonDamage: 5
+  currentBleed: 0
+  bleedRequired: 2
+  bleedDamage: 25
 --- !u!1 &1201516313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4397,8 +4411,8 @@ MonoBehaviour:
   chargeRequired: 5
   currentCharge: 0
   shieldAmount: 25
-  rageChargeText: {fileID: 785264479}
   ragePower: 0
+  rageChargeText: {fileID: 785264479}
   healthText: {fileID: 1201516315}
   shieldText: {fileID: 785264479}
   isEnemy: 1
@@ -4407,6 +4421,13 @@ MonoBehaviour:
   healBuffStacks: 0
   shieldBuffStacks: 0
   isBuffed: 0
+  hasMagicSpike: 0
+  magicSpikeDamage: 10
+  isPoisoned: 0
+  poisonDamage: 5
+  currentBleed: 0
+  bleedRequired: 2
+  bleedDamage: 25
 --- !u!212 &1602089094
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4534,8 +4555,8 @@ MonoBehaviour:
   chargeRequired: 5
   currentCharge: 0
   shieldAmount: 25
-  rageChargeText: {fileID: 785264479}
   ragePower: 0
+  rageChargeText: {fileID: 785264479}
   healthText: {fileID: 1201516315}
   shieldText: {fileID: 785264479}
   isEnemy: 1
@@ -4544,6 +4565,13 @@ MonoBehaviour:
   healBuffStacks: 0
   shieldBuffStacks: 0
   isBuffed: 0
+  hasMagicSpike: 0
+  magicSpikeDamage: 10
+  isPoisoned: 0
+  poisonDamage: 5
+  currentBleed: 0
+  bleedRequired: 2
+  bleedDamage: 30
 --- !u!212 &1640610976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5712,8 +5740,8 @@ MonoBehaviour:
   chargeRequired: 5
   currentCharge: 0
   shieldAmount: 25
-  rageChargeText: {fileID: 0}
   ragePower: 0
+  rageChargeText: {fileID: 0}
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
   isEnemy: 0
@@ -5722,6 +5750,13 @@ MonoBehaviour:
   healBuffStacks: 0
   shieldBuffStacks: 0
   isBuffed: 0
+  hasMagicSpike: 0
+  magicSpikeDamage: 10
+  isPoisoned: 0
+  poisonDamage: 5
+  currentBleed: 0
+  bleedRequired: 2
+  bleedDamage: 25
 --- !u!1001 &6692889495170694653
 PrefabInstance:
   m_ObjectHideFlags: 0
