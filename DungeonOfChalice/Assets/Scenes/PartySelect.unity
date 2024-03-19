@@ -1128,7 +1128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: []
+  tooltipText:
+  - Rage Ability Charges Faster
   initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &188445616
@@ -4000,7 +4001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: []
+  tooltipText:
+  - The Party is Slightly Healed After the End of Each Battle
   initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &783981538
@@ -6167,7 +6169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: []
+  tooltipText:
+  - Increases the Critical Hit Chance of All Party Members
   initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &1264517935
@@ -7645,7 +7648,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: []
+  tooltipText:
+  - Applies Shield To All Allies At Beginning of Turn
   initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &1558322549
@@ -8988,7 +8992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c2d24853c9724fb69eecbe8e1b7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: []
+  tooltipText:
+  - The First Time a Character Dies, They Are Resurected At Full Health
   initialTooltipIndex: 0
   isEnemy: 0
 --- !u!1 &1793049695

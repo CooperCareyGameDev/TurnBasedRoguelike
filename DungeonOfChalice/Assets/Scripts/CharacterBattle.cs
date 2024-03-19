@@ -12,11 +12,13 @@ public class CharacterBattle : MonoBehaviour
     public string currentClass = "Knight";
     [SerializeField] private GameObject turnIndicator;
     private HealthSystem healthSystem;
+    [Header("Health")]
     [SerializeField] private int startingHealth = 100;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private int currentHealth = 100;
     [SerializeField] private int currentShield = 0; 
     [SerializeField] private Transform healthBarScaler;
+    [Header("Combat")]
     public int attackPower = 10;
     private int startingAttackPower = 0; 
     public int critPercentChance = 15;
@@ -27,8 +29,9 @@ public class CharacterBattle : MonoBehaviour
     public int currentCharge = 0;
     public int shieldAmount = 25;
     private int startingShieldAmount = 0; 
-    [SerializeField] private TextMeshProUGUI rageChargeText;
     public int ragePower = 0;
+    [Header("Text References")]
+    [SerializeField] private TextMeshProUGUI rageChargeText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI shieldText;
     [SerializeField] private bool isEnemy = false; 
@@ -41,7 +44,15 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int critBuffStacks = 0;
     [SerializeField] private int healBuffStacks = 0;
     [SerializeField] private int shieldBuffStacks = 0;
-    public bool isBuffed = false; 
+    public bool isBuffed = false;
+    public bool hasMagicSpike = false;
+    [SerializeField] private int magicSpikeDamage = 10; 
+    [Header("Debuffs")]
+    public bool isPoisoned = false;
+    [SerializeField] private int poisonDamage = 5;
+    [SerializeField] private int currentBleed = 0;
+    [SerializeField] private int bleedRequired = 2;
+    [SerializeField] private int bleedDamage = 25; 
     private void Awake()
     {
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
@@ -77,6 +88,7 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
+        
         attackPower = startingAttackPower + (10 * damageBuffStacks);
         critPercentChance = startingCritChance + (10 * critBuffStacks);
         healingAmount = startingHealAmount + (10 * healBuffStacks);
@@ -271,8 +283,63 @@ public class CharacterBattle : MonoBehaviour
         }
     }
 
+    public void TakePoisonDamage()
+    {
+        if (isPoisoned)
+        {
+            TakeDamage(poisonDamage, false);
+            isPoisoned = false;
+        }
+    }
+
+    public void InflictPoison()
+    {
+        isPoisoned = true;
+    }
+
+    public void TakeMagicSpikeDamage(bool hasSpike)
+    {
+        if (hasSpike)
+        {
+            TakeDamage(magicSpikeDamage, false);
+            hasMagicSpike = false;
+        }
+    }
+
+    public void GiveMagicSpikes()
+    {
+        hasMagicSpike = true; 
+    }
+
+    public void RemoveMagicSpikes()
+    {
+        hasMagicSpike = false;
+    }
+
+    public void CleanseStatusEffects()
+    {
+        isPoisoned = false;
+        currentBleed = 0;
+    }
+
     public void IncreaseShield(int amount)
     {
         currentShield += amount;
+    }
+
+    public void AddBleed(int amount)
+    {
+        currentBleed += amount;
+        Debug.Log("Adding Bleed");
+        if (currentBleed >= bleedRequired)
+        {
+            TakeBleedDamage();
+            currentBleed = 0;
+        }
+    }
+
+    public void TakeBleedDamage()
+    {
+        TakeDamage(bleedDamage, false);
     }
 }

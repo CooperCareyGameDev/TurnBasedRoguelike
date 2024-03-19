@@ -243,6 +243,7 @@ public class BattleHandler : MonoBehaviour
                 {
                     enemy.GetComponent<CharacterBattle>().TakeDamage((playerCharacterBattle.ragePower / 3), true);
                     // Apply poison
+                    enemy.GetComponent<CharacterBattle>().InflictPoison(); 
                 }
                 StartCoroutine(EnemyAttack());
             }
@@ -258,6 +259,7 @@ public class BattleHandler : MonoBehaviour
                     player.GetComponent<CharacterBattle>().HealOnTurn(100, () =>
                     {
                         // Cleanse status effects
+                        player.GetComponent<CharacterBattle>().CleanseStatusEffects();
                     });
                 }
                 StartCoroutine(EnemyAttack());
@@ -465,11 +467,13 @@ public class BattleHandler : MonoBehaviour
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 20, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
                 // Apply status effect
+                enemyCharacterBattle.InflictPoison();
             }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 // Apply status effect
+                enemyCharacterBattle.InflictPoison();
             }
         }
 
@@ -525,11 +529,13 @@ public class BattleHandler : MonoBehaviour
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 20, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
                 // apply bleed
+                enemyCharacterBattle.AddBleed(1);
             }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 // apply bleed
+                enemyCharacterBattle.AddBleed(1);
             }
         }
 
@@ -554,6 +560,11 @@ public class BattleHandler : MonoBehaviour
     {
         battleCanvas.enabled = true;
         playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+        if (playerCharacterBattle.hasMagicSpike)
+        {
+            enemyCharacterBattle.TakeMagicSpikeDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike);
+            playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike = false;
+        }
         state = State.WaitingForPlayer;
         for (int i = 0; i < players.Count; i++)
         {
@@ -585,6 +596,7 @@ public class BattleHandler : MonoBehaviour
             //Debug.Log(enemies[i]);
             enemies[i].GetComponent<CharacterBattle>().Attack(playerCharacterBattle, () =>
             {
+                enemies[i].GetComponent<CharacterBattle>().TakePoisonDamage();
                 EnemyAttackLogic();
             });
             if (i >= enemies.Count - 1)
@@ -593,6 +605,10 @@ public class BattleHandler : MonoBehaviour
                 for (int j = 0; j < players.Count; j++)
                 {
                     players[j].GetComponent<CharacterBattle>().ResetShieldToOne();
+                    if (players[j].GetComponent<CharacterBattle>().isPoisoned)
+                    {
+                        players[j].GetComponent<CharacterBattle>().TakePoisonDamage();
+                    }
                 }
             }
                 //EnemyAttackLogic();
