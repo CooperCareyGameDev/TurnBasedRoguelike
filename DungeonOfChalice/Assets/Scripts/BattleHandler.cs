@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BattleHandler : MonoBehaviour
 {
+    [Header("CharacterBattles")]
     [SerializeField] private CharacterBattle playerCharacterBattle;
     public CharacterBattle enemyCharacterBattle;
     
@@ -12,6 +13,7 @@ public class BattleHandler : MonoBehaviour
 
     private State state;
     private float attackTimer = 0f;
+    [Header("Delays")]
     [SerializeField] private float initialAttackTimer = 2.5f; 
     
     [SerializeField] private float turnSwitchDelay = 4f;
@@ -20,6 +22,7 @@ public class BattleHandler : MonoBehaviour
     private GameObject[] enemiesArray;
     private GameObject[] playersArray; 
     private CharacterBattle[] characterBattles;
+    [Header("Lists")]
     public List<GameObject> enemies = new List<GameObject>();
     public List<CharacterBattle> enemyCharacterBattles = new List<CharacterBattle>();
     public List<GameObject> players = new List<GameObject>();
