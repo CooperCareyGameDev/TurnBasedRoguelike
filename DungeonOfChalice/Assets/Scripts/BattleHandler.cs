@@ -414,35 +414,51 @@ public class BattleHandler : MonoBehaviour
         if (playerCharacterBattle.currentClass == "Knight")
         {
             // Basic attack
-            if (playerCharacterBattle.isBuffed)
+            if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
+                // Not weak and buffed
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
+            }
+            else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
+            {
+                // weak and not buffed
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isWeakened = false;
             }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isBuffed = false;
+                playerCharacterBattle.isWeakened = false;
             }
         }
 
         else if (playerCharacterBattle.currentClass == "Barbarian")
         {
             // Basic attack
-            if (playerCharacterBattle.isBuffed)
+            if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
             }
+            else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isWeakened = false;
+            }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isBuffed = false;
+                playerCharacterBattle.isWeakened = false; 
             }
         }
 
         else if (playerCharacterBattle.currentClass == "Mage")
         {
             // Attack does damage to one target, reduced damage to all targets
-            if (playerCharacterBattle.isBuffed)
+            if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 foreach (GameObject enemy in enemies)
@@ -450,6 +466,15 @@ public class BattleHandler : MonoBehaviour
                     enemy.GetComponent<CharacterBattle>().TakeDamage((playerCharacterBattle.attackPower / 2) + 5, false);
                 }
                 playerCharacterBattle.isBuffed = false;
+            }
+            else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                foreach (GameObject enemy in enemies)
+                {
+                    enemy.GetComponent<CharacterBattle>().TakeDamage(playerCharacterBattle.attackPower / 3, false);
+                }
+                playerCharacterBattle.isWeakened = false; 
             }
             else
             {
@@ -459,24 +484,34 @@ public class BattleHandler : MonoBehaviour
                 {
                     enemy.GetComponent<CharacterBattle>().TakeDamage(playerCharacterBattle.attackPower / 2, false);
                 }
+                playerCharacterBattle.isBuffed = false;
+                playerCharacterBattle.isWeakened = false;
             }
         }
 
         else if (playerCharacterBattle.currentClass == "Archer")
         {
             // Attack hits one target, inflicts status effect
-            if (playerCharacterBattle.isBuffed)
+            if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 20, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
                 // Apply status effect
                 enemyCharacterBattle.InflictPoison();
             }
+            else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isWeakened = false;
+
+            }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 // Apply status effect
                 enemyCharacterBattle.InflictPoison();
+                playerCharacterBattle.isBuffed = false;
+                playerCharacterBattle.isWeakened = false;
             }
         }
 
