@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleHandler : MonoBehaviour
@@ -503,6 +504,8 @@ public class BattleHandler : MonoBehaviour
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isWeakened = false;
+                // Apply status effect
+                enemyCharacterBattle.InflictPoison();
 
             }
             else
@@ -518,7 +521,7 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Cleric")
         {
             // Weak attack with self heal
-            if (playerCharacterBattle.isBuffed)
+            if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage((playerCharacterBattle.attackPower / 2) + 10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.HealOnTurn(20, () =>
@@ -527,6 +530,11 @@ public class BattleHandler : MonoBehaviour
                 });
                 playerCharacterBattle.isBuffed = false;
             }
+            else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isWeakened = false; 
+            }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
@@ -534,13 +542,15 @@ public class BattleHandler : MonoBehaviour
                 {
                     // Heal
                 });
+                playerCharacterBattle.isBuffed = false;
+                playerCharacterBattle.isWeakened = false;
             }
         }
 
         else if (playerCharacterBattle.currentClass == "King")
         {
             // Weak attack that gives small shield
-            if (playerCharacterBattle.isBuffed)
+            if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage((playerCharacterBattle.attackPower / 2) + 5, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.ShieldOnTurn(15, () =>
@@ -549,6 +559,11 @@ public class BattleHandler : MonoBehaviour
                 });
                 playerCharacterBattle.isBuffed = false;
             }
+            else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isWeakened = false; 
+            }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
@@ -556,38 +571,55 @@ public class BattleHandler : MonoBehaviour
                 {
                     // Shield
                 });
+                playerCharacterBattle.isBuffed = false;
+                playerCharacterBattle.isWeakened = false;
             }
         }
 
         else if (playerCharacterBattle.currentClass == "Trapper")
         {
             // Attack applies bleed
-            if (playerCharacterBattle.isBuffed)
+            if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 20, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
                 // apply bleed
                 enemyCharacterBattle.AddBleed(1);
             }
+            else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isWeakened = false;
+
+            }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 // apply bleed
                 enemyCharacterBattle.AddBleed(1);
+                playerCharacterBattle.isWeakened = false;
+                playerCharacterBattle.isBuffed = false; 
             }
         }
 
         else if (playerCharacterBattle.currentClass == "Paladin")
         {
             // Basic Attack
-            if (playerCharacterBattle.isBuffed)
+            if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
             }
+            else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
+            {
+                enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isWeakened = false;
+            }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
+                playerCharacterBattle.isBuffed = false;
+                playerCharacterBattle.isWeakened = false;
             }
         }
          state = State.Busy;
