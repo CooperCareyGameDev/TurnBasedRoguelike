@@ -133,6 +133,7 @@ public class BattleHandler : MonoBehaviour
         {
             // Apply trap to ally
             Debug.Log("Trapper Secondary");
+            playerCharacterBattle.hasTrap = true;
             StartCoroutine(WaitToHeal(0));
         }
         else if (playerCharacterBattle.currentClass == "Paladin")
@@ -629,7 +630,16 @@ public class BattleHandler : MonoBehaviour
     private void EnemyAttackLogic()
     {
         battleCanvas.enabled = true;
-        playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+        if (enemyCharacterBattle.isWeakened)
+        {
+            playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower / 2, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+            enemyCharacterBattle.isWeakened = false;
+        }
+        else
+        {
+            playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+
+        }
         if (playerCharacterBattle.hasMagicSpike)
         {
             enemyCharacterBattle.TakeMagicSpikeDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike);

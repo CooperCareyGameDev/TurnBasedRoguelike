@@ -46,7 +46,9 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int shieldBuffStacks = 0;
     public bool isBuffed = false;
     public bool hasMagicSpike = false;
-    [SerializeField] private int magicSpikeDamage = 10; 
+    [SerializeField] private int magicSpikeDamage = 10;
+    public bool hasTrap = false;
+    [SerializeField] private int trapDamage = 10;
     [Header("Debuffs")]
     public bool isPoisoned = false;
     [SerializeField] private int poisonDamage = 5;
@@ -352,5 +354,15 @@ public class CharacterBattle : MonoBehaviour
     public void RemoveWeaken()
     {
         isWeakened = false;
+    }
+
+    public void SetTrap()
+    {
+        hasTrap = true;
+    }
+
+    public void RemoveTrap()
+    {
+        hasTrap = false;
     }
 }
