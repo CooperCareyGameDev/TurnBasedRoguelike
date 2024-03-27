@@ -46,13 +46,16 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int shieldBuffStacks = 0;
     public bool isBuffed = false;
     public bool hasMagicSpike = false;
-    [SerializeField] private int magicSpikeDamage = 10; 
+    [SerializeField] private int magicSpikeDamage = 10;
+    public bool hasTrap = false;
+    [SerializeField] private int trapDamage = 10;
     [Header("Debuffs")]
     public bool isPoisoned = false;
     [SerializeField] private int poisonDamage = 5;
     [SerializeField] private int currentBleed = 0;
     [SerializeField] private int bleedRequired = 2;
-    [SerializeField] private int bleedDamage = 25; 
+    [SerializeField] private int bleedDamage = 25;
+    public bool isWeakened = false; 
     private void Awake()
     {
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
@@ -341,5 +344,25 @@ public class CharacterBattle : MonoBehaviour
     public void TakeBleedDamage()
     {
         TakeDamage(bleedDamage, false);
+    }
+
+    public void InflictWeaken()
+    {
+        isWeakened = true;
+    }
+
+    public void RemoveWeaken()
+    {
+        isWeakened = false;
+    }
+
+    public void SetTrap()
+    {
+        hasTrap = true;
+    }
+
+    public void RemoveTrap()
+    {
+        hasTrap = false;
     }
 }
