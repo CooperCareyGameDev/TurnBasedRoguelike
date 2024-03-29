@@ -60,14 +60,14 @@ public class CharacterBattle : MonoBehaviour
     {
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
         {
-            Debug.LogError($"{currentClass} is not a valid class name");
+            Debug.LogError($"{currentClass} is not a valid character class name for " + gameObject.name);
         }
         startingAttackPower = attackPower;
         startingCritChance = critPercentChance;
         startingHealAmount = healingAmount;
         startingShieldAmount = shieldAmount;
         battleHandler = FindFirstObjectByType<BattleHandler>();
-        if (Relics.critChanceBuff)
+        if (Relics.critChanceBuff && !isEnemy)
         {
             critPercentChance += 10; 
         }
