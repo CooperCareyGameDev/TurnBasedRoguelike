@@ -308,6 +308,15 @@ public class CharacterBattle : MonoBehaviour
             hasMagicSpike = false;
         }
     }
+    
+    public void TakeTrapDamage(bool hasTrap)
+    {
+        if (hasTrap)
+        {
+            TakeDamage(trapDamage, false);
+            hasTrap = false;
+        }
+    }
 
     public void GiveMagicSpikes()
     {

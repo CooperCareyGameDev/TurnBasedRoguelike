@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentClass: Paladin
+  currentClass: Trapper
   turnIndicator: {fileID: 1983872452}
   startingHealth: 250
   healthBar: {fileID: 1151744365}
@@ -1816,7 +1816,9 @@ MonoBehaviour:
   shieldBuffStacks: 0
   isBuffed: 0
   hasMagicSpike: 0
-  magicSpikeDamage: 10
+  magicSpikeDamage: 30
+  hasTrap: 0
+  trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
   currentBleed: 0
@@ -2869,6 +2871,8 @@ MonoBehaviour:
   isBuffed: 0
   hasMagicSpike: 0
   magicSpikeDamage: 10
+  hasTrap: 0
+  trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
   currentBleed: 0
@@ -4425,6 +4429,8 @@ MonoBehaviour:
   isBuffed: 0
   hasMagicSpike: 0
   magicSpikeDamage: 10
+  hasTrap: 0
+  trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
   currentBleed: 0
@@ -4524,7 +4530,6 @@ GameObject:
   - component: {fileID: 1640610977}
   - component: {fileID: 1640610976}
   - component: {fileID: 1640610975}
-  - component: {fileID: 1640610978}
   - component: {fileID: 1640610979}
   m_Layer: 0
   m_Name: NonUIEnemy
@@ -4570,6 +4575,8 @@ MonoBehaviour:
   isBuffed: 0
   hasMagicSpike: 0
   magicSpikeDamage: 10
+  hasTrap: 0
+  trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
   currentBleed: 0
@@ -4646,18 +4653,6 @@ Transform:
   - {fileID: 1535168680}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1640610978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640610974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502f333392f93304ab93a9951f12a3c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1640610979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5756,6 +5751,8 @@ MonoBehaviour:
   isBuffed: 0
   hasMagicSpike: 0
   magicSpikeDamage: 10
+  hasTrap: 0
+  trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
   currentBleed: 0

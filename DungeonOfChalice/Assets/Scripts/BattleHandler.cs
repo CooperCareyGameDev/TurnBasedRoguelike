@@ -110,6 +110,7 @@ public class BattleHandler : MonoBehaviour
         {
             // Give ally retaliatory damage
             Debug.Log("Mage Secondary");
+            playerCharacterBattle.hasMagicSpike = true; 
             StartCoroutine(WaitToHeal(0));
         }
         else if (playerCharacterBattle.currentClass == "Archer")
@@ -644,6 +645,12 @@ public class BattleHandler : MonoBehaviour
         {
             enemyCharacterBattle.TakeMagicSpikeDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike);
             playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike = false;
+        }
+        if (playerCharacterBattle.hasTrap)
+        {
+            enemyCharacterBattle.isWeakened = true;
+            enemyCharacterBattle.TakeTrapDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasTrap);
+            playerCharacterBattle.GetComponent<CharacterBattle>().hasTrap = false;
         }
         state = State.WaitingForPlayer;
         for (int i = 0; i < players.Count; i++)
