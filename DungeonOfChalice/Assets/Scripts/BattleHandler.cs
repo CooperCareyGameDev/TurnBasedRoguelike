@@ -44,7 +44,6 @@ public class BattleHandler : MonoBehaviour
         }
         foreach (GameObject player in players)
         {
-            //Debug.Log(player);
         }
         foreach (GameObject enemy in enemiesArray)
         {
@@ -52,7 +51,6 @@ public class BattleHandler : MonoBehaviour
         }
         foreach (GameObject enemy in enemies)
         {
-            //Debug.Log(enemy);
         }
         SetActiveCharacterBattle(playerCharacterBattle);
         state = State.WaitingForPlayer;
@@ -76,7 +74,7 @@ public class BattleHandler : MonoBehaviour
             {
                 TooltipScreenSpaceUI.ShowTooltipWarning_Static("Select a target first");
                 SetActiveCharacterBattle(enemies[0].GetComponent<CharacterBattle>());
-                Debug.Log(enemies[0].GetComponent<CharacterBattle>());
+                //Debug.Log(enemies[0].GetComponent<CharacterBattle>());
             }
         });
     }
@@ -109,14 +107,12 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Mage")
         {
             // Give ally retaliatory damage
-            Debug.Log("Mage Secondary");
             playerCharacterBattle.hasMagicSpike = true; 
             StartCoroutine(WaitToHeal(0));
         }
         else if (playerCharacterBattle.currentClass == "Archer")
         {
             // Apply evasive, 50% chancee to dodge attack
-            Debug.Log("Archer Secondary");
             StartCoroutine(WaitToHeal(0));
             
         }
@@ -133,7 +129,6 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Trapper")
         {
             // Apply trap to ally
-            Debug.Log("Trapper Secondary");
             playerCharacterBattle.hasTrap = true;
             StartCoroutine(WaitToHeal(0));
         }
@@ -158,7 +153,6 @@ public class BattleHandler : MonoBehaviour
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
-        Debug.Log("Added Charge");
         playerCharacterBattle.HealOnTurn(healAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
@@ -187,7 +181,6 @@ public class BattleHandler : MonoBehaviour
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
-        Debug.Log("Added Charge");
         playerCharacterBattle.ShieldOnTurn(shieldAmount, () =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
@@ -324,7 +317,6 @@ public class BattleHandler : MonoBehaviour
     private void Update()
     {
         
-        //Debug.Log(activeCharacterBattle);
         attackTimer += Time.deltaTime; 
         if (state == State.WaitingForPlayer)
         {
@@ -383,7 +375,6 @@ public class BattleHandler : MonoBehaviour
         if (!TestBattleOver())
         {
             yield return new WaitForSeconds(turnSwitchDelay);
-            Debug.Log(activeCharacterBattle == playerCharacterBattle);
             if (activeCharacterBattle == playerCharacterBattle)
             {
                 
@@ -748,7 +739,6 @@ public class BattleHandler : MonoBehaviour
                 foreach (GameObject player in players)
                 {
                     player.GetComponent<CharacterBattle>().HealOnTurn(30, () => {
-                        Debug.Log("Healed on turn");
                     });
                    //DamagePopup.CreateHealPopup(transform.position, 200);
                 }

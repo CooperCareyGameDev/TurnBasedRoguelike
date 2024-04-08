@@ -145,7 +145,6 @@ public class CharacterBattle : MonoBehaviour
     public void Attack(CharacterBattle targetCharacterBattle, Action onAttackComplete)
     {
         if (isDead) { return; }
-        Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
         currentCharge++;
         onAttackComplete();
@@ -173,7 +172,6 @@ public class CharacterBattle : MonoBehaviour
     }
     public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
     {
-        //Debug.Log("Used Rage");
         spriteRenderer.color = Color.cyan;
         currentCharge = 0;
         onRageComplete();
@@ -198,7 +196,6 @@ public class CharacterBattle : MonoBehaviour
     public void Damage(int damageAmount)
     {
         healthSystem.Damage(damageAmount);
-        Debug.Log(healthSystem.GetHealth());
     }
 
     public void TakeDamage(int damageAmount, bool isCrit)
@@ -342,7 +339,6 @@ public class CharacterBattle : MonoBehaviour
     public void AddBleed(int amount)
     {
         currentBleed += amount;
-        Debug.Log("Adding Bleed");
         if (currentBleed >= bleedRequired)
         {
             TakeBleedDamage();

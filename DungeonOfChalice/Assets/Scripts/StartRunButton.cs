@@ -18,6 +18,7 @@ public class StartRunButton : MonoBehaviour
         {
             // Start game
             Debug.Log("Game Started");
+            TooltipScreenSpaceUI.ShowTooltip_Static("Success!");
         }
         else
         {
