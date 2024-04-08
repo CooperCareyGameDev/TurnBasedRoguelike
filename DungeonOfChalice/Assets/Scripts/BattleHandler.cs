@@ -323,6 +323,7 @@ public class BattleHandler : MonoBehaviour
 
     private void Update()
     {
+        
         //Debug.Log(activeCharacterBattle);
         attackTimer += Time.deltaTime; 
         if (state == State.WaitingForPlayer)
@@ -337,6 +338,7 @@ public class BattleHandler : MonoBehaviour
             }
 
         }
+        TestBattleOver();
         switch (playerCharacterBattle.currentClass)
         {
             case "Knight": 
@@ -725,6 +727,7 @@ public class BattleHandler : MonoBehaviour
         {
             // player wins
             BattleOverWindow.Show_Static("Player Wins!");
+            // next wave
             return true;
         }
         return false; 
