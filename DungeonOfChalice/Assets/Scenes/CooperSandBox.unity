@@ -1247,7 +1247,6 @@ MonoBehaviour:
   bleedDamage: 25
   isWeakened: 0
   hasDoneTurn: 0
-  playerList: []
   orderIndex: 0
 --- !u!212 &409012776
 SpriteRenderer:
@@ -2502,7 +2501,6 @@ MonoBehaviour:
   bleedDamage: 25
   isWeakened: 0
   hasDoneTurn: 0
-  playerList: []
   orderIndex: 0
 --- !u!212 &788690134
 SpriteRenderer:
@@ -3557,6 +3555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 788690133}
   battleHandler: {fileID: 1863304290}
+  hideDelay: 2
 --- !u!114 &1130389508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3717,7 +3716,6 @@ MonoBehaviour:
   bleedDamage: 25
   isWeakened: 0
   hasDoneTurn: 0
-  playerList: []
   orderIndex: 0
 --- !u!1 &1201516313
 GameObject:
@@ -4111,6 +4109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 409012775}
   battleHandler: {fileID: 1863304290}
+  hideDelay: 2
 --- !u!114 &1252563643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5031,6 +5030,50 @@ MonoBehaviour:
     Heals All Allies and Applies Shield to All Allies'
   initialTooltipIndex: 0
   isEnemy: 0
+--- !u!1 &1479428138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1479428140}
+  - component: {fileID: 1479428139}
+  m_Layer: 0
+  m_Name: PlayerTurnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1479428139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479428138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b006b7bff44a348bb2a7c74d1edb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1479428140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479428138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.8631556, y: -2.939404, z: 4.821901}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535168678
 GameObject:
   m_ObjectHideFlags: 0
@@ -5452,7 +5495,6 @@ MonoBehaviour:
   bleedDamage: 25
   isWeakened: 0
   hasDoneTurn: 0
-  playerList: []
   orderIndex: 0
 --- !u!212 &1602089094
 SpriteRenderer:
@@ -5589,7 +5631,6 @@ MonoBehaviour:
   bleedDamage: 30
   isWeakened: 0
   hasDoneTurn: 0
-  playerList: []
   orderIndex: 0
 --- !u!212 &1640610976
 SpriteRenderer:
@@ -6868,7 +6909,6 @@ MonoBehaviour:
   bleedDamage: 25
   isWeakened: 0
   hasDoneTurn: 0
-  playerList: []
   orderIndex: 0
 --- !u!1001 &6692889495170694653
 PrefabInstance:
@@ -6947,6 +6987,7 @@ SceneRoots:
   - {fileID: 2049311170}
   - {fileID: 126485860}
   - {fileID: 1863304291}
+  - {fileID: 1479428140}
   - {fileID: 736227074}
   - {fileID: 788690135}
   - {fileID: 409012777}
