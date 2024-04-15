@@ -58,12 +58,47 @@ public class CharacterBattle : MonoBehaviour
     public bool isWeakened = false;
     [Header("Player Turn Management")]
     public static int partyMembersAlive = 1;
-    [SerializeField] bool hasDoneTurn = false; 
+    public bool hasDoneTurn = false;
+    private GameObject[] playerArray;
+    public List<GameObject> playerList = new List<GameObject>();
+    [SerializeField] private int orderIndex; 
     private void Awake()
     {
+        playerArray = GameObject.FindGameObjectsWithTag("Player"); 
+        foreach (GameObject player in playerArray)
+        {
+            playerList.Add(player);
+        }
+        //Debug.LogError(playerArray.Length);
+        //Debug.LogError(playerList.Count);
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
         {
             Debug.LogError($"{currentClass} is not a valid character class name for " + gameObject.name);
+        }
+        if (!isEnemy)
+        {
+            switch (currentClass)
+            {
+                case "Knight":
+                    orderIndex = 0; break;
+                case "Barbarian":
+                    orderIndex = 1; break;
+                case "Mage":
+                    orderIndex = 2; break;
+                case "Archer":
+                    orderIndex = 3; break;
+                case "Cleric":
+                    orderIndex = 4; break;
+                case "King":
+                    orderIndex = 5; break;
+                case "Trapper":
+                    orderIndex = 6; break;
+                case "Paladin":
+                    orderIndex = 7; break;
+                default:
+                    Debug.LogError("Incorrect class name"); break; 
+            }
+
         }
         startingAttackPower = attackPower;
         startingCritChance = critPercentChance;
