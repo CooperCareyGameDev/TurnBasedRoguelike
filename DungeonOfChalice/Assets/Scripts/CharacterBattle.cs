@@ -55,7 +55,10 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int currentBleed = 0;
     [SerializeField] private int bleedRequired = 2;
     [SerializeField] private int bleedDamage = 25;
-    public bool isWeakened = false; 
+    public bool isWeakened = false;
+    [Header("Player Turn Management")]
+    public static int partyMembersAlive = 1;
+    [SerializeField] bool hasDoneTurn = false; 
     private void Awake()
     {
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
