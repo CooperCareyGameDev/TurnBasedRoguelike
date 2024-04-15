@@ -7,7 +7,7 @@ using UnityEngine;
 public class BattleHandler : MonoBehaviour
 {
     [Header("CharacterBattles")]
-    [SerializeField] private CharacterBattle playerCharacterBattle;
+    public CharacterBattle playerCharacterBattle;
     public CharacterBattle enemyCharacterBattle;
     
     [SerializeField] private CharacterBattle activeCharacterBattle;
@@ -330,7 +330,7 @@ public class BattleHandler : MonoBehaviour
             }
 
         }
-        TestBattleOver();
+        //TestBattleOver();
         switch (playerCharacterBattle.currentClass)
         {
             case "Knight": 
@@ -617,8 +617,14 @@ public class BattleHandler : MonoBehaviour
                 playerCharacterBattle.isWeakened = false;
             }
         }
-         state = State.Busy;
-         StartCoroutine(EnemyAttack());
+        state = State.Busy;
+        playerCharacterBattle.hasDoneTurn = true;
+        CharacterBattle.turnsLeft--;
+        if (CharacterBattle.turnsLeft <= 0)
+        {
+            StartCoroutine(EnemyAttack());
+
+        }
     }
 
     private void EnemyAttackLogic()
