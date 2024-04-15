@@ -55,12 +55,50 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int currentBleed = 0;
     [SerializeField] private int bleedRequired = 2;
     [SerializeField] private int bleedDamage = 25;
-    public bool isWeakened = false; 
+    public bool isWeakened = false;
+    [Header("Player Turn Management")]
+    public static int partyMembersAlive = 1;
+    public bool hasDoneTurn = false;
+    private GameObject[] playerArray;
+    public List<GameObject> playerList = new List<GameObject>();
+    [SerializeField] private int orderIndex; 
     private void Awake()
     {
+        playerArray = GameObject.FindGameObjectsWithTag("Player"); 
+        foreach (GameObject player in playerArray)
+        {
+            playerList.Add(player);
+        }
+        //Debug.LogError(playerArray.Length);
+        //Debug.LogError(playerList.Count);
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
         {
             Debug.LogError($"{currentClass} is not a valid character class name for " + gameObject.name);
+        }
+        if (!isEnemy)
+        {
+            switch (currentClass)
+            {
+                case "Knight":
+                    orderIndex = 0; break;
+                case "Barbarian":
+                    orderIndex = 1; break;
+                case "Mage":
+                    orderIndex = 2; break;
+                case "Archer":
+                    orderIndex = 3; break;
+                case "Cleric":
+                    orderIndex = 4; break;
+                case "King":
+                    orderIndex = 5; break;
+                case "Trapper":
+                    orderIndex = 6; break;
+                case "Paladin":
+                    orderIndex = 7; break;
+                default:
+                    Debug.LogError("Incorrect class name"); break; 
+            }
+
         }
         startingAttackPower = attackPower;
         startingCritChance = critPercentChance;
@@ -145,7 +183,6 @@ public class CharacterBattle : MonoBehaviour
     public void Attack(CharacterBattle targetCharacterBattle, Action onAttackComplete)
     {
         if (isDead) { return; }
-        Debug.Log("Attacked");
         spriteRenderer.color = Color.yellow;
         currentCharge++;
         onAttackComplete();
@@ -173,7 +210,6 @@ public class CharacterBattle : MonoBehaviour
     }
     public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
     {
-        //Debug.Log("Used Rage");
         spriteRenderer.color = Color.cyan;
         currentCharge = 0;
         onRageComplete();
@@ -198,7 +234,6 @@ public class CharacterBattle : MonoBehaviour
     public void Damage(int damageAmount)
     {
         healthSystem.Damage(damageAmount);
-        Debug.Log(healthSystem.GetHealth());
     }
 
     public void TakeDamage(int damageAmount, bool isCrit)
@@ -342,7 +377,6 @@ public class CharacterBattle : MonoBehaviour
     public void AddBleed(int amount)
     {
         currentBleed += amount;
-        Debug.Log("Adding Bleed");
         if (currentBleed >= bleedRequired)
         {
             TakeBleedDamage();
