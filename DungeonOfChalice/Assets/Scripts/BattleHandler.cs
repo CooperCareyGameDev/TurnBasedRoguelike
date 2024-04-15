@@ -625,6 +625,10 @@ public class BattleHandler : MonoBehaviour
             StartCoroutine(EnemyAttack());
 
         }
+        else
+        {
+
+        }
     }
 
     private void EnemyAttackLogic()
@@ -730,6 +734,33 @@ public class BattleHandler : MonoBehaviour
         return false; 
     }
 
+
+    public void SetPlayerCharacterBattle()
+    {
+        if (players.Count > 0)
+        {
+            if (!players[0].GetComponent<CharacterBattle>().hasDoneTurn)
+            {
+                playerCharacterBattle = players[0].GetComponent<CharacterBattle>();
+            }
+            else if (!players[1].GetComponent<CharacterBattle>().hasDoneTurn)
+            {
+                playerCharacterBattle = players[1].GetComponent<CharacterBattle>();
+            }
+            else if (!players[2].GetComponent<CharacterBattle>().hasDoneTurn)
+            {
+                playerCharacterBattle = players[2].GetComponent<CharacterBattle>();
+            }
+            else if (!players[3].GetComponent<CharacterBattle>().hasDoneTurn)
+            {
+                playerCharacterBattle = players[3].GetComponent<CharacterBattle>();
+            }
+            else
+            {
+                // Let enemy attack
+            }
+        }
+    }
     public void SetEnemyCharacterBattle()
     {
         if (enemies.Count > 0)

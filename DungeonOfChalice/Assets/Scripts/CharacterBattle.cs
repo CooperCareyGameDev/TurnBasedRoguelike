@@ -60,19 +60,19 @@ public class CharacterBattle : MonoBehaviour
     public static int partyMembersAlive = 1;
     public static int turnsLeft = 1;
     public bool hasDoneTurn = false;
-    private GameObject[] playerArray;
-    public List<GameObject> playerList = new List<GameObject>();
+    //private GameObject[] playerArray;
+    //public List<GameObject> playerList = new List<GameObject>();
     [SerializeField] private int orderIndex; 
     private void Awake()
     {
-        playerArray = GameObject.FindGameObjectsWithTag("Player");
+        //playerArray = GameObject.FindGameObjectsWithTag("Player");
         
-        foreach (GameObject player in playerArray)
+        /*foreach (GameObject player in playerArray)
         {
             playerList.Add(player);
             Debug.LogError("Added element to list");
-        }
-        partyMembersAlive = playerList.Count;
+        }*/
+        partyMembersAlive = battleHandler.players.Count;
         //Debug.LogError(playerArray.Length);
         //Debug.LogError(playerList.Count);
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
@@ -133,7 +133,7 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
-        partyMembersAlive = playerList.Count;
+        partyMembersAlive = battleHandler.players.Count;
         
         attackPower = startingAttackPower + (10 * damageBuffStacks);
         critPercentChance = startingCritChance + (10 * critBuffStacks);
@@ -165,16 +165,16 @@ public class CharacterBattle : MonoBehaviour
         }
         if (currentHealth <= 0 && !isEnemy)
         {
-            playerList.Remove(gameObject);
+            battleHandler.players.Remove(gameObject);
             Debug.LogError("Removed object");
-            foreach (GameObject player in playerList)
+            foreach (GameObject player in battleHandler.players)
             {
                 //Debug.LogError(player.name);
             }
-            Debug.LogError(playerList.Count);
+            Debug.LogError(battleHandler.players.Count);
             Destroy(gameObject);
         }
-        Debug.LogError(playerList.Count);
+        Debug.LogError(battleHandler.players.Count);
         healthText.text = $"Health: {currentHealth} / {startingHealth}";
         rageChargeText.text = $"Rage: {currentCharge} / {chargeRequired}"; 
         if (currentCharge > chargeRequired)
