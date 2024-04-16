@@ -224,7 +224,7 @@ public class CharacterBattle : MonoBehaviour
     public void BuffOnTurn(Action onBuffComplete)
     {
         isBuffed = true;
-        Debug.LogError("Buffing");
+        
         onBuffComplete();
     }
     public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
