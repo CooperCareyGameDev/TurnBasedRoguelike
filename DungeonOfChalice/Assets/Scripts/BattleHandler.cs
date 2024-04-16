@@ -9,7 +9,7 @@ public class BattleHandler : MonoBehaviour
     [Header("CharacterBattles")]
     public CharacterBattle playerCharacterBattle;
     public CharacterBattle enemyCharacterBattle;
-    
+    public CharacterBattle targetedCharacterBattle;
     [SerializeField] private CharacterBattle activeCharacterBattle;
 
     private State state;
@@ -27,7 +27,8 @@ public class BattleHandler : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
     public List<CharacterBattle> enemyCharacterBattles = new List<CharacterBattle>();
     public List<GameObject> players = new List<GameObject>();
-    private bool isDead = false; 
+    private bool isDead = false;
+    public static bool isSelecting = false; 
     private enum State
     {
         WaitingForPlayer,
@@ -97,7 +98,10 @@ public class BattleHandler : MonoBehaviour
         if (playerCharacterBattle.currentClass == "Knight")
         {
             // Shield ally
-            StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
+            BattleHandler.isSelecting = true; 
+            //StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
+            
+
         }
         else if (playerCharacterBattle.currentClass == "Barbarian")
         {
@@ -198,7 +202,7 @@ public class BattleHandler : MonoBehaviour
         state = State.Busy;
         attackTimer = 0;
         playerCharacterBattle.currentCharge++;
-        playerCharacterBattle.ShieldOnTurn(shieldAmount, () =>
+        targetedCharacterBattle.ShieldOnTurn(shieldAmount, () =>
         {
             //SetActiveCharacterBattle(enemyCharacterBattle);
             state = State.Busy;
@@ -839,4 +843,14 @@ public class BattleHandler : MonoBehaviour
     {
         return characterBattle;
     }*/
+
+    public void WaitToHealCoroutine(int amount)
+    {
+        StartCoroutine(WaitToHeal(amount));
+    }
+
+    public void WaitToShieldCoroutine(int amount)
+    {
+        StartCoroutine(WaitToShield(amount));
+    }
 }

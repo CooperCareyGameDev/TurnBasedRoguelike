@@ -2467,7 +2467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentClass: Trapper
+  currentClass: Knight
   turnIndicator: {fileID: 1983872452}
   startingHealth: 250
   healthBar: {fileID: 1151744365}
@@ -3503,6 +3503,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1130389507}
+        m_TargetAssemblyTypeName: PlayerSelectButton, Assembly-CSharp
+        m_MethodName: SelectSecondaryCoroutine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1130389505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3556,6 +3568,7 @@ MonoBehaviour:
   playerTarget: {fileID: 788690133}
   battleHandler: {fileID: 1863304290}
   hideDelay: 2
+  actionDelay: 1.5
 --- !u!114 &1130389508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4110,6 +4123,7 @@ MonoBehaviour:
   playerTarget: {fileID: 409012775}
   battleHandler: {fileID: 1863304290}
   hideDelay: 2
+  actionDelay: 1.5
 --- !u!114 &1252563643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4178,6 +4192,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1252563642}
         m_TargetAssemblyTypeName: PlayerSelectButton, Assembly-CSharp
         m_MethodName: SetPlayerCharacterBattle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1252563642}
+        m_TargetAssemblyTypeName: PlayerSelectButton, Assembly-CSharp
+        m_MethodName: SelectSecondaryCoroutine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6240,6 +6266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCharacterBattle: {fileID: 788690133}
   enemyCharacterBattle: {fileID: 1640610975}
+  targetedCharacterBattle: {fileID: 0}
   activeCharacterBattle: {fileID: 0}
   initialAttackTimer: 2.5
   turnSwitchDelay: 1
