@@ -13,6 +13,7 @@ public class PlayerSelectButton : MonoBehaviour
         if (BattleHandler.isSelecting) { return; }
         if (!playerTarget.hasDoneTurn)
         {
+            Debug.LogError("Selecting Target");
             battleHandler.playerCharacterBattle = playerTarget;
             //Debug.LogError(battleHandler.playerCharacterBattle.name);
             //TooltipScreenSpaceUI.ShowTooltip_Static("Selected " + battleHandler.playerCharacterBattle.currentClass);
@@ -29,18 +30,26 @@ public class PlayerSelectButton : MonoBehaviour
 
     private IEnumerator SelectSecondaryTarget()
     {
-        Debug.LogError("Selecting Target");
+        
         if (BattleHandler.isSelecting)
         {
-            if (battleHandler.playerCharacterBattle.currentClass == "Knight" || true)
+            if (battleHandler.playerCharacterBattle.currentClass == "Knight")
             {
-                BattleHandler.isSelecting = false;
                 yield return new WaitForSeconds(actionDelay);
                 battleHandler.targetedCharacterBattle = playerTarget;
                 battleHandler.targetedCharacterBattle.ShieldOnTurn(battleHandler.targetedCharacterBattle.shieldAmount, () => { });
+                BattleHandler.isSelecting = false;
 
             }
+            else if (battleHandler.playerCharacterBattle.currentClass == "Barbarian")
+            {
+                yield return new WaitForSeconds(actionDelay);
+                battleHandler.targetedCharacterBattle = playerTarget;
+                Debug.LogError("Buffing");
+                battleHandler.targetedCharacterBattle.BuffOnTurn( () => { });
+                BattleHandler.isSelecting = false;
 
+            }
         }
     }
 

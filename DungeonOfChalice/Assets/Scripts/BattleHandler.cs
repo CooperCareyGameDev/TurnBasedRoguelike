@@ -106,7 +106,7 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Barbarian")
         {
             // Buff Ally
-            StartCoroutine(WaitToBuff()); 
+            BattleHandler.isSelecting = true;
         }
         else if (playerCharacterBattle.currentClass == "Mage")
         {
