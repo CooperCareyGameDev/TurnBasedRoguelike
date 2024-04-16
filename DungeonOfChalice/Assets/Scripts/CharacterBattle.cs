@@ -57,8 +57,8 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int bleedDamage = 25;
     public bool isWeakened = false;
     [Header("Player Turn Management")]
-    public static int partyMembersAlive = 1;
-    public static int turnsLeft = 1;
+    public static int partyMembersAlive = 2;
+    public static int turnsLeft = 2;
     public bool hasDoneTurn = false;
     //private GameObject[] playerArray;
     //public List<GameObject> playerList = new List<GameObject>();
@@ -72,7 +72,7 @@ public class CharacterBattle : MonoBehaviour
             playerList.Add(player);
             Debug.LogError("Added element to list");
         }*/
-        partyMembersAlive = battleHandler.players.Count;
+        //partyMembersAlive = battleHandler.players.Count;
         //Debug.LogError(playerArray.Length);
         //Debug.LogError(playerList.Count);
         if (currentClass != "Knight" && currentClass != "Barbarian" && currentClass != "Mage" && currentClass != "Archer" && currentClass != "Cleric" && currentClass != "King" && currentClass != "Trapper" && currentClass != "Paladin" && !isEnemy)
@@ -194,6 +194,7 @@ public class CharacterBattle : MonoBehaviour
     }
     private void Start()
     {
+        partyMembersAlive = battleHandler.players.Count;
         spriteRenderer = GetComponent<SpriteRenderer>();
         healthSystem = new HealthSystem(startingHealth);
     }
