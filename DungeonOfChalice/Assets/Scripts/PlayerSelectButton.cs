@@ -39,6 +39,7 @@ public class PlayerSelectButton : MonoBehaviour
                 battleHandler.targetedCharacterBattle = playerTarget;
                 battleHandler.targetedCharacterBattle.ShieldOnTurn(battleHandler.playerCharacterBattle.shieldAmount, () => { });
                 BattleHandler.isSelecting = false;
+                CharacterBattle.currentCharge++;
                 battleHandler.SetPlayerCharacterBattle();
             }
             else if (battleHandler.playerCharacterBattle.currentClass == "Barbarian")
@@ -48,6 +49,7 @@ public class PlayerSelectButton : MonoBehaviour
                 Debug.LogError("Buffing");
                 battleHandler.targetedCharacterBattle.BuffOnTurn( () => { });
                 BattleHandler.isSelecting = false;
+                CharacterBattle.currentCharge++;
                 battleHandler.SetPlayerCharacterBattle();
             }
             else if (battleHandler.playerCharacterBattle.currentClass == "Mage")
@@ -56,6 +58,7 @@ public class PlayerSelectButton : MonoBehaviour
                 battleHandler.targetedCharacterBattle = playerTarget;
                 battleHandler.targetedCharacterBattle.GiveSpikeOnTurn(() => { });
                 BattleHandler.isSelecting = false;
+                CharacterBattle.currentCharge++;
                 battleHandler.SetPlayerCharacterBattle();
             }
             else if (battleHandler.playerCharacterBattle.currentClass == "Archer")
@@ -64,6 +67,7 @@ public class PlayerSelectButton : MonoBehaviour
                 battleHandler.targetedCharacterBattle = playerTarget;
                 battleHandler.targetedCharacterBattle.GiveEvasiveOnTurn(() => { });
                 BattleHandler.isSelecting = false;
+                CharacterBattle.currentCharge++;
                 battleHandler.SetPlayerCharacterBattle();
             }
             else if (battleHandler.playerCharacterBattle.currentClass == "Cleric")
@@ -72,6 +76,7 @@ public class PlayerSelectButton : MonoBehaviour
                 battleHandler.targetedCharacterBattle = playerTarget;
                 battleHandler.targetedCharacterBattle.HealOnTurn(battleHandler.playerCharacterBattle.healingAmount, () => { });
                 BattleHandler.isSelecting = false;
+                CharacterBattle.currentCharge++;
                 battleHandler.SetPlayerCharacterBattle();
             }
             else if (battleHandler.playerCharacterBattle.currentClass == "King")
@@ -80,6 +85,7 @@ public class PlayerSelectButton : MonoBehaviour
                 battleHandler.targetedCharacterBattle = playerTarget;
                 battleHandler.targetedCharacterBattle.ShieldOnTurn(battleHandler.playerCharacterBattle.shieldAmount, () => { });
                 BattleHandler.isSelecting = false;
+                CharacterBattle.currentCharge++;
                 battleHandler.SetPlayerCharacterBattle();
             }
             else if (battleHandler.playerCharacterBattle.currentClass == "Trapper")
@@ -88,6 +94,7 @@ public class PlayerSelectButton : MonoBehaviour
                 battleHandler.targetedCharacterBattle = playerTarget;
                 battleHandler.targetedCharacterBattle.TrapOnTurn(() => { });
                 BattleHandler.isSelecting = false;
+                CharacterBattle.currentCharge++;
                 battleHandler.SetPlayerCharacterBattle();
             }
             else if (battleHandler.playerCharacterBattle.currentClass == "Paladin")
@@ -97,6 +104,7 @@ public class PlayerSelectButton : MonoBehaviour
                 battleHandler.targetedCharacterBattle.HealOnTurn(battleHandler.playerCharacterBattle.healingAmount / 2, () => { });
                 battleHandler.targetedCharacterBattle.ShieldOnTurn(battleHandler.playerCharacterBattle.shieldAmount / 2, () => { });
                 BattleHandler.isSelecting = false;
+                CharacterBattle.currentCharge++;
                 battleHandler.SetPlayerCharacterBattle();
             }
         }

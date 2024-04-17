@@ -1225,7 +1225,6 @@ MonoBehaviour:
   critPercentChance: 20
   healingAmount: 15
   chargeRequired: 4
-  currentCharge: 0
   shieldAmount: 25
   ragePower: 50
   rageChargeText: {fileID: 1216322782}
@@ -2579,7 +2578,6 @@ MonoBehaviour:
   critPercentChance: 20
   healingAmount: 15
   chargeRequired: 4
-  currentCharge: 0
   shieldAmount: 25
   ragePower: 50
   rageChargeText: {fileID: 1216322782}
@@ -3906,7 +3904,6 @@ MonoBehaviour:
   critPercentChance: 15
   healingAmount: 15
   chargeRequired: 5
-  currentCharge: 0
   shieldAmount: 25
   ragePower: 0
   rageChargeText: {fileID: 0}
@@ -5784,7 +5781,6 @@ MonoBehaviour:
   critPercentChance: 20
   healingAmount: 15
   chargeRequired: 5
-  currentCharge: 0
   shieldAmount: 25
   ragePower: 0
   rageChargeText: {fileID: 785264479}
@@ -5936,7 +5932,6 @@ MonoBehaviour:
   critPercentChance: 20
   healingAmount: 15
   chargeRequired: 5
-  currentCharge: 0
   shieldAmount: 25
   ragePower: 0
   rageChargeText: {fileID: 785264479}
@@ -7314,7 +7309,6 @@ MonoBehaviour:
   critPercentChance: 15
   healingAmount: 15
   chargeRequired: 5
-  currentCharge: 0
   shieldAmount: 25
   ragePower: 0
   rageChargeText: {fileID: 0}

@@ -82,9 +82,9 @@ public class BattleHandler : MonoBehaviour
 
     public void UseRageButton()
     {
-        if (playerCharacterBattle.currentCharge >= playerCharacterBattle.chargeRequired)
+        if (CharacterBattle.currentCharge >= playerCharacterBattle.chargeRequired)
         {
-            playerCharacterBattle.currentCharge = 0;
+            CharacterBattle.currentCharge = 0;
             //battleCanvas.enabled = false;
             StartCoroutine(WaitToRage());
         }
@@ -175,7 +175,7 @@ public class BattleHandler : MonoBehaviour
         yield return new WaitForSeconds(turnSwitchDelay);
         state = State.Busy;
         attackTimer = 0;
-        playerCharacterBattle.currentCharge++;
+        CharacterBattle.currentCharge++;
         playerCharacterBattle.HealOnTurn(healAmount, () =>
         {
             //SetActiveCharacterBattle(enemyCharacterBattle);
@@ -189,7 +189,7 @@ public class BattleHandler : MonoBehaviour
         yield return new WaitForSeconds(turnSwitchDelay);
         state = State.Busy;
         attackTimer = 0;
-        playerCharacterBattle.currentCharge++;
+        CharacterBattle.currentCharge++;
         playerCharacterBattle.BuffOnTurn(() =>
         {
             SetActiveCharacterBattle(enemyCharacterBattle);
@@ -203,7 +203,7 @@ public class BattleHandler : MonoBehaviour
         yield return new WaitForSeconds(turnSwitchDelay);
         state = State.Busy;
         attackTimer = 0;
-        playerCharacterBattle.currentCharge++;
+        CharacterBattle.currentCharge++;
         targetedCharacterBattle.ShieldOnTurn(shieldAmount, () =>
         {
             //SetActiveCharacterBattle(enemyCharacterBattle);
@@ -457,18 +457,21 @@ public class BattleHandler : MonoBehaviour
                 // Not weak and buffed
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
+                CharacterBattle.currentCharge++;
             }
             else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
             {
                 // weak and not buffed
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
         }
 
@@ -479,17 +482,20 @@ public class BattleHandler : MonoBehaviour
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
+                CharacterBattle.currentCharge++;
             }
             else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
-                playerCharacterBattle.isWeakened = false; 
+                playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
         }
 
@@ -504,6 +510,7 @@ public class BattleHandler : MonoBehaviour
                     enemy.GetComponent<CharacterBattle>().TakeDamage((playerCharacterBattle.attackPower / 2) + 5, false);
                 }
                 playerCharacterBattle.isBuffed = false;
+                CharacterBattle.currentCharge++;
             }
             else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
             {
@@ -512,7 +519,8 @@ public class BattleHandler : MonoBehaviour
                 {
                     enemy.GetComponent<CharacterBattle>().TakeDamage(playerCharacterBattle.attackPower / 3, false);
                 }
-                playerCharacterBattle.isWeakened = false; 
+                playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
             else
             {
@@ -524,6 +532,7 @@ public class BattleHandler : MonoBehaviour
                 }
                 playerCharacterBattle.isBuffed = false;
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
         }
 
@@ -536,6 +545,7 @@ public class BattleHandler : MonoBehaviour
                 playerCharacterBattle.isBuffed = false;
                 // Apply status effect
                 enemyCharacterBattle.InflictPoison();
+                CharacterBattle.currentCharge++;
             }
             else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
             {
@@ -543,6 +553,7 @@ public class BattleHandler : MonoBehaviour
                 playerCharacterBattle.isWeakened = false;
                 // Apply status effect
                 enemyCharacterBattle.InflictPoison();
+                CharacterBattle.currentCharge++;
 
             }
             else
@@ -552,6 +563,7 @@ public class BattleHandler : MonoBehaviour
                 enemyCharacterBattle.InflictPoison();
                 playerCharacterBattle.isBuffed = false;
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
         }
 
@@ -566,11 +578,13 @@ public class BattleHandler : MonoBehaviour
                     // Heal
                 });
                 playerCharacterBattle.isBuffed = false;
+                CharacterBattle.currentCharge++;
             }
             else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
-                playerCharacterBattle.isWeakened = false; 
+                playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
             else
             {
@@ -581,6 +595,7 @@ public class BattleHandler : MonoBehaviour
                 });
                 playerCharacterBattle.isBuffed = false;
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
         }
 
@@ -595,11 +610,13 @@ public class BattleHandler : MonoBehaviour
                     // Shield
                 });
                 playerCharacterBattle.isBuffed = false;
+                CharacterBattle.currentCharge++;
             }
             else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
-                playerCharacterBattle.isWeakened = false; 
+                playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
             else
             {
@@ -610,6 +627,7 @@ public class BattleHandler : MonoBehaviour
                 });
                 playerCharacterBattle.isBuffed = false;
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
         }
 
@@ -622,11 +640,13 @@ public class BattleHandler : MonoBehaviour
                 playerCharacterBattle.isBuffed = false;
                 // apply bleed
                 enemyCharacterBattle.AddBleed(1);
+                CharacterBattle.currentCharge++;
             }
             else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
 
             }
             else
@@ -635,7 +655,8 @@ public class BattleHandler : MonoBehaviour
                 // apply bleed
                 enemyCharacterBattle.AddBleed(1);
                 playerCharacterBattle.isWeakened = false;
-                playerCharacterBattle.isBuffed = false; 
+                playerCharacterBattle.isBuffed = false;
+                CharacterBattle.currentCharge++;
             }
         }
 
@@ -646,17 +667,20 @@ public class BattleHandler : MonoBehaviour
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 25, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
+                CharacterBattle.currentCharge++;
             }
             else if (playerCharacterBattle.isWeakened && !playerCharacterBattle.isBuffed)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower / 2, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
             else
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
                 playerCharacterBattle.isBuffed = false;
                 playerCharacterBattle.isWeakened = false;
+                CharacterBattle.currentCharge++;
             }
         }
         state = State.Busy;

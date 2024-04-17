@@ -26,7 +26,7 @@ public class CharacterBattle : MonoBehaviour
     public int healingAmount = 15;
     private int startingHealAmount = 0; 
     public int chargeRequired = 5;
-    public int currentCharge = 0;
+    public static int currentCharge = 0;
     public int shieldAmount = 25;
     private int startingShieldAmount = 0; 
     public int ragePower = 0;
@@ -211,7 +211,7 @@ public class CharacterBattle : MonoBehaviour
     {
         if (isDead) { return; }
         spriteRenderer.color = Color.yellow;
-        currentCharge++;
+        //currentCharge++;
         onAttackComplete();
     }
 
