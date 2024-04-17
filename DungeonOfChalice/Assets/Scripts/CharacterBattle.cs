@@ -135,6 +135,14 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
+        if (battleHandler.playerCharacterBattle == GetComponent<CharacterBattle>())
+        {
+            turnIndicator.SetActive(true);
+        }
+        else
+        {
+            turnIndicator.SetActive(false);
+        }
         partyMembersAlive = battleHandler.players.Count;
         attackPower = startingAttackPower + (10 * damageBuffStacks);
         critPercentChance = startingCritChance + (10 * critBuffStacks);
