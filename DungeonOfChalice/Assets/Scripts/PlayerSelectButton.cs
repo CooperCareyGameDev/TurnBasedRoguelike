@@ -37,9 +37,9 @@ public class PlayerSelectButton : MonoBehaviour
             {
                 yield return new WaitForSeconds(actionDelay);
                 battleHandler.targetedCharacterBattle = playerTarget;
-                battleHandler.targetedCharacterBattle.ShieldOnTurn(battleHandler.targetedCharacterBattle.shieldAmount, () => { });
+                battleHandler.targetedCharacterBattle.ShieldOnTurn(battleHandler.playerCharacterBattle.shieldAmount, () => { });
                 BattleHandler.isSelecting = false;
-
+                battleHandler.SetPlayerCharacterBattle();
             }
             else if (battleHandler.playerCharacterBattle.currentClass == "Barbarian")
             {
@@ -48,7 +48,56 @@ public class PlayerSelectButton : MonoBehaviour
                 Debug.LogError("Buffing");
                 battleHandler.targetedCharacterBattle.BuffOnTurn( () => { });
                 BattleHandler.isSelecting = false;
-
+                battleHandler.SetPlayerCharacterBattle();
+            }
+            else if (battleHandler.playerCharacterBattle.currentClass == "Mage")
+            {
+                yield return new WaitForSeconds(actionDelay);
+                battleHandler.targetedCharacterBattle = playerTarget;
+                battleHandler.targetedCharacterBattle.GiveSpikeOnTurn(() => { });
+                BattleHandler.isSelecting = false;
+                battleHandler.SetPlayerCharacterBattle();
+            }
+            else if (battleHandler.playerCharacterBattle.currentClass == "Archer")
+            {
+                yield return new WaitForSeconds(actionDelay);
+                battleHandler.targetedCharacterBattle = playerTarget;
+                battleHandler.targetedCharacterBattle.GiveEvasiveOnTurn(() => { });
+                BattleHandler.isSelecting = false;
+                battleHandler.SetPlayerCharacterBattle();
+            }
+            else if (battleHandler.playerCharacterBattle.currentClass == "Cleric")
+            {
+                yield return new WaitForSeconds(actionDelay);
+                battleHandler.targetedCharacterBattle = playerTarget;
+                battleHandler.targetedCharacterBattle.HealOnTurn(battleHandler.playerCharacterBattle.healingAmount, () => { });
+                BattleHandler.isSelecting = false;
+                battleHandler.SetPlayerCharacterBattle();
+            }
+            else if (battleHandler.playerCharacterBattle.currentClass == "King")
+            {
+                yield return new WaitForSeconds(actionDelay);
+                battleHandler.targetedCharacterBattle = playerTarget;
+                battleHandler.targetedCharacterBattle.ShieldOnTurn(battleHandler.playerCharacterBattle.shieldAmount, () => { });
+                BattleHandler.isSelecting = false;
+                battleHandler.SetPlayerCharacterBattle();
+            }
+            else if (battleHandler.playerCharacterBattle.currentClass == "Trapper")
+            {
+                yield return new WaitForSeconds(actionDelay);
+                battleHandler.targetedCharacterBattle = playerTarget;
+                battleHandler.targetedCharacterBattle.TrapOnTurn(() => { });
+                BattleHandler.isSelecting = false;
+                battleHandler.SetPlayerCharacterBattle();
+            }
+            else if (battleHandler.playerCharacterBattle.currentClass == "Paladin")
+            {
+                yield return new WaitForSeconds(actionDelay);
+                battleHandler.targetedCharacterBattle = playerTarget;
+                battleHandler.targetedCharacterBattle.HealOnTurn(battleHandler.playerCharacterBattle.healingAmount / 2, () => { });
+                battleHandler.targetedCharacterBattle.ShieldOnTurn(battleHandler.playerCharacterBattle.shieldAmount / 2, () => { });
+                BattleHandler.isSelecting = false;
+                battleHandler.SetPlayerCharacterBattle();
             }
         }
     }

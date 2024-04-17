@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentClass: Barbarian
+  currentClass: Knight
   turnIndicator: {fileID: 1995763232}
   startingHealth: 250
   healthBar: {fileID: 1776406956}
@@ -1239,6 +1239,7 @@ MonoBehaviour:
   hasMagicSpike: 0
   magicSpikeDamage: 30
   hasTrap: 0
+  hasEvasive: 0
   trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
@@ -2467,7 +2468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0c4e0260f015479d8838cf626b47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentClass: Knight
+  currentClass: Paladin
   turnIndicator: {fileID: 1983872452}
   startingHealth: 250
   healthBar: {fileID: 1151744365}
@@ -2493,6 +2494,7 @@ MonoBehaviour:
   hasMagicSpike: 0
   magicSpikeDamage: 30
   hasTrap: 0
+  hasEvasive: 0
   trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
@@ -3721,6 +3723,7 @@ MonoBehaviour:
   hasMagicSpike: 0
   magicSpikeDamage: 10
   hasTrap: 0
+  hasEvasive: 0
   trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
@@ -5513,6 +5516,7 @@ MonoBehaviour:
   hasMagicSpike: 0
   magicSpikeDamage: 10
   hasTrap: 0
+  hasEvasive: 0
   trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
@@ -5649,6 +5653,7 @@ MonoBehaviour:
   hasMagicSpike: 0
   magicSpikeDamage: 10
   hasTrap: 0
+  hasEvasive: 0
   trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
@@ -6928,6 +6933,7 @@ MonoBehaviour:
   hasMagicSpike: 0
   magicSpikeDamage: 10
   hasTrap: 0
+  hasEvasive: 0
   trapDamage: 10
   isPoisoned: 0
   poisonDamage: 5
