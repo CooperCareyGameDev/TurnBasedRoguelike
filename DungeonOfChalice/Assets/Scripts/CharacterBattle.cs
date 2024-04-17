@@ -54,7 +54,7 @@ public class CharacterBattle : MonoBehaviour
     [Header("Debuffs")]
     public bool isPoisoned = false;
     [SerializeField] private int poisonDamage = 5;
-    [SerializeField] private int currentBleed = 0;
+    public int currentBleed = 0;
     [SerializeField] private int bleedRequired = 2;
     [SerializeField] private int bleedDamage = 25;
     public bool isWeakened = false;
