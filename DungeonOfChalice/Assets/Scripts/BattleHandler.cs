@@ -98,9 +98,10 @@ public class BattleHandler : MonoBehaviour
         if (playerCharacterBattle.currentClass == "Knight")
         {
             // Shield ally
-            BattleHandler.isSelecting = true; 
-            //StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
+            BattleHandler.isSelecting = true;
             
+            //StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
+
 
         }
         else if (playerCharacterBattle.currentClass == "Barbarian")
@@ -111,36 +112,37 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Mage")
         {
             // Give ally retaliatory damage
-            playerCharacterBattle.hasMagicSpike = true; 
-            StartCoroutine(WaitToHeal(0));
+            BattleHandler.isSelecting = true; 
+            //playerCharacterBattle.hasMagicSpike = true; 
+            //StartCoroutine(WaitToHeal(0));
         }
         else if (playerCharacterBattle.currentClass == "Archer")
         {
             // Apply evasive, 50% chancee to dodge attack
-            StartCoroutine(WaitToHeal(0));
+            BattleHandler.isSelecting = true;
+            //StartCoroutine(WaitToHeal(0));
             
         }
         else if (playerCharacterBattle.currentClass == "Cleric")
         {
             // Heal
-            StartCoroutine(WaitToHeal(playerCharacterBattle.healingAmount));
+            BattleHandler.isSelecting = true;
         }
         else if (playerCharacterBattle.currentClass == "King")
         {
             // Apply shield to ally
-            StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
+            BattleHandler.isSelecting = true;
         }
         else if (playerCharacterBattle.currentClass == "Trapper")
         {
             // Apply trap to ally
-            playerCharacterBattle.hasTrap = true;
-            StartCoroutine(WaitToHeal(0));
+            BattleHandler.isSelecting = true;
         }
         else if (playerCharacterBattle.currentClass == "Paladin")
         {
             // Heals and applies shield
-            StartCoroutine(WaitToHeal(playerCharacterBattle.healingAmount / 2));
-            StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount / 2));
+            BattleHandler.isSelecting = true; 
+            
         }
         playerCharacterBattle.hasDoneTurn = true;
         CharacterBattle.turnsLeft--;
@@ -156,7 +158,7 @@ public class BattleHandler : MonoBehaviour
         }
         else
         {
-            SetPlayerCharacterBattle();
+            
             Debug.LogError("Setting Character battle");
         }
         //battleCanvas.enabled = false;

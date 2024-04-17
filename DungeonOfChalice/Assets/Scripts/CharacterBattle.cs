@@ -48,6 +48,8 @@ public class CharacterBattle : MonoBehaviour
     public bool hasMagicSpike = false;
     [SerializeField] private int magicSpikeDamage = 10;
     public bool hasTrap = false;
+    public bool hasEvasive = false;
+    private int dodgeNo = 1; 
     [SerializeField] private int trapDamage = 10;
     [Header("Debuffs")]
     public bool isPoisoned = false;
@@ -133,8 +135,15 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
+        if (battleHandler.playerCharacterBattle == GetComponent<CharacterBattle>())
+        {
+            turnIndicator.SetActive(true);
+        }
+        else
+        {
+            turnIndicator.SetActive(false);
+        }
         partyMembersAlive = battleHandler.players.Count;
-        
         attackPower = startingAttackPower + (10 * damageBuffStacks);
         critPercentChance = startingCritChance + (10 * critBuffStacks);
         healingAmount = startingHealAmount + (10 * healBuffStacks);
@@ -174,7 +183,7 @@ public class CharacterBattle : MonoBehaviour
             Debug.LogError(battleHandler.players.Count);
             Destroy(gameObject);
         }
-        Debug.LogError(battleHandler.players.Count);
+        //Debug.LogError(battleHandler.players.Count);
         healthText.text = $"Health: {currentHealth} / {startingHealth}";
         rageChargeText.text = $"Rage: {currentCharge} / {chargeRequired}"; 
         if (currentCharge > chargeRequired)
@@ -224,8 +233,29 @@ public class CharacterBattle : MonoBehaviour
     public void BuffOnTurn(Action onBuffComplete)
     {
         isBuffed = true;
-        Debug.LogError("Buffing");
+        
         onBuffComplete();
+    }
+
+    public void GiveSpikeOnTurn(Action onSpikeComplete)
+    {
+        hasMagicSpike = true;
+        
+        onSpikeComplete();
+    }
+
+    public void GiveEvasiveOnTurn(Action onEvasiveComplete)
+    {
+        hasEvasive = true;
+
+        onEvasiveComplete();
+    }
+
+    public void TrapOnTurn(Action onTrapComplete)
+    {
+        hasTrap = true;
+
+        onTrapComplete();
     }
     public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
     {
@@ -258,6 +288,16 @@ public class CharacterBattle : MonoBehaviour
     public void TakeDamage(int damageAmount, bool isCrit)
     {
         //Debug.Log("Taking damage");
+        if (hasEvasive)
+        {
+            dodgeNo = UnityEngine.Random.Range(1, 3);
+        }
+        if (hasEvasive && dodgeNo == 2)
+        {
+            hasEvasive = false;
+            DamagePopup.Create(transform.position, 0, false);
+            return;
+        }
         if (isCrit)
         {
             if (currentShield > damageAmount * 2)
