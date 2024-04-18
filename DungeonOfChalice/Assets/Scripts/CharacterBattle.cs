@@ -62,7 +62,7 @@ public class CharacterBattle : MonoBehaviour
     public static int partyMembersAlive = 2;
     public static int turnsLeft = 2;
     public bool hasDoneTurn = false;
-    Animator animator; 
+    public Animator animator; 
     //private GameObject[] playerArray;
     //public List<GameObject> playerList = new List<GameObject>();
     [SerializeField] private int orderIndex; 
