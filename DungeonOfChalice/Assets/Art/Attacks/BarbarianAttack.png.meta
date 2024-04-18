@@ -61,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 96
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -332,7 +332,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BarbarianAttack_0: 1801389281995599979
+      BarbarianAttack_1: -7570170388154438074
+      BarbarianAttack_2: -6757370003096125126
+      BarbarianAttack_3: -5532249381173381199
+      BarbarianAttack_4: -3965926551937140479
+      BarbarianAttack_5: 1841481839167804700
+      BarbarianAttack_6: -8921621857201967597
+      BarbarianAttack_7: -9106045152275980152
+      BarbarianAttack_8: 4057952202620072681
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
