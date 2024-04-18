@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 57801ad654356ad45b42d4289a36bf6b
+guid: abf44b8246e06e1488991e4be37708e3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -203525247863758220
-    second: ArcherAttack_0
+      213: -5063383140443079399
+    second: CaveEnemyPortraits_0
   - first:
-      213: -3171473108857030213
-    second: ArcherAttack_1
+      213: 6114892876117789035
+    second: CaveEnemyPortraits_1
   - first:
-      213: -7112191851047232952
-    second: ArcherAttack_2
+      213: -1822649098704964264
+    second: CaveEnemyPortraits_2
+  - first:
+      213: -4983309149792280966
+    second: CaveEnemyPortraits_3
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -43,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,12 +119,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ArcherAttack_0
+      name: CaveEnemyPortraits_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 96
+        x: 4
+        y: 0
+        width: 86
         height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -130,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 472e14a8ddeec2df0800000000000000
-      internalID: -203525247863758220
+      spriteID: 91d30385cdf3bb9b0800000000000000
+      internalID: -5063383140443079399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ArcherAttack_1
+      name: CaveEnemyPortraits_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
+        x: 6
+        y: 95
+        width: 82
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb97fdbb20aacf3d0800000000000000
-      internalID: -3171473108857030213
+      spriteID: b6941983ca67cd450800000000000000
+      internalID: 6114892876117789035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ArcherAttack_2
+      name: CaveEnemyPortraits_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 96
-        height: 96
+        x: 95
+        y: 95
+        width: 90
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,134 +175,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84ad6e7813b6c4d90800000000000000
-      internalID: -7112191851047232952
+      spriteID: 85531813d46a4b6e0800000000000000
+      internalID: -1822649098704964264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ArcherAttack_3
+      name: CaveEnemyPortraits_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 96
-        height: 96
+        x: 95
+        y: 7
+        width: 88
+        height: 79
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a1778dfebe301114f8570ce0b918df29
-      internalID: -900734215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4586fe99cc4560f42b1c000b460328e2
-      internalID: 2049466614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_5
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61402ab74b478bb40a443dc716caf1b6
-      internalID: -1756632965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5fe793e91936114d898f8b5bd3a9dfc
-      internalID: -137091752
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8726b4b4095c6e141ac5a384adb38a1b
-      internalID: 2129925103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_8
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80052d350247a3645873edf0f49cd757
-      internalID: 1853885574
+      spriteID: a7e5da02bbab7dab0800000000000000
+      internalID: -4983309149792280966
       vertices: []
       indices: 
       edges: []
@@ -307,23 +205,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 832a1cbc749c2434c94af7c2f307c002
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      ArcherAttack_0: -203525247863758220
-      ArcherAttack_1: -3171473108857030213
-      ArcherAttack_2: -7112191851047232952
-      ArcherAttack_3: -900734215
-      ArcherAttack_4: 2049466614
-      ArcherAttack_5: -1756632965
-      ArcherAttack_6: -137091752
-      ArcherAttack_7: 2129925103
-      ArcherAttack_8: 1853885574
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

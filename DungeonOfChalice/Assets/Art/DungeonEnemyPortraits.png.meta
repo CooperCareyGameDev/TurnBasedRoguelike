@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 57801ad654356ad45b42d4289a36bf6b
+guid: c5b20d5f38bca28458d72391bb25a729
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -203525247863758220
-    second: ArcherAttack_0
+      213: -1313260215858359623
+    second: DungeonEnemyPortraits_0
   - first:
-      213: -3171473108857030213
-    second: ArcherAttack_1
+      213: 2582520250502410084
+    second: DungeonEnemyPortraits_1
   - first:
-      213: -7112191851047232952
-    second: ArcherAttack_2
+      213: -5036753237569790376
+    second: DungeonEnemyPortraits_2
+  - first:
+      213: 7860059923300840600
+    second: DungeonEnemyPortraits_3
+  - first:
+      213: -756679282850849865
+    second: DungeonEnemyPortraits_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -43,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ArcherAttack_0
+      name: DungeonEnemyPortraits_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 96
-        height: 96
+        x: 10
+        y: 191
+        width: 79
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 472e14a8ddeec2df0800000000000000
-      internalID: -203525247863758220
+      spriteID: 9b21c18aacc56cde0800000000000000
+      internalID: -1313260215858359623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ArcherAttack_1
+      name: DungeonEnemyPortraits_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
+        x: 95
+        y: 102
+        width: 97
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb97fdbb20aacf3d0800000000000000
-      internalID: -3171473108857030213
+      spriteID: 46fe27c2c74f6d320800000000000000
+      internalID: 2582520250502410084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ArcherAttack_2
+      name: DungeonEnemyPortraits_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 96
-        height: 96
+        x: 3
+        y: 95
+        width: 87
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,134 +178,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84ad6e7813b6c4d90800000000000000
-      internalID: -7112191851047232952
+      spriteID: 85e9a55cd9bd91ab0800000000000000
+      internalID: -5036753237569790376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ArcherAttack_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1778dfebe301114f8570ce0b918df29
-      internalID: -900734215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4586fe99cc4560f42b1c000b460328e2
-      internalID: 2049466614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_5
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61402ab74b478bb40a443dc716caf1b6
-      internalID: -1756632965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_6
+      name: DungeonEnemyPortraits_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 96
-        height: 96
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f5fe793e91936114d898f8b5bd3a9dfc
-      internalID: -137091752
+      spriteID: 89471a91bda841d60800000000000000
+      internalID: 7860059923300840600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ArcherAttack_7
+      name: DungeonEnemyPortraits_4
       rect:
         serializedVersion: 2
-        x: 96
+        x: 104
         y: 0
-        width: 96
-        height: 96
+        width: 84
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8726b4b4095c6e141ac5a384adb38a1b
-      internalID: 2129925103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArcherAttack_8
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80052d350247a3645873edf0f49cd757
-      internalID: 1853885574
+      spriteID: 7bb17c8833cbf75f0800000000000000
+      internalID: -756679282850849865
       vertices: []
       indices: 
       edges: []
@@ -307,23 +229,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 832a1cbc749c2434c94af7c2f307c002
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      ArcherAttack_0: -203525247863758220
-      ArcherAttack_1: -3171473108857030213
-      ArcherAttack_2: -7112191851047232952
-      ArcherAttack_3: -900734215
-      ArcherAttack_4: 2049466614
-      ArcherAttack_5: -1756632965
-      ArcherAttack_6: -137091752
-      ArcherAttack_7: 2129925103
-      ArcherAttack_8: 1853885574
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
