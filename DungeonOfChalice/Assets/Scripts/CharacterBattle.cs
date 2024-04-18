@@ -62,11 +62,13 @@ public class CharacterBattle : MonoBehaviour
     public static int partyMembersAlive = 2;
     public static int turnsLeft = 2;
     public bool hasDoneTurn = false;
+    Animator animator; 
     //private GameObject[] playerArray;
     //public List<GameObject> playerList = new List<GameObject>();
     [SerializeField] private int orderIndex; 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         //playerArray = GameObject.FindGameObjectsWithTag("Player");
         
         /*foreach (GameObject player in playerArray)
@@ -210,8 +212,8 @@ public class CharacterBattle : MonoBehaviour
     public void Attack(CharacterBattle targetCharacterBattle, Action onAttackComplete)
     {
         if (isDead) { return; }
-        spriteRenderer.color = Color.yellow;
         //currentCharge++;
+        animator.SetTrigger("Attack");
         onAttackComplete();
     }
 
