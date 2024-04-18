@@ -10,6 +10,7 @@ public class CharacterBattle : MonoBehaviour
     
     SpriteRenderer spriteRenderer;
     public string currentClass = "Knight";
+    [SerializeField] private bool isEnemy = false; 
     [SerializeField] private GameObject turnIndicator;
     private HealthSystem healthSystem;
     [Header("Health")]
@@ -34,7 +35,6 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rageChargeText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI shieldText;
-    [SerializeField] private bool isEnemy = false; 
     private int randomNumber;
     private bool isCrit;
     private bool isDead = false; 
@@ -62,6 +62,7 @@ public class CharacterBattle : MonoBehaviour
     public static int partyMembersAlive = 2;
     public static int turnsLeft = 2;
     public bool hasDoneTurn = false;
+    [HideInInspector]
     public Animator animator; 
     //private GameObject[] playerArray;
     //public List<GameObject> playerList = new List<GameObject>();
