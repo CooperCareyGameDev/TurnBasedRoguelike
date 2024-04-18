@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleHandler : MonoBehaviour
@@ -371,6 +370,13 @@ public class BattleHandler : MonoBehaviour
             }*/
 
         }
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy == null)
+            {
+                enemies.Remove(enemy);
+            }
+        }
         //TestBattleOver();
         switch (playerCharacterBattle.currentClass)
         {
@@ -735,6 +741,8 @@ public class BattleHandler : MonoBehaviour
             enemyCharacterBattle.TakeTrapDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasTrap);
             playerCharacterBattle.GetComponent<CharacterBattle>().hasTrap = false;
         }
+        enemyCharacterBattle.hasDoneTurn = true;
+        SetEnemyCharacterBattle();
         state = State.WaitingForPlayer;
         for (int i = 0; i < players.Count; i++)
         {
@@ -855,7 +863,36 @@ public class BattleHandler : MonoBehaviour
     {
         if (enemies.Count > 0)
         {
-            enemyCharacterBattle = enemies[0].GetComponent<CharacterBattle>(); 
+            if (!enemies[0].GetComponent<CharacterBattle>().hasDoneTurn && enemies[0] != null)
+            {
+                enemyCharacterBattle = enemies[0].GetComponent<CharacterBattle>();
+                Debug.LogError("setenemycharacterbattle");
+            }
+            else if (!enemies[1].GetComponent<CharacterBattle>().hasDoneTurn && enemies[1] != null)
+            {
+                enemyCharacterBattle = enemies[1].GetComponent<CharacterBattle>();
+                Debug.LogError("setenemycharacterbattle");
+            }
+            else if (!enemies[2].GetComponent<CharacterBattle>().hasDoneTurn && enemies[2] != null)
+            {
+                enemyCharacterBattle = enemies[2].GetComponent<CharacterBattle>();
+            }
+            else if (!enemies[3].GetComponent<CharacterBattle>().hasDoneTurn && enemies[3] != null)
+            {
+                enemyCharacterBattle = enemies[3].GetComponent<CharacterBattle>();
+            }  
+            else if (!enemies[4].GetComponent<CharacterBattle>().hasDoneTurn && enemies[4] != null)
+            {
+                enemyCharacterBattle = enemies[4].GetComponent<CharacterBattle>();
+            }
+            else
+            {
+                foreach (GameObject enemy in enemies)
+                {
+                    Debug.LogError("Foreach");
+                    enemy.GetComponent<CharacterBattle>().hasDoneTurn = false;
+                }
+            }
         }
         else
         {
