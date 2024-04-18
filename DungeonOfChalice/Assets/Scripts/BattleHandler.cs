@@ -859,6 +859,18 @@ public class BattleHandler : MonoBehaviour
             }
         }
     }
+
+    private int DetermineEnemyCharacterBattleIndex(int input)
+    {
+        if (input > enemies.Count)
+        {
+            return enemies.Count - 1; 
+        }
+        else
+        {
+            return input;
+        }
+    }
     public void SetEnemyCharacterBattle()
     {
         if (enemies.Count > 0)
@@ -873,7 +885,7 @@ public class BattleHandler : MonoBehaviour
                 enemyCharacterBattle = enemies[1].GetComponent<CharacterBattle>();
                 Debug.LogError("setenemycharacterbattle");
             }
-            else if (!enemies[2].GetComponent<CharacterBattle>().hasDoneTurn && enemies[2] != null)
+            else if (enemies[2] != null && !enemies[2].GetComponent<CharacterBattle>().hasDoneTurn)
             {
                 enemyCharacterBattle = enemies[2].GetComponent<CharacterBattle>();
             }
