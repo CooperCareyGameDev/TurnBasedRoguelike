@@ -213,7 +213,7 @@ public class CharacterBattle : MonoBehaviour
     {
         if (isDead) { return; }
         //currentCharge++;
-        animator.SetTrigger("Attack");
+        //animator.SetTrigger("Attack");
         onAttackComplete();
     }
 
