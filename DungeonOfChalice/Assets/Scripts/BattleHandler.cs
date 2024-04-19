@@ -38,6 +38,8 @@ public class BattleHandler : MonoBehaviour
     {
         enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
         playersArray = GameObject.FindGameObjectsWithTag("Player");
+        playerCharacterBattle = playersArray[0].GetComponent<CharacterBattle>();
+        enemyCharacterBattle = enemiesArray[0].GetComponent<CharacterBattle>();
         foreach (GameObject player in playersArray) 
         {
             players.Add(player); 

@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 5099171326045784952}
   - component: {fileID: 4402172904922832765}
   m_Layer: 0
-  m_Name: ForestEnemy
+  m_Name: SmallMushroomEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
