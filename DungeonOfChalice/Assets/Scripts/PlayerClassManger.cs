@@ -10,10 +10,10 @@ public class PlayerClassManger : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerText3;
     [SerializeField] TextMeshProUGUI playerText4;
 
-    public static string firstPlayerClassName;
-    public static string secondPlayerClassName;
-    public static string thirdPlayerClassName;
-    public static string fourthPlayerClassName;
+    public static string firstPlayerClassName = "Knight";
+    public static string secondPlayerClassName = "Barbarian";
+    public static string thirdPlayerClassName = "Mage";
+    public static string fourthPlayerClassName = "Archer";
 
     private void Update()
     {

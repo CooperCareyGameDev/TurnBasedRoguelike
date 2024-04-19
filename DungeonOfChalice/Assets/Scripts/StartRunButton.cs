@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StartRunButton : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class StartRunButton : MonoBehaviour
         {
             // Start game
             Debug.Log("Game Started");
+            SceneManager.LoadScene(5);
             TooltipScreenSpaceUI.ShowTooltip_Static("Success!");
         }
         else
