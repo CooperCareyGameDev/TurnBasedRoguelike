@@ -862,9 +862,9 @@ public class BattleHandler : MonoBehaviour
 
     private int DetermineEnemyCharacterBattleIndex(int input)
     {
-        if (input > enemies.Count)
+        if (input > (enemies.Count - 1))
         {
-            return enemies.Count - 1; 
+            return (enemies.Count - 1); 
         }
         else
         {
@@ -875,25 +875,25 @@ public class BattleHandler : MonoBehaviour
     {
         if (enemies.Count > 0)
         {
-            if (!enemies[0].GetComponent<CharacterBattle>().hasDoneTurn && enemies[0] != null)
+            if (!enemies[DetermineEnemyCharacterBattleIndex(0)].GetComponent<CharacterBattle>().hasDoneTurn && enemies[DetermineEnemyCharacterBattleIndex(0)] != null)
             {
                 enemyCharacterBattle = enemies[0].GetComponent<CharacterBattle>();
                 Debug.LogError("setenemycharacterbattle");
             }
-            else if (!enemies[1].GetComponent<CharacterBattle>().hasDoneTurn && enemies[1] != null)
+            else if (!enemies[DetermineEnemyCharacterBattleIndex(1)].GetComponent<CharacterBattle>().hasDoneTurn && enemies[DetermineEnemyCharacterBattleIndex(1)] != null)
             {
                 enemyCharacterBattle = enemies[1].GetComponent<CharacterBattle>();
                 Debug.LogError("setenemycharacterbattle");
             }
-            else if (enemies[2] != null && !enemies[2].GetComponent<CharacterBattle>().hasDoneTurn)
+            else if (enemies[DetermineEnemyCharacterBattleIndex(2)] != null && !enemies[DetermineEnemyCharacterBattleIndex(2)].GetComponent<CharacterBattle>().hasDoneTurn)
             {
                 enemyCharacterBattle = enemies[2].GetComponent<CharacterBattle>();
             }
-            else if (!enemies[3].GetComponent<CharacterBattle>().hasDoneTurn && enemies[3] != null)
+            else if (!enemies[DetermineEnemyCharacterBattleIndex(3)].GetComponent<CharacterBattle>().hasDoneTurn && enemies[DetermineEnemyCharacterBattleIndex(3)] != null)
             {
                 enemyCharacterBattle = enemies[3].GetComponent<CharacterBattle>();
             }  
-            else if (!enemies[4].GetComponent<CharacterBattle>().hasDoneTurn && enemies[4] != null)
+            else if (!enemies[DetermineEnemyCharacterBattleIndex(4)].GetComponent<CharacterBattle>().hasDoneTurn && enemies[DetermineEnemyCharacterBattleIndex(4)] != null)
             {
                 enemyCharacterBattle = enemies[4].GetComponent<CharacterBattle>();
             }
