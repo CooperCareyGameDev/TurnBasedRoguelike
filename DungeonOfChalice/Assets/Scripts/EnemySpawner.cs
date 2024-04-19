@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
     public List<Transform> spawnLocations = new List<Transform>();
 
-    private void Start()
+    private void Awake()
     {
         Instantiate(smallMushroomEnemy, spawnLocations[0].position, Quaternion.identity);
         Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);

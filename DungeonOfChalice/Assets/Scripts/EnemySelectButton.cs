@@ -5,13 +5,16 @@ using UnityEngine;
 public class EnemySelectButton : MonoBehaviour
 {
     [SerializeField] private CharacterBattle target;
-    [SerializeField] private BattleHandler battleHandler;
+    private BattleHandler battleHandler;
     private void Update()
     {
         
     }
-    
 
+    private void Awake()
+    {
+        battleHandler = FindFirstObjectByType<BattleHandler>();
+    }
     public void SetEnemyCharacterBattle()
     {
         battleHandler.enemyCharacterBattle = target;

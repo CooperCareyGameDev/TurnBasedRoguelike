@@ -15,7 +15,7 @@ public class PlayerSpawner : MonoBehaviour
 
     public List<Transform> spawnLocations = new List<Transform>();
 
-    private void Start()
+    private void Awake()
     {
         switch (PlayerClassManger.firstPlayerClassName)
         {

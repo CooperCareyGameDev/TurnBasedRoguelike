@@ -952,6 +952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentClass: Trapper
+  isEnemy: 0
   turnIndicator: {fileID: 1322420122371510106}
   startingHealth: 250
   healthBar: {fileID: 4345778324772786957}
@@ -967,7 +968,6 @@ MonoBehaviour:
   rageChargeText: {fileID: 0}
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
-  isEnemy: 0
   damageBuffStacks: 0
   critBuffStacks: 0
   healBuffStacks: 0
@@ -1029,7 +1029,7 @@ Animator:
   m_GameObject: {fileID: 5504096145770279937}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae4a025992797294f86edeaf4804f9fb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
