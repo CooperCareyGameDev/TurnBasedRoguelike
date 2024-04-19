@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentClass: Knight
+  isEnemy: 0
   turnIndicator: {fileID: 5819919726276787309}
   startingHealth: 250
   healthBar: {fileID: 8029240309075369517}
@@ -127,7 +128,6 @@ MonoBehaviour:
   rageChargeText: {fileID: 0}
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
-  isEnemy: 0
   damageBuffStacks: 0
   critBuffStacks: 0
   healBuffStacks: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   bleedDamage: 25
   isWeakened: 0
   hasDoneTurn: 0
+  animator: {fileID: 0}
   orderIndex: 0
 --- !u!114 &7367512337442352098
 MonoBehaviour:
@@ -1402,7 +1403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3752327889019197823, guid: a265157d58019244da14e674220bbfe1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.532
       objectReference: {fileID: 0}
     - target: {fileID: 3752327889019197823, guid: a265157d58019244da14e674220bbfe1, type: 3}
       propertyPath: m_LocalPosition.z
