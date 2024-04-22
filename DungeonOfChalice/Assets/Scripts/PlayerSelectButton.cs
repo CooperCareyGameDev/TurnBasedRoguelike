@@ -7,7 +7,12 @@ public class PlayerSelectButton : MonoBehaviour
     [SerializeField] private CharacterBattle playerTarget;
     [SerializeField] private BattleHandler battleHandler;
     [SerializeField] private float hideDelay = 2.0f;
-    [SerializeField] private float actionDelay = 1.5f; 
+    [SerializeField] private float actionDelay = 1.5f;
+
+    private void Start()
+    {
+        battleHandler = FindFirstObjectByType<BattleHandler>();
+    }
     public void SetPlayerCharacterBattle()
     {
         if (BattleHandler.isSelecting) { return; }

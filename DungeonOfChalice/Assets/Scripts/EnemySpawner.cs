@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
         Cave,
         Dungeon
     }
+    [SerializeField] private int currentWave = 1;
     [Header("Forest Enemies")]
     [SerializeField] GameObject smallMushroomEnemy;
     [SerializeField] GameObject goldVineEnemy;
@@ -39,4 +40,8 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(smallMushroomEnemy, spawnLocations[4].position, Quaternion.identity);
     }
 
+    private void Update()
+    {
+        //Debug.Log(Random.Range(1, 4));
+    }
 }

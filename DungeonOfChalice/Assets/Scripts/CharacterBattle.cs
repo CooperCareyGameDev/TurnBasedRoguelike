@@ -32,7 +32,6 @@ public class CharacterBattle : MonoBehaviour
     private int startingShieldAmount = 0; 
     public int ragePower = 0;
     [Header("Text References")]
-    [SerializeField] private TextMeshProUGUI rageChargeText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI shieldText;
     private int randomNumber;
@@ -59,8 +58,8 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int bleedDamage = 25;
     public bool isWeakened = false;
     [Header("Player Turn Management")]
-    public static int partyMembersAlive = 2;
-    public static int turnsLeft = 2;
+    public static int partyMembersAlive = 4;
+    public static int turnsLeft = 4;
     public bool hasDoneTurn = false;
     [HideInInspector]
     public Animator animator; 
@@ -138,6 +137,8 @@ public class CharacterBattle : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(turnsLeft);
+        //Debug.Log(partyMembersAlive);
         if (battleHandler.playerCharacterBattle == GetComponent<CharacterBattle>())
         {
             turnIndicator.SetActive(true);
@@ -152,7 +153,8 @@ public class CharacterBattle : MonoBehaviour
         healingAmount = startingHealAmount + (10 * healBuffStacks);
         shieldAmount = startingShieldAmount + (10 * shieldBuffStacks);
         //Debug.Log(isDead);
-        shieldText.text = currentShield + " shield";
+        Debug.Log(shieldText);
+        //shieldText.text = currentShield + " shield";
         
         if (currentHealth <= 0 && Relics.hasSecondChance && !isEnemy)
         {
@@ -163,6 +165,7 @@ public class CharacterBattle : MonoBehaviour
         else if (currentHealth <= 0 && !Relics.hasSecondChance)
         {
             //isDead = true;
+            
         }
         else
         {
@@ -184,11 +187,13 @@ public class CharacterBattle : MonoBehaviour
                 //Debug.LogError(player.name);
             }
             Debug.LogError(battleHandler.players.Count);
+            turnsLeft--;
             Destroy(gameObject);
         }
         //Debug.LogError(battleHandler.players.Count);
-        healthText.text = $"Health: {currentHealth} / {startingHealth}";
-        rageChargeText.text = $"Rage: {currentCharge} / {chargeRequired}"; 
+        //healthText.text = $"Health: {currentHealth} / {startingHealth}";
+        shieldText.text = currentShield + " shield";
+        battleHandler.rageText.text = $"Rage: {currentCharge} / {chargeRequired}"; 
         if (currentCharge > chargeRequired)
         {
             currentCharge = chargeRequired;
@@ -262,7 +267,6 @@ public class CharacterBattle : MonoBehaviour
     }
     public void UseRageAbility(CharacterBattle targetCharacterBattle, Action onRageComplete) 
     {
-        spriteRenderer.color = Color.cyan;
         currentCharge = 0;
         onRageComplete();
 

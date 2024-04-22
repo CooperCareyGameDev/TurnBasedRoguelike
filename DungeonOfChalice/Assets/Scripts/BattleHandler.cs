@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
 
 public class BattleHandler : MonoBehaviour
 {
@@ -27,7 +28,9 @@ public class BattleHandler : MonoBehaviour
     public List<CharacterBattle> enemyCharacterBattles = new List<CharacterBattle>();
     public List<GameObject> players = new List<GameObject>();
     private bool isDead = false;
-    public static bool isSelecting = false; 
+    public static bool isSelecting = false;
+    public TextMeshProUGUI rageText; 
+
     private enum State
     {
         WaitingForPlayer,
@@ -150,7 +153,8 @@ public class BattleHandler : MonoBehaviour
         if (CharacterBattle.turnsLeft <= 0)
         {
             StartCoroutine(EnemyAttack());
-            CharacterBattle.turnsLeft = CharacterBattle.partyMembersAlive;
+            
+            CharacterBattle.turnsLeft = players.Count;
             foreach (GameObject player in players)
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
@@ -341,7 +345,7 @@ public class BattleHandler : MonoBehaviour
             if (CharacterBattle.turnsLeft <= 0)
             {
                 StartCoroutine(EnemyAttack());
-                CharacterBattle.turnsLeft = CharacterBattle.partyMembersAlive;
+                CharacterBattle.turnsLeft = players.Count;
                 foreach (GameObject player in players)
                 {
                     player.GetComponent<CharacterBattle>().hasDoneTurn = false;
@@ -358,7 +362,10 @@ public class BattleHandler : MonoBehaviour
 
     private void Update()
     {
-        
+        if (enemies.Count == 0)
+        {
+            Debug.Log("All enemies defeated");
+        }
         attackTimer += Time.deltaTime; 
         if (state == State.WaitingForPlayer)
         {
@@ -705,7 +712,8 @@ public class BattleHandler : MonoBehaviour
         if (CharacterBattle.turnsLeft <= 0)
         {
             StartCoroutine(EnemyAttack());
-            CharacterBattle.turnsLeft = CharacterBattle.partyMembersAlive;
+            Debug.Log("setting to party members alive");
+            CharacterBattle.turnsLeft = players.Count;
             foreach (GameObject player in players)
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
