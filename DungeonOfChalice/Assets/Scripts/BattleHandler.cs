@@ -928,7 +928,7 @@ public class BattleHandler : MonoBehaviour
             {
                 foreach (GameObject player in players)
                 {
-                    player.GetComponent<CharacterBattle>().HealOnTurn(30, () => {
+                    player.GetComponent<CharacterBattle>().HealOnTurn(20, () => {
                     });
                    //DamagePopup.CreateHealPopup(transform.position, 200);
                 }

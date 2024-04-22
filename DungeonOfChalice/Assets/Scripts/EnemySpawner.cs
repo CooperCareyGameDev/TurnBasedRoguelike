@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
         Dungeon
     }
     [SerializeField] private int currentWave = 1;
+    [SerializeField] private TextMeshProUGUI waveText; 
     [Header("Forest Enemies")]
     [SerializeField] GameObject smallMushroomEnemy;
     [SerializeField] GameObject goldVineEnemy;
@@ -42,6 +44,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        waveText.text = $"Current Wave: {currentWave}";
         //Debug.Log(Random.Range(1, 4));
     }
 
