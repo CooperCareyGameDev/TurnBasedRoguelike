@@ -605,10 +605,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "It is rumored that this dungeon contains a chalice that grants \neternal
-    life. You must fight your way through the monsters.\n\n\nThere are eight classes
+    life. You must fight your way through the monsters.\n\nThere are eight classes
     to choose from, and you can only bring in four\n\nEach class has a primary attack,
-    a secondary action, and a rage ability\n\nRage charges up as you complete turns,
-    and is used for rage abilities\n\nGood Luck!"
+    a secondary action, and a rage ability\nTo set an attack target, click on the
+    desired enemy and then attack\nTo use a secondary, press the button and then
+    select your target\n\nRage charges up as you complete turns, and is used for
+    rage abilities\n\nGood Luck!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

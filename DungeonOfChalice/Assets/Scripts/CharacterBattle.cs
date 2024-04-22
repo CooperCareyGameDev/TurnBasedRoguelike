@@ -68,6 +68,10 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int orderIndex; 
     private void Awake()
     {
+        if (Relics.shieldBuff && !isEnemy)
+        {
+            currentShield = 5;
+        }
         animator = GetComponent<Animator>();
         //playerArray = GameObject.FindGameObjectsWithTag("Player");
         
@@ -148,10 +152,18 @@ public class CharacterBattle : MonoBehaviour
             turnIndicator.SetActive(false);
         }
         partyMembersAlive = battleHandler.players.Count;
-        attackPower = startingAttackPower + (10 * damageBuffStacks);
-        critPercentChance = startingCritChance + (10 * critBuffStacks);
-        healingAmount = startingHealAmount + (10 * healBuffStacks);
-        shieldAmount = startingShieldAmount + (10 * shieldBuffStacks);
+        attackPower = startingAttackPower + (5 * damageBuffStacks);
+        if (Relics.critChanceBuff && !isEnemy)
+        {
+            critPercentChance = startingCritChance + (10 * critBuffStacks) + 10;
+
+        }
+        else
+        {
+            critPercentChance = startingCritChance + (10 * critBuffStacks);
+        }
+        healingAmount = startingHealAmount + (5 * healBuffStacks);
+        shieldAmount = startingShieldAmount + (5 * shieldBuffStacks);
         //Debug.Log(isDead);
         Debug.Log(shieldText);
         //shieldText.text = currentShield + " shield";
@@ -473,5 +485,25 @@ public class CharacterBattle : MonoBehaviour
     public void RemoveTrap()
     {
         hasTrap = false;
+    }
+
+    public void GiveDamageBuffs(int amount)
+    {
+        damageBuffStacks += amount;
+    }
+
+    public void GiveCritBuffs(int amount)
+    {
+        critBuffStacks += amount;
+    }
+
+    public void GiveHealBuffs(int amount)
+    {
+        healBuffStacks += amount;
+    }
+
+    public void GiveShieldBuffs(int amount)
+    {
+        shieldBuffStacks += amount;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro; 
 
 public class BattleHandler : MonoBehaviour
@@ -29,8 +30,9 @@ public class BattleHandler : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
     private bool isDead = false;
     public static bool isSelecting = false;
-    public TextMeshProUGUI rageText; 
-
+    public TextMeshProUGUI rageText;
+    [SerializeField] Canvas nextWaveCanvas;
+    EnemySpawner enemySpawner;
     private enum State
     {
         WaitingForPlayer,
@@ -39,6 +41,7 @@ public class BattleHandler : MonoBehaviour
 
     private void Start()
     {
+        enemySpawner = FindFirstObjectByType<EnemySpawner>();
         enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
         playersArray = GameObject.FindGameObjectsWithTag("Player");
         playerCharacterBattle = playersArray[0].GetComponent<CharacterBattle>();
@@ -362,9 +365,10 @@ public class BattleHandler : MonoBehaviour
 
     private void Update()
     {
-        if (enemies.Count == 0)
+        if (enemies.Count == 0 && enemySpawner.GetCurrentWave() != 12)
         {
             Debug.Log("All enemies defeated");
+            nextWaveCanvas.enabled = true; 
         }
         attackTimer += Time.deltaTime; 
         if (state == State.WaitingForPlayer)

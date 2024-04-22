@@ -44,4 +44,14 @@ public class EnemySpawner : MonoBehaviour
     {
         //Debug.Log(Random.Range(1, 4));
     }
+
+    public void IncrementWave()
+    {
+        currentWave++;
+    }
+
+    public int GetCurrentWave()
+    {
+        return currentWave;
+    }
 }
