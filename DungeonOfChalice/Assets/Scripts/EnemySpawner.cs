@@ -84,87 +84,128 @@ public class EnemySpawner : MonoBehaviour
         else if (currentWave == 3 && once3)
         {
 
+            
+            
+            if (randomNo3 == 1)
+            {
+                Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(tallMushroomEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(tallMushroomEnemy, spawnLocations[3].position, Quaternion.identity);
+                Instantiate(smallMushroomEnemy, spawnLocations[4].position, Quaternion.identity); 
+            }
+            else if (randomNo3 == 2)
+            {
+                Instantiate(goldVineEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(tallMushroomEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(tallMushroomEnemy, spawnLocations[3].position, Quaternion.identity);
+                Instantiate(smallMushroomEnemy, spawnLocations[4].position, Quaternion.identity);
+            }
+            else if (randomNo3 == 3)
+            {
+                Instantiate(goldVineEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(tallMushroomEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(tallMushroomEnemy, spawnLocations[3].position, Quaternion.identity);
+                Instantiate(goldVineEnemy, spawnLocations[4].position, Quaternion.identity);
+            }
+            once3 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 4)
+        else if (currentWave == 4 && once4)
         {
-
+            if (randomNo4 == 1)
+            {
+                Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(swampMage, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(smallMushroomEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo4 == 2)
+            {
+                Instantiate(goldVineEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(swampMage, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(goldVineEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo4 == 3)
+            {
+                Instantiate(tallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(swampMage, spawnLocations[2].position, Quaternion.identity);
+            }
+            once4 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 5)
+        else if (currentWave == 5 && once5)
         {
-
+            once5 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 6)
+        else if (currentWave == 6 && once6)
         {
-
+            once6 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 7)
+        else if (currentWave == 7 && once7)
         {
-
+            once7 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 8)
+        else if (currentWave == 8 && once8)
         {
-
+            once8 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 9)
+        else if (currentWave == 9 && once9)
         {
-
+            once9 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 10)
+        else if (currentWave == 10 && once10)
         {
-
+            once10 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 11)
+        else if (currentWave == 11 && once11)
         {
-
+            once11 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 12)
+        else if (currentWave == 12 && once12)
         {
-
+            once12 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
             {
