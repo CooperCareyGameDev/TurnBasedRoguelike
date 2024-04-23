@@ -11,7 +11,8 @@ public class BattleHandler : MonoBehaviour
     public CharacterBattle playerCharacterBattle;
     public CharacterBattle enemyCharacterBattle;
     public CharacterBattle targetedCharacterBattle;
-    [SerializeField] private CharacterBattle activeCharacterBattle;
+    public CharacterBattle activeCharacterBattle;
+    public CharacterBattle enemyTargetCharacterBattle; 
 
     private State state;
     private float attackTimer = 0f;
@@ -734,26 +735,28 @@ public class BattleHandler : MonoBehaviour
     private void EnemyAttackLogic()
     {
         battleCanvas.enabled = true;
+        int randomNo = UnityEngine.Random.Range(0, players.Count);
+        enemyTargetCharacterBattle = players[randomNo].GetComponent<CharacterBattle>();
         if (enemyCharacterBattle.isWeakened)
         {
-            playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower / 2, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+            enemyTargetCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower / 2, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
             enemyCharacterBattle.isWeakened = false;
         }
         else
         {
-            playerCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+            enemyTargetCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
 
         }
-        if (playerCharacterBattle.hasMagicSpike)
+        if (enemyTargetCharacterBattle.hasMagicSpike)
         {
             enemyCharacterBattle.TakeMagicSpikeDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike);
-            playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike = false;
+            enemyTargetCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike = false;
         }
-        if (playerCharacterBattle.hasTrap)
+        if (enemyTargetCharacterBattle.hasTrap)
         {
             enemyCharacterBattle.isWeakened = true;
             enemyCharacterBattle.TakeTrapDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasTrap);
-            playerCharacterBattle.GetComponent<CharacterBattle>().hasTrap = false;
+            enemyTargetCharacterBattle.GetComponent<CharacterBattle>().hasTrap = false;
         }
         enemyCharacterBattle.hasDoneTurn = true;
         SetEnemyCharacterBattle();

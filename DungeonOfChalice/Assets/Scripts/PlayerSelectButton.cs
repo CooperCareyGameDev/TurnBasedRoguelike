@@ -20,6 +20,7 @@ public class PlayerSelectButton : MonoBehaviour
         {
             Debug.LogError("Selecting Target");
             battleHandler.playerCharacterBattle = playerTarget;
+            battleHandler.activeCharacterBattle = playerTarget;
             //Debug.LogError(battleHandler.playerCharacterBattle.name);
             //TooltipScreenSpaceUI.ShowTooltip_Static("Selected " + battleHandler.playerCharacterBattle.currentClass);
             //StartCoroutine(HideTooltip());

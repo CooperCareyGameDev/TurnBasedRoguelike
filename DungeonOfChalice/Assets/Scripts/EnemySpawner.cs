@@ -83,9 +83,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 3 && once3)
         {
-
-            
-            
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             if (randomNo3 == 1)
             {
                 Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -116,6 +117,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 4 && once4)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             if (randomNo4 == 1)
             {
                 Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -142,6 +147,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 5 && once5)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             once5 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -151,6 +160,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 6 && once6)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             once6 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -160,6 +173,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 7 && once7)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             once7 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -169,6 +186,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 8 && once8)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             once8 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -178,6 +199,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 9 && once9)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             once9 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -187,6 +212,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 10 && once10)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             once10 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -196,6 +225,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 11 && once11)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             once11 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -205,6 +238,10 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (currentWave == 12 && once12)
         {
+            foreach (GameObject player in battleHandler.players)
+            {
+                player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
             once12 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)

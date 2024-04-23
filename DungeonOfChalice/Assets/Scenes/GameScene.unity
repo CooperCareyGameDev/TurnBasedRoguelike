@@ -2237,8 +2237,9 @@ MonoBehaviour:
   enemyCharacterBattle: {fileID: 0}
   targetedCharacterBattle: {fileID: 0}
   activeCharacterBattle: {fileID: 0}
+  enemyTargetCharacterBattle: {fileID: 0}
   initialAttackTimer: 1
-  turnSwitchDelay: 2
+  turnSwitchDelay: 1
   battleCanvas: {fileID: 266516282}
   enemies: []
   enemyCharacterBattles: []
