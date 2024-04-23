@@ -956,9 +956,9 @@ MonoBehaviour:
   currentWave: 1
   waveText: {fileID: 1228045092}
   smallMushroomEnemy: {fileID: 8389745578458232401, guid: a913daaf2440c6d4183db8ae5ed14237, type: 3}
-  goldVineEnemy: {fileID: 0}
-  tallMushroomEnemy: {fileID: 0}
-  swampMage: {fileID: 0}
+  goldVineEnemy: {fileID: 4728348150869287994, guid: 2d8d0993e121d4b4989595ae5eabb9ff, type: 3}
+  tallMushroomEnemy: {fileID: 5169085924562710369, guid: c036d6a03913fd64bbf7909bb0833097, type: 3}
+  swampMage: {fileID: 373204810358897942, guid: 2de7e7f7830af454dac7e18112fac3f8, type: 3}
   clawEnemy: {fileID: 0}
   bigEyeEnemy: {fileID: 0}
   spearEnemy: {fileID: 0}

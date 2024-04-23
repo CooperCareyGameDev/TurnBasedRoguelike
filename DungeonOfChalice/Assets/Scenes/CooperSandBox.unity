@@ -326,7 +326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1602089093}
-  battleHandler: {fileID: 1863304290}
 --- !u!114 &55242896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,7 +1114,6 @@ MonoBehaviour:
   chargeRequired: 4
   shieldAmount: 25
   ragePower: 50
-  rageChargeText: {fileID: 1216322782}
   healthText: {fileID: 1543147901}
   shieldText: {fileID: 1333158617}
   damageBuffStacks: 0
@@ -3621,7 +3619,6 @@ MonoBehaviour:
   chargeRequired: 5
   shieldAmount: 25
   ragePower: 0
-  rageChargeText: {fileID: 0}
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
   damageBuffStacks: 0
@@ -5430,7 +5427,6 @@ MonoBehaviour:
   chargeRequired: 5
   shieldAmount: 25
   ragePower: 0
-  rageChargeText: {fileID: 785264479}
   healthText: {fileID: 1201516315}
   shieldText: {fileID: 785264479}
   damageBuffStacks: 0
@@ -6204,6 +6200,8 @@ MonoBehaviour:
   enemies: []
   enemyCharacterBattles: []
   players: []
+  rageText: {fileID: 0}
+  nextWaveCanvas: {fileID: 0}
 --- !u!4 &1863304291
 Transform:
   m_ObjectHideFlags: 0
@@ -6577,7 +6575,6 @@ MonoBehaviour:
   chargeRequired: 5
   shieldAmount: 25
   ragePower: 0
-  rageChargeText: {fileID: 0}
   healthText: {fileID: 0}
   shieldText: {fileID: 0}
   damageBuffStacks: 0
