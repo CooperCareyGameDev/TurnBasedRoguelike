@@ -35,10 +35,11 @@ public class EnemySpawner : MonoBehaviour
 
     BattleHandler battleHandler;
     private bool once2 = true, once3 = true, once4 = true, once5 = true, once6 = true, once7 = true, once8 = true, once9 = true, once10 = true, once11 = true, once12 = true;
+    int randomNo2, randomNo3, randomNo4, randomNo5, randomNo6, randomNo7, randomNo8, randomNo9, randomNo10, randomNo11, randomNo12;
     private void Awake()
     {
-        int randomNo2 = Random.Range(1, 4), randomNo3 = Random.Range(1, 4), randomNo4 = Random.Range(1, 4), randomNo5 = Random.Range(1, 4), randomNo6 = Random.Range(1, 4),
-        randomNo7 = Random.Range(1, 4), randomNo8 = Random.Range(1, 4), randomNo9 = Random.Range(1, 4), randomNo10 = Random.Range(1, 4), randomNo11 = Random.Range(1, 4), randomNo12 = Random.Range(1, 4);
+        randomNo2 = Random.Range(1, 3); randomNo3 = Random.Range(1, 4); randomNo4 = Random.Range(1, 4); randomNo5 = Random.Range(1, 4); randomNo6 = Random.Range(1, 4);
+        randomNo7 = Random.Range(1, 4); randomNo8 = Random.Range(1, 4); randomNo9 = Random.Range(1, 4); randomNo10 = Random.Range(1, 4);  randomNo11 = Random.Range(1, 4); randomNo12 = Random.Range(1, 4);
     battleHandler = FindFirstObjectByType<BattleHandler>();
         //Instantiate(smallMushroomEnemy, spawnLocations[0].position, Quaternion.identity);
         Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -59,10 +60,20 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
-            Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
-            Instantiate(goldVineEnemy, spawnLocations[2].position, Quaternion.identity);
-            Instantiate(goldVineEnemy, spawnLocations[3].position, Quaternion.identity);
-            Instantiate(smallMushroomEnemy, spawnLocations[4].position , Quaternion.identity);
+            if (randomNo2 == 1)
+            {
+                Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(goldVineEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(goldVineEnemy, spawnLocations[3].position, Quaternion.identity);
+                Instantiate(smallMushroomEnemy, spawnLocations[4].position , Quaternion.identity);
+
+            }
+            else if (randomNo2 == 2)
+            {
+                Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(goldVineEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(goldVineEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
             once2 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -70,7 +81,7 @@ public class EnemySpawner : MonoBehaviour
                 battleHandler.enemies.Add(enemy);
             }
         }
-        else if (currentWave == 3)
+        else if (currentWave == 3 && once3)
         {
 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
