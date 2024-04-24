@@ -363,6 +363,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 }
