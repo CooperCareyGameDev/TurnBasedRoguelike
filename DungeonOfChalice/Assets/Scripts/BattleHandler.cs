@@ -33,6 +33,7 @@ public class BattleHandler : MonoBehaviour
     public static bool isSelecting = false;
     public TextMeshProUGUI rageText;
     [SerializeField] Canvas nextWaveCanvas;
+    [SerializeField] Canvas deathCanvas; 
     EnemySpawner enemySpawner;
     private enum State
     {
@@ -40,13 +41,20 @@ public class BattleHandler : MonoBehaviour
         Busy, 
     }
 
+    public void ActivateDeathCanvas()
+    {
+        if (players.Count <= 0)
+        {
+            deathCanvas.enabled = true; 
+
+        }
+    }
+
     private void Start()
     {
         enemySpawner = FindFirstObjectByType<EnemySpawner>();
         enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
         playersArray = GameObject.FindGameObjectsWithTag("Player");
-        playerCharacterBattle = playersArray[0].GetComponent<CharacterBattle>();
-        enemyCharacterBattle = enemiesArray[0].GetComponent<CharacterBattle>();
         foreach (GameObject player in playersArray) 
         {
             players.Add(player); 
@@ -61,6 +69,8 @@ public class BattleHandler : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
         }
+        playerCharacterBattle = playersArray[0].GetComponent<CharacterBattle>();
+        //enemyCharacterBattle = enemiesArray[0].GetComponent<CharacterBattle>();
         SetActiveCharacterBattle(playerCharacterBattle);
         state = State.WaitingForPlayer;
     }
@@ -371,6 +381,7 @@ public class BattleHandler : MonoBehaviour
             Debug.Log("All enemies defeated");
             nextWaveCanvas.enabled = true; 
         }
+        Invoke("ActivateDeathCanvas", 0.5f);
         attackTimer += Time.deltaTime; 
         if (state == State.WaitingForPlayer)
         {
@@ -953,9 +964,19 @@ public class BattleHandler : MonoBehaviour
             {
                 foreach (GameObject player in players)
                 {
-                    player.GetComponent<CharacterBattle>().HealOnTurn(20, () => {
+                    player.GetComponent<CharacterBattle>().HealOnTurn(25, () => {
                     });
                    //DamagePopup.CreateHealPopup(transform.position, 200);
+                }
+            }
+            else
+            {
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<CharacterBattle>().HealOnTurn(5, () =>
+                    {
+
+                    });
                 }
             }
         }

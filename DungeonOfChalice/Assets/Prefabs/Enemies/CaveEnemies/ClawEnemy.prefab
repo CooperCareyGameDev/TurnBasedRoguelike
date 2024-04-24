@@ -589,7 +589,7 @@ MonoBehaviour:
   currentHealth: 100
   currentShield: 0
   healthBarScaler: {fileID: 1592812148397207075}
-  attackPower: 20
+  attackPower: 15
   critPercentChance: 25
   healingAmount: 0
   chargeRequired: 5

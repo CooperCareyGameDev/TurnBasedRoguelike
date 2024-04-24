@@ -203,13 +203,12 @@ MonoBehaviour:
   currentHealth: 250
   currentShield: 0
   healthBarScaler: {fileID: 1869595238613601070}
-  attackPower: 10
+  attackPower: 15
   critPercentChance: 20
   healingAmount: 15
-  chargeRequired: 4
+  chargeRequired: 8
   shieldAmount: 25
   ragePower: 50
-  rageChargeText: {fileID: 0}
   healthText: {fileID: 0}
   shieldText: {fileID: 9066968658311515827}
   damageBuffStacks: 0

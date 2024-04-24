@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: abf44b8246e06e1488991e4be37708e3
+guid: d95609b02bb36f94496ca14612dff442
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5063383140443079399
-    second: CaveEnemyPortraits_0
-  - first:
-      213: 6114892876117789035
-    second: CaveEnemyPortraits_1
-  - first:
-      213: -1822649098704964264
-    second: CaveEnemyPortraits_2
-  - first:
-      213: -4983309149792280966
-    second: CaveEnemyPortraits_3
+      213: -1093897896430776101
+    second: Cave_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -46,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CaveEnemyPortraits_0
+      name: Cave_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 0
-        width: 86
-        height: 96
+        width: 320
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,71 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91d30385cdf3bb9b0800000000000000
-      internalID: -5063383140443079399
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CaveEnemyPortraits_1
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 95
-        width: 82
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b6941983ca67cd450800000000000000
-      internalID: 6114892876117789035
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CaveEnemyPortraits_2
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 95
-        width: 90
-        height: 91
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 85531813d46a4b6e0800000000000000
-      internalID: -1822649098704964264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CaveEnemyPortraits_3
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 7
-        width: 88
-        height: 79
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a7e5da02bbab7dab0800000000000000
-      internalID: -4983309149792280966
+      spriteID: bd052bea8a1b1d0f0800000000000000
+      internalID: -1093897896430776101
       vertices: []
       indices: 
       edges: []
@@ -212,11 +140,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      CaveEnemyPortraits_0: -5063383140443079399
-      CaveEnemyPortraits_1: 6114892876117789035
-      CaveEnemyPortraits_2: -1822649098704964264
-      CaveEnemyPortraits_3: -4983309149792280966
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

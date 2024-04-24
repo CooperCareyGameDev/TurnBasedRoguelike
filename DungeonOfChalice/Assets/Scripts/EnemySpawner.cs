@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; 
+using TMPro;
+using UnityEngine.SceneManagement; 
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -38,13 +39,16 @@ public class EnemySpawner : MonoBehaviour
     int randomNo2, randomNo3, randomNo4, randomNo5, randomNo6, randomNo7, randomNo8, randomNo9, randomNo10, randomNo11, randomNo12;
     private void Awake()
     {
-        randomNo2 = Random.Range(1, 3); randomNo3 = Random.Range(1, 4); randomNo4 = Random.Range(1, 4); randomNo5 = Random.Range(1, 4); randomNo6 = Random.Range(1, 4);
-        randomNo7 = Random.Range(1, 4); randomNo8 = Random.Range(1, 4); randomNo9 = Random.Range(1, 4); randomNo10 = Random.Range(1, 4);  randomNo11 = Random.Range(1, 4); randomNo12 = Random.Range(1, 4);
+        randomNo2 = Random.Range(1, 3); randomNo3 = Random.Range(1, 4); randomNo4 = Random.Range(1, 4); randomNo5 = Random.Range(1, 2); randomNo6 = Random.Range(1, 3);
+        randomNo7 = Random.Range(1, 4); randomNo8 = Random.Range(1, 2); randomNo9 = Random.Range(1, 4); randomNo10 = Random.Range(1, 4);  randomNo11 = Random.Range(1, 4); randomNo12 = Random.Range(1, 4);
     battleHandler = FindFirstObjectByType<BattleHandler>();
         //Instantiate(smallMushroomEnemy, spawnLocations[0].position, Quaternion.identity);
-        Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
-        Instantiate(smallMushroomEnemy, spawnLocations[2].position, Quaternion.identity);
-        Instantiate(smallMushroomEnemy, spawnLocations[3].position, Quaternion.identity);
+        if (currentWave == 1)
+        {
+            Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
+            Instantiate(smallMushroomEnemy, spawnLocations[2].position, Quaternion.identity);
+            Instantiate(smallMushroomEnemy, spawnLocations[3].position, Quaternion.identity);
+        }
         //Instantiate(smallMushroomEnemy, spawnLocations[4].position, Quaternion.identity);
     }
 
@@ -151,6 +155,13 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            if (randomNo5 == 1)
+            {
+                Instantiate(clawEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(clawEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+
+
             once5 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -163,6 +174,18 @@ public class EnemySpawner : MonoBehaviour
             foreach (GameObject player in battleHandler.players)
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
+            if (randomNo6 == 1)
+            {
+                Instantiate(bigEyeEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(clawEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(bigEyeEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo6 == 2)
+            {
+                Instantiate(clawEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(bigEyeEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(clawEnemy, spawnLocations[3].position, Quaternion.identity);
             }
             once6 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
@@ -177,6 +200,24 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            if (randomNo7 == 1)
+            {
+                Instantiate(clawEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(spearEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(bigEyeEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo7 == 2)
+            {
+                Instantiate(clawEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(spearEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(clawEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo7 == 3)
+            {
+                Instantiate(bigEyeEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(spearEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(bigEyeEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
             once7 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -189,6 +230,12 @@ public class EnemySpawner : MonoBehaviour
             foreach (GameObject player in battleHandler.players)
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
+            if (randomNo8 == 1)
+            {
+                Instantiate(spearEnemy, spawnLocations[1].position, Quaternion.identity); 
+                Instantiate(multiEyeEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(spearEnemy, spawnLocations[3].position, Quaternion.identity);
             }
             once8 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
@@ -259,5 +306,10 @@ public class EnemySpawner : MonoBehaviour
     public int GetCurrentWave()
     {
         return currentWave;
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(2);
     }
 }
