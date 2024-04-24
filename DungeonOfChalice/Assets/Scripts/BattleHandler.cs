@@ -737,26 +737,48 @@ public class BattleHandler : MonoBehaviour
         battleCanvas.enabled = true;
         int randomNo = UnityEngine.Random.Range(0, players.Count);
         enemyTargetCharacterBattle = players[randomNo].GetComponent<CharacterBattle>();
-        if (enemyCharacterBattle.isWeakened)
+        if (enemyCharacterBattle.currentClass == "Single")
         {
-            enemyTargetCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower / 2, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
-            enemyCharacterBattle.isWeakened = false;
-        }
-        else
-        {
-            enemyTargetCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+            if (enemyCharacterBattle.isWeakened)
+            {
+                enemyTargetCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower / 2, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+                enemyCharacterBattle.isWeakened = false;
+            }
+            else
+            {
+                enemyTargetCharacterBattle.TakeDamage(enemyCharacterBattle.attackPower, playerCharacterBattle.isCriticalHit(enemyCharacterBattle.critPercentChance));
+
+            }
+            if (enemyTargetCharacterBattle.hasMagicSpike)
+            {
+                enemyCharacterBattle.TakeMagicSpikeDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike);
+                enemyTargetCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike = false;
+            }
+            if (enemyTargetCharacterBattle.hasTrap)
+            {
+                enemyCharacterBattle.isWeakened = true;
+                enemyCharacterBattle.TakeTrapDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasTrap);
+                enemyTargetCharacterBattle.GetComponent<CharacterBattle>().hasTrap = false;
+            }
 
         }
-        if (enemyTargetCharacterBattle.hasMagicSpike)
+        else if (enemyCharacterBattle.currentClass == "Multiple")
         {
-            enemyCharacterBattle.TakeMagicSpikeDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike);
-            enemyTargetCharacterBattle.GetComponent<CharacterBattle>().hasMagicSpike = false;
-        }
-        if (enemyTargetCharacterBattle.hasTrap)
-        {
-            enemyCharacterBattle.isWeakened = true;
-            enemyCharacterBattle.TakeTrapDamage(playerCharacterBattle.GetComponent<CharacterBattle>().hasTrap);
-            enemyTargetCharacterBattle.GetComponent<CharacterBattle>().hasTrap = false;
+            if (enemyCharacterBattle.isWeakened)
+            {
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<CharacterBattle>().TakeDamage(enemyCharacterBattle.attackPower / 2, player.GetComponent<CharacterBattle>().isCriticalHit(enemyCharacterBattle.critPercentChance));
+                }
+                enemyCharacterBattle.isWeakened = false;
+            }
+            else
+            {
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<CharacterBattle>().TakeDamage(enemyCharacterBattle.attackPower, player.GetComponent<CharacterBattle>().isCriticalHit(enemyCharacterBattle.critPercentChance));
+                }
+            }
         }
         enemyCharacterBattle.hasDoneTurn = true;
         SetEnemyCharacterBattle();
