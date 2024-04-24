@@ -81,7 +81,7 @@ public class BattleHandler : MonoBehaviour
         playerCharacterBattle.Attack(enemyCharacterBattle, () =>
         {
 
-            if (activeCharacterBattle != null)
+            if (enemyCharacterBattle != null)
             {
                 //battleCanvas.enabled = false;
                 attackTimer = 0;
@@ -91,7 +91,9 @@ public class BattleHandler : MonoBehaviour
             }
             else
             {
-                TooltipScreenSpaceUI.ShowTooltipWarning_Static("Select a target first");
+                Debug.Log("select a target first");
+                
+                TooltipScreenSpaceUI.ShowTooltip_Static("Select a target first");
                 SetActiveCharacterBattle(enemies[0].GetComponent<CharacterBattle>());
                 //Debug.Log(enemies[0].GetComponent<CharacterBattle>());
             }
