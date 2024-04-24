@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         randomNo2 = Random.Range(1, 3); randomNo3 = Random.Range(1, 4); randomNo4 = Random.Range(1, 4); randomNo5 = Random.Range(1, 2); randomNo6 = Random.Range(1, 3);
-        randomNo7 = Random.Range(1, 4); randomNo8 = Random.Range(1, 2); randomNo9 = Random.Range(1, 4); randomNo10 = Random.Range(1, 4);  randomNo11 = Random.Range(1, 4); randomNo12 = Random.Range(1, 4);
+        randomNo7 = Random.Range(1, 4); randomNo8 = Random.Range(1, 2); randomNo9 = Random.Range(1, 3); randomNo10 = Random.Range(1, 3);  randomNo11 = Random.Range(1, 4); randomNo12 = Random.Range(1, 2);
     battleHandler = FindFirstObjectByType<BattleHandler>();
         //Instantiate(smallMushroomEnemy, spawnLocations[0].position, Quaternion.identity);
         if (currentWave == 1)
@@ -250,6 +250,19 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            if (randomNo9 == 1) 
+            {
+                Instantiate(lobsterEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(medusaEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(lobsterEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo9 == 2)
+            {
+                Instantiate(medusaEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(lobsterEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(medusaEnemy, spawnLocations[3].position, Quaternion.identity);
+
+            }
             once9 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -262,6 +275,18 @@ public class EnemySpawner : MonoBehaviour
             foreach (GameObject player in battleHandler.players)
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
+            if (randomNo10 == 1)
+            {
+                Instantiate(tentacleEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(armoredEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(tentacleEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo10 == 2)
+            {
+                Instantiate(armoredEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(tentacleEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(armoredEnemy, spawnLocations[3].position, Quaternion.identity);
             }
             once10 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
@@ -276,6 +301,26 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            if (randomNo11 == 1)
+            {
+                Instantiate(armoredEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(pillarEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(tentacleEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo11 == 2)
+            {
+                Instantiate(lobsterEnemy, spawnLocations[0].position, Quaternion.identity);
+                Instantiate(medusaEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(pillarEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(tentacleEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
+            else if (randomNo11 == 3)
+            {
+                Instantiate(lobsterEnemy, spawnLocations[0].position, Quaternion.identity);
+                Instantiate(medusaEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(pillarEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(armoredEnemy, spawnLocations[3].position, Quaternion.identity);
+            }
             once11 = false; 
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemyArray)
@@ -288,6 +333,14 @@ public class EnemySpawner : MonoBehaviour
             foreach (GameObject player in battleHandler.players)
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
+            }
+            if (randomNo12 == 1)
+            {
+                Instantiate(lobsterEnemy, spawnLocations[0].position, Quaternion.identity);
+                Instantiate(medusaEnemy, spawnLocations[1].position, Quaternion.identity);
+                Instantiate(sunriseEnemy, spawnLocations[2].position, Quaternion.identity);
+                Instantiate(armoredEnemy, spawnLocations[3].position, Quaternion.identity);
+                Instantiate(tentacleEnemy, spawnLocations[4].position, Quaternion.identity);
             }
             once12 = false;
             GameObject[] enemyArray = GameObject.FindGameObjectsWithTag("Enemy");

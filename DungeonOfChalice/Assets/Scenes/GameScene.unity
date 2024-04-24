@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c1ec1d77652b649b046199889c5ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWave: 5
+  currentWave: 1
   waveText: {fileID: 1228045092}
   smallMushroomEnemy: {fileID: 8389745578458232401, guid: a913daaf2440c6d4183db8ae5ed14237, type: 3}
   goldVineEnemy: {fileID: 4728348150869287994, guid: 2d8d0993e121d4b4989595ae5eabb9ff, type: 3}

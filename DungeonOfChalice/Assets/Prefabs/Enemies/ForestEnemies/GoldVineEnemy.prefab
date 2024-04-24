@@ -626,7 +626,7 @@ MonoBehaviour:
   attackPower: 10
   critPercentChance: 10
   healingAmount: 0
-  chargeRequired: 5
+  chargeRequired: 8
   shieldAmount: 0
   ragePower: 0
   healthText: {fileID: 0}
