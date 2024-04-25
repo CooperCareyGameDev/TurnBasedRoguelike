@@ -1123,9 +1123,9 @@ MonoBehaviour:
   currentClass: Mage
   isEnemy: 0
   turnIndicator: {fileID: 5232382790583380076}
-  startingHealth: 250
+  startingHealth: 200
   healthBar: {fileID: 7961425160566544083}
-  currentHealth: 250
+  currentHealth: 200
   currentShield: 0
   healthBarScaler: {fileID: 811967801717391349}
   attackPower: 15

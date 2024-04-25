@@ -64,6 +64,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo2 == 1)
             {
                 Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -91,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo3 == 1)
             {
                 Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -125,6 +127,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo4 == 1)
             {
                 Instantiate(smallMushroomEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -155,6 +158,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo5 == 1)
             {
                 Instantiate(clawEnemy, spawnLocations[2].position, Quaternion.identity);
@@ -175,6 +179,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo6 == 1)
             {
                 Instantiate(bigEyeEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -200,6 +205,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo7 == 1)
             {
                 Instantiate(clawEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -231,6 +237,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo8 == 1)
             {
                 Instantiate(spearEnemy, spawnLocations[1].position, Quaternion.identity); 
@@ -250,6 +257,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo9 == 1) 
             {
                 Instantiate(lobsterEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -276,6 +284,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo10 == 1)
             {
                 Instantiate(tentacleEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -301,6 +310,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count;
             if (randomNo11 == 1)
             {
                 Instantiate(armoredEnemy, spawnLocations[1].position, Quaternion.identity);
@@ -334,6 +344,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 player.GetComponent<CharacterBattle>().hasDoneTurn = false;
             }
+            CharacterBattle.turnsLeft = battleHandler.players.Count; 
             if (randomNo12 == 1)
             {
                 Instantiate(lobsterEnemy, spawnLocations[0].position, Quaternion.identity);
