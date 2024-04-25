@@ -524,7 +524,7 @@ public class BattleHandler : MonoBehaviour
 
         else if (playerCharacterBattle.currentClass == "Barbarian")
         {
-            playerCharacterBattle.animator.SetTrigger("Attack");
+            //playerCharacterBattle.animator.SetTrigger("Attack");
             // Basic attack
             if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
@@ -550,7 +550,7 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Mage")
         {
             // Attack does damage to one target, reduced damage to all targets
-            playerCharacterBattle.animator.SetTrigger("Attack");
+            //playerCharacterBattle.animator.SetTrigger("Attack");
             if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
