@@ -588,7 +588,7 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Archer")
         {
             // Attack hits one target, inflicts status effect
-            playerCharacterBattle.animator.SetTrigger("Attack");
+            //playerCharacterBattle.animator.SetTrigger("Attack");
             if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 20, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
@@ -620,7 +620,7 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Cleric")
         {
             // Weak attack with self heal
-            playerCharacterBattle.animator.SetTrigger("Attack");
+            //playerCharacterBattle.animator.SetTrigger("Attack");
             if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage((playerCharacterBattle.attackPower / 2) + 10, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
@@ -686,7 +686,7 @@ public class BattleHandler : MonoBehaviour
         else if (playerCharacterBattle.currentClass == "Trapper")
         {
             // Attack applies bleed
-            playerCharacterBattle.animator.SetTrigger("Attack");
+            //playerCharacterBattle.animator.SetTrigger("Attack");
             if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
                 enemyCharacterBattle.TakeDamage(playerCharacterBattle.attackPower + 20, enemyCharacterBattle.isCriticalHit(playerCharacterBattle.critPercentChance));
