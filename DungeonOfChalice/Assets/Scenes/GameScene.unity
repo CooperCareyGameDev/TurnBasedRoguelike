@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forestBackground: {fileID: 9085546173938197295, guid: 44d846627dfee4646b15718746e1ce29, type: 3}
   caveBackground: {fileID: -1093897896430776101, guid: d95609b02bb36f94496ca14612dff442, type: 3}
-  dungeonBackground: {fileID: 5718469909854450143, guid: 7dce60b9479fe8a4b9e285fa7cc490ad, type: 3}
+  dungeonBackground: {fileID: 5718469909854450143, guid: eaa917663d84f06419dbf189093fea9d, type: 3}
 --- !u!1 &574333741
 GameObject:
   m_ObjectHideFlags: 0
