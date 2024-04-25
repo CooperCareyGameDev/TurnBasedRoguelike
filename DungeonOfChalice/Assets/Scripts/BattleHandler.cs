@@ -33,7 +33,8 @@ public class BattleHandler : MonoBehaviour
     public static bool isSelecting = false;
     public TextMeshProUGUI rageText;
     [SerializeField] Canvas nextWaveCanvas;
-    [SerializeField] Canvas deathCanvas; 
+    [SerializeField] Canvas deathCanvas;
+    [SerializeField] Canvas winCanvas; 
     EnemySpawner enemySpawner;
     private enum State
     {
@@ -52,6 +53,7 @@ public class BattleHandler : MonoBehaviour
 
     private void Start()
     {
+        winCanvas.enabled = false; 
         enemySpawner = FindFirstObjectByType<EnemySpawner>();
         enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
         playersArray = GameObject.FindGameObjectsWithTag("Player");
@@ -94,7 +96,7 @@ public class BattleHandler : MonoBehaviour
                 Debug.Log("select a target first");
                 
                 TooltipScreenSpaceUI.ShowTooltip_Static("Select a target first");
-                SetActiveCharacterBattle(enemies[0].GetComponent<CharacterBattle>());
+                //SetActiveCharacterBattle(enemies[0].GetComponent<CharacterBattle>());
                 //Debug.Log(enemies[0].GetComponent<CharacterBattle>());
             }
         });
@@ -102,6 +104,7 @@ public class BattleHandler : MonoBehaviour
 
     public void UseRageButton()
     {
+
         if (CharacterBattle.currentCharge >= playerCharacterBattle.chargeRequired)
         {
             CharacterBattle.currentCharge = 0;
@@ -115,6 +118,7 @@ public class BattleHandler : MonoBehaviour
     }
     public void SecondaryAction()
     {
+        CharacterBattle.turnsLeft--;
         if (playerCharacterBattle.currentClass == "Knight")
         {
             // Shield ally
@@ -165,11 +169,11 @@ public class BattleHandler : MonoBehaviour
             
         }
         playerCharacterBattle.hasDoneTurn = true;
-        CharacterBattle.turnsLeft--;
+        //CharacterBattle.turnsLeft--;
         if (CharacterBattle.turnsLeft <= 0)
         {
             StartCoroutine(EnemyAttack());
-            
+            battleCanvas.enabled = false;
             CharacterBattle.turnsLeft = players.Count;
             foreach (GameObject player in players)
             {
@@ -361,6 +365,7 @@ public class BattleHandler : MonoBehaviour
             if (CharacterBattle.turnsLeft <= 0)
             {
                 StartCoroutine(EnemyAttack());
+                battleCanvas.enabled = false;
                 CharacterBattle.turnsLeft = players.Count;
                 foreach (GameObject player in players)
                 {
@@ -382,6 +387,11 @@ public class BattleHandler : MonoBehaviour
         {
             Debug.Log("All enemies defeated");
             nextWaveCanvas.enabled = true; 
+        }
+        else if (enemies.Count == 0 && enemySpawner.GetCurrentWave() >= 12)
+        {
+            // Show Win Canvas
+            winCanvas.enabled = true;
         }
         Invoke("ActivateDeathCanvas", 0.5f);
         attackTimer += Time.deltaTime; 
@@ -448,11 +458,13 @@ public class BattleHandler : MonoBehaviour
     {
         if (!TestBattleOver())
         {
-            yield return new WaitForSeconds(turnSwitchDelay);
+            //yield return new WaitForSeconds(turnSwitchDelay);
             if (activeCharacterBattle == playerCharacterBattle)
             {
-                
+
                 //SetActiveCharacterBattle(enemyCharacterBattle);
+                playerCharacterBattle.animator.SetTrigger("Attack");
+                yield return new WaitForSeconds(turnSwitchDelay);
                 PlayerAttackLogic();
                 Debug.LogError("Running player attack logic");
                 for (int i = 0; i < players.Count; i++)
@@ -482,9 +494,10 @@ public class BattleHandler : MonoBehaviour
 
     private void PlayerAttackLogic()
     {
+        CharacterBattle.turnsLeft--;
         if (playerCharacterBattle.currentClass == "Knight")
         {
-            playerCharacterBattle.animator.SetTrigger("Attack");
+            //playerCharacterBattle.animator.SetTrigger("Attack");
             // Basic attack
             if (playerCharacterBattle.isBuffed && !playerCharacterBattle.isWeakened)
             {
@@ -726,11 +739,12 @@ public class BattleHandler : MonoBehaviour
         }
         state = State.Busy;
         playerCharacterBattle.hasDoneTurn = true;
-        CharacterBattle.turnsLeft--;
+        //CharacterBattle.turnsLeft--;
         if (CharacterBattle.turnsLeft <= 0)
         {
             StartCoroutine(EnemyAttack());
             Debug.Log("setting to party members alive");
+            battleCanvas.enabled = false;
             CharacterBattle.turnsLeft = players.Count;
             foreach (GameObject player in players)
             {
@@ -747,7 +761,7 @@ public class BattleHandler : MonoBehaviour
 
     private void EnemyAttackLogic()
     {
-        battleCanvas.enabled = true;
+        //battleCanvas.enabled = true;
         int randomNo = UnityEngine.Random.Range(0, players.Count);
         enemyTargetCharacterBattle = players[randomNo].GetComponent<CharacterBattle>();
         if (enemyCharacterBattle.currentClass == "Single")
@@ -955,6 +969,7 @@ public class BattleHandler : MonoBehaviour
                 {
                     Debug.LogError("Foreach");
                     enemy.GetComponent<CharacterBattle>().hasDoneTurn = false;
+                    battleCanvas.enabled = true;
                 }
             }
         }
@@ -966,7 +981,7 @@ public class BattleHandler : MonoBehaviour
             {
                 foreach (GameObject player in players)
                 {
-                    player.GetComponent<CharacterBattle>().HealOnTurn(25, () => {
+                    player.GetComponent<CharacterBattle>().HealOnTurn(15, () => {
                     });
                    //DamagePopup.CreateHealPopup(transform.position, 200);
                 }

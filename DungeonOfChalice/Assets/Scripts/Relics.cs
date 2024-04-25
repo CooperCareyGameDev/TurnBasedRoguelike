@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro; 
 public class Relics : MonoBehaviour
 {
     // Rage Fills Faster
@@ -16,6 +17,8 @@ public class Relics : MonoBehaviour
     public static bool healingBuff = false;
 
     // Test Variables
+    [SerializeField] TextMeshProUGUI relicText; 
+
     [SerializeField] bool localRageBuff = false;
     [SerializeField] bool localShieldBuff = false;
     [SerializeField] bool localSecondChanceBuff = false;
@@ -27,12 +30,12 @@ public class Relics : MonoBehaviour
     private void Awake()
     {
         // Setting Test Variables
-        rageBuff = localRageBuff;
-        shieldBuff = localShieldBuff;
-        secondChanceBuff = localSecondChanceBuff;
-        critChanceBuff = localCritChanceBuff;
-        healingBuff = localHealingBuff;
-        hasSecondChance = localHasSecondChance;
+        //rageBuff = localRageBuff;
+        //shieldBuff = localShieldBuff;
+        //secondChanceBuff = localSecondChanceBuff;
+        //critChanceBuff = localCritChanceBuff;
+        //healingBuff = localHealingBuff;
+        //hasSecondChance = localHasSecondChance;
     }
 
 
@@ -43,6 +46,26 @@ public class Relics : MonoBehaviour
         Debug.Log("Second Chance: " + secondChanceBuff);
         Debug.Log("Crit: " + critChanceBuff);
         Debug.Log("Healing: " +  healingBuff); */  
+        if (rageBuff)
+        {
+            relicText.text = "Current Relic: Rage";
+        }
+        else if (shieldBuff)
+        {
+            relicText.text = "Current Relic: Shield";
+        }
+        else if (secondChanceBuff)
+        {
+            relicText.text = "Current Relic: Second Chance";
+        }
+        else if (critChanceBuff)
+        {
+            relicText.text = "Current Relic: Crit Chance";
+        }
+        else if (healingBuff)
+        {
+            relicText.text = "Current Relic: Healing";
+        }
     }
 
     public void ActivateRageBuff()
@@ -63,6 +86,7 @@ public class Relics : MonoBehaviour
         critChanceBuff = false;
         healingBuff = false;
         hasSecondChance = false;
+        Debug.Log("Active shield " + shieldBuff);
     }
 
     public void ActivateSecondChanceBuff()

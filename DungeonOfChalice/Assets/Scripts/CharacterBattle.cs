@@ -68,10 +68,7 @@ public class CharacterBattle : MonoBehaviour
     [SerializeField] private int orderIndex; 
     private void Awake()
     {
-        if (Relics.shieldBuff && !isEnemy)
-        {
-            currentShield = 5;
-        }
+        
         animator = GetComponent<Animator>();
         //playerArray = GameObject.FindGameObjectsWithTag("Player");
         
@@ -223,6 +220,11 @@ public class CharacterBattle : MonoBehaviour
     }
     private void Start()
     {
+        Debug.LogWarning("Active shield " + Relics.shieldBuff);
+        if (Relics.shieldBuff && !isEnemy)
+        {
+            currentShield = 5;
+        }
         partyMembersAlive = battleHandler.players.Count;
         spriteRenderer = GetComponent<SpriteRenderer>();
         healthSystem = new HealthSystem(startingHealth);
