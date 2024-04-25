@@ -311,6 +311,7 @@ public class CharacterBattle : MonoBehaviour
         //Debug.Log("Taking damage");
         if (hasEvasive)
         {
+
             dodgeNo = UnityEngine.Random.Range(1, 3);
         }
         if (hasEvasive && dodgeNo == 2)
