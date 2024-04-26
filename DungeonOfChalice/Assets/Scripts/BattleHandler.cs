@@ -185,7 +185,7 @@ public class BattleHandler : MonoBehaviour
         if (CharacterBattle.turnsLeft <= 0)
         {
             StartCoroutine(EnemyAttack());
-            battleCanvas.enabled = false;
+            //battleCanvas.enabled = false;
             CharacterBattle.turnsLeft = players.Count;
             foreach (GameObject player in players)
             {
@@ -204,7 +204,7 @@ public class BattleHandler : MonoBehaviour
 
     public void ShieldButton()
     {
-        battleCanvas.enabled = false;
+        //battleCanvas.enabled = false;
         StartCoroutine(WaitToShield(playerCharacterBattle.shieldAmount));
     }
     private IEnumerator WaitToHeal(int healAmount)
@@ -377,7 +377,7 @@ public class BattleHandler : MonoBehaviour
             if (CharacterBattle.turnsLeft <= 0)
             {
                 StartCoroutine(EnemyAttack());
-                battleCanvas.enabled = false;
+                //battleCanvas.enabled = false;
                 CharacterBattle.turnsLeft = players.Count;
                 foreach (GameObject player in players)
                 {
@@ -395,7 +395,7 @@ public class BattleHandler : MonoBehaviour
 
     private void Update()
     {
-        if (enemies.Count == 0 && enemySpawner.GetCurrentWave() != 12)
+        if (enemies.Count == 0 && enemySpawner.GetCurrentWave() <= 12)
         {
             Debug.Log("All enemies defeated");
             nextWaveCanvas.enabled = true; 
@@ -756,7 +756,7 @@ public class BattleHandler : MonoBehaviour
         {
             StartCoroutine(EnemyAttack());
             Debug.Log("setting to party members alive");
-            battleCanvas.enabled = false;
+            //battleCanvas.enabled = false;
             CharacterBattle.turnsLeft = players.Count;
             foreach (GameObject player in players)
             {
@@ -981,7 +981,7 @@ public class BattleHandler : MonoBehaviour
                 {
                     Debug.LogError("Foreach");
                     enemy.GetComponent<CharacterBattle>().hasDoneTurn = false;
-                    battleCanvas.enabled = true;
+                    //battleCanvas.enabled = true;
                 }
             }
         }
