@@ -19,4 +19,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Application Quited");
         Application.Quit();
     }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }

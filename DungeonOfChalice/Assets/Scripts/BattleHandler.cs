@@ -34,12 +34,23 @@ public class BattleHandler : MonoBehaviour
     public TextMeshProUGUI rageText;
     [SerializeField] Canvas nextWaveCanvas;
     [SerializeField] Canvas deathCanvas;
-    [SerializeField] Canvas winCanvas; 
+    [SerializeField] Canvas winCanvas;
+    [SerializeField] GameObject attackWarning; 
     EnemySpawner enemySpawner;
     private enum State
     {
         WaitingForPlayer,
         Busy, 
+    }
+
+    public void ActivateAttackWarning()
+    {
+        attackWarning.SetActive(true);
+    }
+
+    public void DisableAttackWarning()
+    {
+        attackWarning.SetActive(false);
     }
 
     public void ActivateDeathCanvas()
@@ -94,8 +105,9 @@ public class BattleHandler : MonoBehaviour
             else
             {
                 Debug.Log("select a target first");
-                
-                TooltipScreenSpaceUI.ShowTooltip_Static("Select a target first");
+                ActivateAttackWarning();
+                Invoke("DisableAttackWarning", 1.5f);
+                //TooltipScreenSpaceUI.ShowTooltip_Static("Select a target first");
                 //SetActiveCharacterBattle(enemies[0].GetComponent<CharacterBattle>());
                 //Debug.Log(enemies[0].GetComponent<CharacterBattle>());
             }
